@@ -1,0 +1,10 @@
+==================
+Text
+==================
+
+Lorem ipsum
+
+---
+
+(source_file
+  (content))
