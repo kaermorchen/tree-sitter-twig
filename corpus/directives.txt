@@ -1,0 +1,55 @@
+==================
+Empty template
+==================
+---
+
+(template)
+
+==================
+Only content
+==================
+Lorem ipsum
+---
+
+(template
+  (content))
+
+==================
+Comment
+==================
+{# сomment #}
+---
+
+(template
+  (comment))
+
+==================
+Сontent сomment content
+==================
+Lorem {# сomment #} ipsum
+---
+
+(template
+  (content)
+  (comment)
+  (content))
+
+==================
+Output directive
+==================
+{{ set }}
+---
+
+(template
+  (output_directive
+    (assignment_statement)))
+
+==================
+Statement directive
+==================
+{% set %}
+---
+
+(template
+  (statement_directive
+    (assignment_statement)))
