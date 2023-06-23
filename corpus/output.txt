@@ -1,0 +1,29 @@
+==================
+Identifier
+==================
+{{ user }}
+---
+
+(template
+  (output_directive
+    (identifier)))
+
+==================
+String
+==================
+{{ 'hello' }}
+---
+
+(template
+  (output_directive
+    (string_literal)))
+
+==================
+String Interpolation
+==================
+{{ "foo #{bar} baz" }}
+---
+
+(template
+  (output_directive
+    (string_literal)))

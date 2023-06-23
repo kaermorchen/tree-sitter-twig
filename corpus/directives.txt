@@ -37,19 +37,9 @@ Lorem {# сomment #} ipsum
 ==================
 Output directive
 ==================
-{{ set }}
+{{ user }}
 ---
 
 (template
   (output_directive
-    (assignment_statement)))
-
-==================
-Statement directive
-==================
-{% set %}
----
-
-(template
-  (statement_directive
-    (assignment_statement)))
+    (identifier)))
