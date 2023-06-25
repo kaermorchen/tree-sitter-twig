@@ -139,3 +139,36 @@ Parentheses property
         (property_name
           (identifier))
         (string_literal)))))
+
+==================
+Arrow function
+==================
+{{ (a, b) => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (identifier)
+      (identifier)
+      (number_literal))))
+
+==================
+Arrow function empty params
+==================
+{{ () => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (number_literal))))
+
+==================
+Arrow function single param
+==================
+{{ v => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (identifier)
+      (number_literal))))

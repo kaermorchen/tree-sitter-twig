@@ -42,8 +42,8 @@ module.exports = grammar({
     boolean_literal: () => /true|false/i,
     string_literal: () =>
       /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
-    array_literal: ($) => seq('[', commaSep(optional($._expression)), ']'),
-    object_literal: ($) => seq('{', commaSep(optional($.property)), '}'),
+    array_literal: ($) => seq('[', commaSep($._expression), ']'),
+    object_literal: ($) => seq('{', commaSep($.property), '}'),
 
     property: ($) =>
       choice(seq($.property_name, ':', $._expression), $.identifier),
@@ -54,6 +54,13 @@ module.exports = grammar({
         $.string_literal,
         $.number_literal,
         seq('(', $.identifier, ')')
+      ),
+
+    arrow_function: ($) =>
+      seq(
+        choice($.identifier, seq('(', commaSep($.identifier), ')')),
+        '=>',
+        $._expression
       ),
 
     interpolated_string: ($) =>
@@ -71,7 +78,8 @@ module.exports = grammar({
         '"'
       ),
 
-    _expression: ($) => choice($.identifier, $._literal, $.interpolated_string),
+    _expression: ($) =>
+      choice($.identifier, $._literal, $.interpolated_string, $.arrow_function),
 
     _statement: ($) => choice($.assignment_statement),
 
