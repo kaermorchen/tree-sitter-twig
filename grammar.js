@@ -34,6 +34,7 @@ module.exports = grammar({
         $.boolean_literal,
         $.string_literal,
         $.array_literal,
+        $.object_literal
       ),
 
     null_literal: () => /null|none/i,
@@ -41,8 +42,19 @@ module.exports = grammar({
     boolean_literal: () => /true|false/i,
     string_literal: () =>
       /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
-    array_literal: ($) =>
-      seq('[', commaSep(optional($._expression)), ']'),
+    array_literal: ($) => seq('[', commaSep(optional($._expression)), ']'),
+    object_literal: ($) => seq('{', commaSep(optional($.property)), '}'),
+
+    property: ($) =>
+      choice(seq($.property_name, ':', $._expression), $.identifier),
+
+    property_name: ($) =>
+      choice(
+        $.identifier,
+        $.string_literal,
+        $.number_literal,
+        seq('(', $.identifier, ')')
+      ),
 
     interpolated_string: ($) =>
       seq(

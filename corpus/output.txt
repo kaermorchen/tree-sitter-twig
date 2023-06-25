@@ -3,7 +3,6 @@ Identifier
 ==================
 {{ user }}
 ---
-
 (template
   (output_directive
     (identifier)))
@@ -13,7 +12,6 @@ String
 ==================
 {{ 'hello' }}
 ---
-
 (template
   (output_directive
     (string_literal)))
@@ -23,7 +21,6 @@ String Interpolation 1
 ==================
 {{ "foo #{"foo #{bar} baz"} baz" }}
 ---
-
 (template
   (output_directive
     (interpolated_string
@@ -35,7 +32,6 @@ String Interpolation 2
 ==================
 {{ "foo #{bar}#{bar} baz" }}
 ---
-
 (template
   (output_directive
     (interpolated_string
@@ -47,7 +43,6 @@ Empty array
 ==================
 {{ [] }}
 ---
-
 (template
   (output_directive
     (array_literal)))
@@ -57,7 +52,6 @@ Array
 ==================
 {{ [1, 2, 'foo', "bar"] }}
 ---
-
 (template
   (output_directive
     (array_literal
@@ -65,3 +59,83 @@ Array
       (number_literal)
       (string_literal)
       (string_literal))))
+
+==================
+Empty object
+==================
+{{ {} }}
+---
+(template
+  (output_directive
+    (object_literal)))
+
+==================
+Object
+==================
+{{ {'foo': 'bar'} }}
+---
+(template
+  (output_directive
+    (object_literal
+      (property
+        (property_name
+          (string_literal))
+        (string_literal)))))
+
+==================
+Property keys as names
+==================
+{{ { foo: 'foo', bar: 'bar' } }}
+---
+(template
+  (output_directive
+    (object_literal
+      (property
+        (property_name
+          (identifier))
+            (string_literal))
+          (property
+            (property_name
+              (identifier))
+                (string_literal)))))
+
+==================
+Property keys as integer
+==================
+{{ { 2: 'foo', 4: 'bar' } }}
+---
+(template
+  (output_directive
+    (object_literal
+      (property
+        (property_name
+          (number_literal))
+            (string_literal))
+          (property
+            (property_name
+              (number_literal))
+                (string_literal)))))
+
+==================
+Property as the variable name
+==================
+{{ { foo } }}
+---
+(template
+  (output_directive
+    (object_literal
+      (property
+        (identifier)))))
+
+==================
+Parentheses property
+==================
+{{ { (foo): 'foo' } }}
+---
+(template
+  (output_directive
+    (object_literal
+      (property
+        (property_name
+          (identifier))
+        (string_literal)))))
