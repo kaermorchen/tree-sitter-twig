@@ -19,11 +19,49 @@ String
     (string_literal)))
 
 ==================
-String Interpolation
+String Interpolation 1
 ==================
-{{ "foo #{bar} baz" }}
+{{ "foo #{"foo #{bar} baz"} baz" }}
 ---
 
 (template
   (output_directive
-    (string_literal)))
+    (interpolated_string
+      (interpolated_string
+        (identifier)))))
+
+==================
+String Interpolation 2
+==================
+{{ "foo #{bar}#{bar} baz" }}
+---
+
+(template
+  (output_directive
+    (interpolated_string
+      (identifier)
+      (identifier))))
+
+==================
+Empty array
+==================
+{{ [] }}
+---
+
+(template
+  (output_directive
+    (array_literal)))
+
+==================
+Array
+==================
+{{ [1, 2, 'foo', "bar"] }}
+---
+
+(template
+  (output_directive
+    (array_literal
+      (number_literal)
+      (number_literal)
+      (string_literal)
+      (string_literal))))

@@ -33,7 +33,7 @@ module.exports = grammar({
         $.number_literal,
         $.boolean_literal,
         $.string_literal,
-        $.interpolated_string
+        $.array_literal,
       ),
 
     null_literal: () => /null|none/i,
@@ -41,6 +41,8 @@ module.exports = grammar({
     boolean_literal: () => /true|false/i,
     string_literal: () =>
       /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
+    array_literal: ($) =>
+      seq('[', commaSep(optional($._expression)), ']'),
 
     interpolated_string: ($) =>
       seq(
@@ -57,7 +59,7 @@ module.exports = grammar({
         '"'
       ),
 
-    _expression: ($) => choice($.identifier, $._literal),
+    _expression: ($) => choice($.identifier, $._literal, $.interpolated_string),
 
     _statement: ($) => choice($.assignment_statement),
 
@@ -76,3 +78,11 @@ module.exports = grammar({
       ),
   },
 });
+
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}
+
+function commaSep(rule) {
+  return optional(commaSep1(rule));
+}

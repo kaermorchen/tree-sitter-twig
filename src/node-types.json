@@ -1,5 +1,44 @@
 [
   {
+    "type": "array_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "interpolated_string",
+          "named": true
+        },
+        {
+          "type": "null_literal",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "assignment_statement",
     "named": true,
     "fields": {
@@ -7,6 +46,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "array_literal",
+            "named": true
+          },
           {
             "type": "boolean_literal",
             "named": true
@@ -64,6 +107,10 @@
       "required": false,
       "types": [
         {
+          "type": "array_literal",
+          "named": true
+        },
+        {
           "type": "boolean_literal",
           "named": true
         },
@@ -98,6 +145,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "boolean_literal",
           "named": true
@@ -196,6 +247,10 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
     "type": "\\\"",
     "named": false
   },
@@ -205,6 +260,10 @@
   },
   {
     "type": "\\\\",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
