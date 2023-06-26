@@ -186,7 +186,9 @@ module.exports = grammar({
         ')'
       ),
 
-    _statement: ($) => choice($.assignment_statement),
+    _statement: ($) => choice($.tag_statement, $.assignment_statement),
+
+    tag_statement: ($) => seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
 
     assignment_statement: ($) =>
       seq(

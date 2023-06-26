@@ -1,0 +1,12 @@
+==================
+Tag statement
+==================
+{% do 1 + 2 %}
+---
+(template
+  (statement_directive
+    (tag_statement
+      (tag)
+      (binary_expression
+        (number_literal)
+        (number_literal)))))
