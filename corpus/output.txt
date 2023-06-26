@@ -236,3 +236,16 @@ Ternary operator
       (identifier)
       (string_literal)
       (string_literal))))
+
+==================
+Call expression
+==================
+{{ range(0, 3) }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments
+        (number_literal)
+        (number_literal)))))

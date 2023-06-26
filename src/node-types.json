@@ -1,5 +1,80 @@
 [
   {
+    "type": "arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "arrow_function",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "interpolated_string",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "null_literal",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "object_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "array_literal",
     "named": true,
     "fields": {},
@@ -21,6 +96,14 @@
         },
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
           "named": true
         },
         {
@@ -88,6 +171,14 @@
         },
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
           "named": true
         },
         {
@@ -163,6 +254,14 @@
           },
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
             "named": true
           },
           {
@@ -244,6 +343,14 @@
           "named": true
         },
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -287,6 +394,25 @@
     }
   },
   {
+    "type": "call_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -295,6 +421,25 @@
     "type": "content",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "filter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "interpolated_string",
@@ -318,6 +463,14 @@
         },
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
           "named": true
         },
         {
@@ -393,6 +546,14 @@
           },
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
             "named": true
           },
           {
@@ -489,6 +650,14 @@
           "named": true
         },
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -553,6 +722,14 @@
         },
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
           "named": true
         },
         {
@@ -673,6 +850,14 @@
             "named": true
           },
           {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -740,6 +925,14 @@
           },
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
             "named": true
           },
           {
@@ -838,6 +1031,14 @@
           "named": true
         },
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -910,6 +1111,14 @@
           },
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
             "named": true
           },
           {
@@ -1228,6 +1437,10 @@
   },
   {
     "type": "{{~",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

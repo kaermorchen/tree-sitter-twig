@@ -92,7 +92,9 @@ module.exports = grammar({
         $.subscript_expression,
         $.unary_expression,
         $.binary_expression,
-        $.ternary_expression
+        $.ternary_expression,
+        $.call_expression,
+        $.filter,
       ),
 
     _parenthesized_expression: ($) => seq('(', $._expression, ')'),
@@ -168,6 +170,15 @@ module.exports = grammar({
           optional(seq(':', $._expression))
         )
       ),
+
+    filter: ($) =>
+      prec.left(seq('|', $.identifier, optional($.arguments))),
+
+    call_expression: ($) => seq($.identifier, $.arguments),
+
+    arguments: ($) =>
+      seq('(', commaSep(seq(optional(seq($.identifier, '=')), $._expression)), ')'),
+      // seq('(', commaSep($._expression), ')'),
 
     _statement: ($) => choice($.assignment_statement),
 
