@@ -172,3 +172,12 @@ Arrow function single param
     (arrow_function
       (identifier)
       (number_literal))))
+
+==================
+Parenthesized expression
+==================
+{{ (42) }}
+---
+(template
+  (output_directive
+    (number_literal)))

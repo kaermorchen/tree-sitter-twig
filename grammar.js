@@ -57,10 +57,13 @@ module.exports = grammar({
       ),
 
     arrow_function: ($) =>
-      seq(
-        choice($.identifier, seq('(', commaSep($.identifier), ')')),
-        '=>',
-        $._expression
+      prec(
+        1,
+        seq(
+          choice($.identifier, seq('(', commaSep($.identifier), ')')),
+          '=>',
+          $._expression
+        )
       ),
 
     interpolated_string: ($) =>
@@ -79,7 +82,15 @@ module.exports = grammar({
       ),
 
     _expression: ($) =>
-      choice($.identifier, $._literal, $.interpolated_string, $.arrow_function),
+      choice(
+        $.identifier,
+        $._literal,
+        $.interpolated_string,
+        $.arrow_function,
+        $._parenthesized_expression
+      ),
+
+    _parenthesized_expression: ($) => seq('(', $._expression, ')'),
 
     _statement: ($) => choice($.assignment_statement),
 
