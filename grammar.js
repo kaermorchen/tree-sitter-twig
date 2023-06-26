@@ -82,19 +82,23 @@ module.exports = grammar({
       ),
 
     _expression: ($) =>
-      choice(
-        $.identifier,
-        $._literal,
-        $.interpolated_string,
-        $.arrow_function,
-        $._parenthesized_expression,
-        $.member_expression,
-        $.subscript_expression,
-        $.unary_expression,
-        $.binary_expression,
-        $.ternary_expression,
-        $.call_expression,
-        $.filter,
+      prec.right(
+        seq(
+          choice(
+            $.identifier,
+            $._literal,
+            $.interpolated_string,
+            $.arrow_function,
+            $._parenthesized_expression,
+            $.member_expression,
+            $.subscript_expression,
+            $.unary_expression,
+            $.binary_expression,
+            $.ternary_expression,
+            $.call_expression
+          ),
+          repeat($.filter)
+        )
       ),
 
     _parenthesized_expression: ($) => seq('(', $._expression, ')'),
@@ -171,14 +175,16 @@ module.exports = grammar({
         )
       ),
 
-    filter: ($) =>
-      prec.left(seq('|', $.identifier, optional($.arguments))),
+    filter: ($) => prec.left(seq('|', $.identifier, optional($.arguments))),
 
     call_expression: ($) => seq($.identifier, $.arguments),
 
     arguments: ($) =>
-      seq('(', commaSep(seq(optional(seq($.identifier, '=')), $._expression)), ')'),
-      // seq('(', commaSep($._expression), ')'),
+      seq(
+        '(',
+        commaSep(seq(optional(seq($.identifier, '=')), $._expression)),
+        ')'
+      ),
 
     _statement: ($) => choice($.assignment_statement),
 

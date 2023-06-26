@@ -249,3 +249,14 @@ Call expression
       (arguments
         (number_literal)
         (number_literal)))))
+
+==================
+Filter
+==================
+{{ name|title }}
+---
+(template
+  (output_directive
+    (identifier)
+      (filter
+        (identifier))))
