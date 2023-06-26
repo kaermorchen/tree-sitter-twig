@@ -91,7 +91,8 @@ module.exports = grammar({
         $.member_expression,
         $.subscript_expression,
         $.unary_expression,
-        $.binary_expression
+        $.binary_expression,
+        $.ternary_expression
       ),
 
     _parenthesized_expression: ($) => seq('(', $._expression, ')'),
@@ -122,12 +123,11 @@ module.exports = grammar({
         seq(
           $._expression,
           choice(
-            '?:',
-            'b-and',
-            'b-xor',
-            'b-or',
             'or',
             'and',
+            'b-or',
+            'b-xor',
+            'b-and',
             '==',
             '!=',
             '<=>',
@@ -135,11 +135,13 @@ module.exports = grammar({
             '>',
             '>=',
             '<=',
+            'not in',
             'in',
+            'matches',
             'starts with',
             'ends with',
-            'has every',
             'has some',
+            'has every',
             '..',
             '+',
             '-',
@@ -154,6 +156,16 @@ module.exports = grammar({
             '??'
           ),
           $._expression
+        )
+      ),
+
+    ternary_expression: ($) =>
+      prec.left(
+        seq(
+          $._expression,
+          choice('?', '?:'),
+          $._expression,
+          optional(seq(':', $._expression))
         )
       ),
 

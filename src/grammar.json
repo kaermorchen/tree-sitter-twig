@@ -520,6 +520,10 @@
         {
           "type": "SYMBOL",
           "name": "binary_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ternary_expression"
         }
       ]
     },
@@ -647,15 +651,11 @@
             "members": [
               {
                 "type": "STRING",
-                "value": "?:"
+                "value": "or"
               },
               {
                 "type": "STRING",
-                "value": "b-and"
-              },
-              {
-                "type": "STRING",
-                "value": "b-xor"
+                "value": "and"
               },
               {
                 "type": "STRING",
@@ -663,11 +663,11 @@
               },
               {
                 "type": "STRING",
-                "value": "or"
+                "value": "b-xor"
               },
               {
                 "type": "STRING",
-                "value": "and"
+                "value": "b-and"
               },
               {
                 "type": "STRING",
@@ -699,7 +699,15 @@
               },
               {
                 "type": "STRING",
+                "value": "not in"
+              },
+              {
+                "type": "STRING",
                 "value": "in"
+              },
+              {
+                "type": "STRING",
+                "value": "matches"
               },
               {
                 "type": "STRING",
@@ -711,11 +719,11 @@
               },
               {
                 "type": "STRING",
-                "value": "has every"
+                "value": "has some"
               },
               {
                 "type": "STRING",
-                "value": "has some"
+                "value": "has every"
               },
               {
                 "type": "STRING",
@@ -770,6 +778,57 @@
           {
             "type": "SYMBOL",
             "name": "_expression"
+          }
+        ]
+      }
+    },
+    "ternary_expression": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "?"
+              },
+              {
+                "type": "STRING",
+                "value": "?:"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ":"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_expression"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }

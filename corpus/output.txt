@@ -224,3 +224,15 @@ Binary expression
     (binary_expression
       (identifier)
       (identifier))))
+
+==================
+Ternary operator
+==================
+{{ foo ? 'yes' : 'no' }}
+---
+(template
+  (output_directive
+    (ternary_expression
+      (identifier)
+      (string_literal)
+      (string_literal))))
