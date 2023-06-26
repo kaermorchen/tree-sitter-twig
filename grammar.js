@@ -90,6 +90,8 @@ module.exports = grammar({
         $._parenthesized_expression,
         $.member_expression,
         $.subscript_expression,
+        $.unary_expression,
+        $.binary_expression
       ),
 
     _parenthesized_expression: ($) => seq('(', $._expression, ')'),
@@ -103,6 +105,56 @@ module.exports = grammar({
         '[',
         field('index', $._expression),
         ']'
+      ),
+
+    unary_expression: ($) =>
+      prec.left(
+        3,
+        seq(
+          field('operator', choice('+', '-', 'not')),
+          field('operand', $._expression)
+        )
+      ),
+
+    binary_expression: ($) =>
+      prec.right(
+        2,
+        seq(
+          $._expression,
+          choice(
+            '?:',
+            'b-and',
+            'b-xor',
+            'b-or',
+            'or',
+            'and',
+            '==',
+            '!=',
+            '<=>',
+            '<',
+            '>',
+            '>=',
+            '<=',
+            'in',
+            'starts with',
+            'ends with',
+            'has every',
+            'has some',
+            '..',
+            '+',
+            '-',
+            '~',
+            '*',
+            '/',
+            '//',
+            '%',
+            'is',
+            'is not',
+            '**',
+            '??'
+          ),
+          $._expression
+        )
       ),
 
     _statement: ($) => choice($.assignment_statement),

@@ -203,3 +203,24 @@ Subscript expression
     (subscript_expression
       (identifier)
       (string_literal))))
+
+==================
+Unary expression
+==================
+{{ -42 }}
+---
+(template
+  (output_directive
+    (unary_expression
+      (number_literal))))
+
+==================
+Binary expression
+==================
+{{ a + b }}
+---
+(template
+  (output_directive
+    (binary_expression
+      (identifier)
+      (identifier))))
