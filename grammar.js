@@ -87,10 +87,23 @@ module.exports = grammar({
         $._literal,
         $.interpolated_string,
         $.arrow_function,
-        $._parenthesized_expression
+        $._parenthesized_expression,
+        $.member_expression,
+        $.subscript_expression,
       ),
 
     _parenthesized_expression: ($) => seq('(', $._expression, ')'),
+
+    member_expression: ($) =>
+      seq(field('object', $._expression), '.', field('property', $.identifier)),
+
+    subscript_expression: ($) =>
+      seq(
+        field('object', $._expression),
+        '[',
+        field('index', $._expression),
+        ']'
+      ),
 
     _statement: ($) => choice($.assignment_statement),
 
