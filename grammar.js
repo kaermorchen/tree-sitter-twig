@@ -53,7 +53,7 @@ module.exports = grammar({
         $.identifier,
         $.string_literal,
         $.number_literal,
-        seq('(', $.identifier, ')')
+        seq('(', $._expression, ')')
       ),
 
     arrow_function: ($) =>
