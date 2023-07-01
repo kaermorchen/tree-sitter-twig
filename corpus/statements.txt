@@ -36,3 +36,33 @@ Set block
     (set_block_statement
       (identifier)
       (content))))
+
+==================
+Apply block 1
+==================
+{% apply upper %}
+  his text becomes uppercase
+{% endapply %}
+---
+(template
+  (statement_directive
+    (apply_statement
+      (identifier)
+      (content))))
+
+==================
+Apply block 2
+==================
+{% apply lower|escape('html') %}
+  <strong>SOME TEXT</strong>
+{% endapply %}
+---
+(template
+  (statement_directive
+    (apply_statement
+      (identifier)
+      (filter
+        (identifier)
+        (arguments
+          (string_literal)))
+      (content))))

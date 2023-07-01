@@ -212,8 +212,23 @@ module.exports = grammar({
         'endset'
       ),
 
+    apply_statement: ($) =>
+      seq(
+        'apply',
+        field('filter', seq($.identifier, optional(repeat($.filter)))),
+        $._close_directive_token,
+        field('value', repeat($._source_element)),
+        $._open_directive_token,
+        'endapply'
+      ),
+
     _statement: ($) =>
-      choice($.tag_statement, $.set_inline_statement, $.set_block_statement),
+      choice(
+        $.tag_statement,
+        $.set_inline_statement,
+        $.set_block_statement,
+        $.apply_statement
+      ),
   },
 });
 

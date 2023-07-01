@@ -1,5 +1,47 @@
 [
   {
+    "type": "apply_statement",
+    "named": true,
+    "fields": {
+      "filter": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "filter",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "statement_directive",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -901,6 +943,10 @@
       "required": false,
       "types": [
         {
+          "type": "apply_statement",
+          "named": true
+        },
+        {
           "type": "set_block_statement",
           "named": true
         },
@@ -1505,6 +1551,10 @@
     "named": false
   },
   {
+    "type": "apply",
+    "named": false
+  },
+  {
     "type": "b-and",
     "named": false
   },
@@ -1519,6 +1569,10 @@
   {
     "type": "boolean_literal",
     "named": true
+  },
+  {
+    "type": "endapply",
+    "named": false
   },
   {
     "type": "ends with",
