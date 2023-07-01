@@ -207,7 +207,7 @@ module.exports = grammar({
         'set',
         field('variable', $.identifier),
         $._close_directive_token,
-        field('body', repeat($._source_element)),
+        field('value', repeat($._source_element)),
         $._open_directive_token,
         'endset'
       ),

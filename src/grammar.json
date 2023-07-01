@@ -1120,7 +1120,7 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "value",
           "content": {
             "type": "REPEAT",
             "content": {

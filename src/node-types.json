@@ -764,7 +764,7 @@
     "type": "set_block_statement",
     "named": true,
     "fields": {
-      "body": {
+      "value": {
         "multiple": true,
         "required": false,
         "types": [
