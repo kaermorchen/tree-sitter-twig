@@ -4,26 +4,30 @@
     "template": {
       "type": "REPEAT",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "statement_directive"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "output_directive"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "comment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "content"
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "_source_element"
       }
+    },
+    "_source_element": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "statement_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "output_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "content"
+        }
+      ]
     },
     "content": {
       "type": "PREC_RIGHT",
@@ -36,25 +40,46 @@
         }
       }
     },
+    "_open_directive_token": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{%"
+        },
+        {
+          "type": "STRING",
+          "value": "{%-"
+        },
+        {
+          "type": "STRING",
+          "value": "{%~"
+        }
+      ]
+    },
+    "_close_directive_token": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%}"
+        },
+        {
+          "type": "STRING",
+          "value": "-%}"
+        },
+        {
+          "type": "STRING",
+          "value": "~%}"
+        }
+      ]
+    },
     "statement_directive": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{%"
-            },
-            {
-              "type": "STRING",
-              "value": "{%-"
-            },
-            {
-              "type": "STRING",
-              "value": "{%~"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
         },
         {
           "type": "CHOICE",
@@ -69,21 +94,8 @@
           ]
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "%}"
-            },
-            {
-              "type": "STRING",
-              "value": "-%}"
-            },
-            {
-              "type": "STRING",
-              "value": "~%}"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
@@ -993,19 +1005,6 @@
         }
       ]
     },
-    "_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "tag_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "assignment_statement"
-        }
-      ]
-    },
     "tag_statement": {
       "type": "SEQ",
       "members": [
@@ -1031,7 +1030,7 @@
         }
       ]
     },
-    "assignment_statement": {
+    "set_statement": {
       "type": "SEQ",
       "members": [
         {
@@ -1110,6 +1109,19 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "set_statement"
         }
       ]
     }

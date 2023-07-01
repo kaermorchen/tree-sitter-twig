@@ -2,18 +2,21 @@ module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
   rules: {
-    template: ($) =>
-      repeat(
-        choice($.statement_directive, $.output_directive, $.comment, $.content)
-      ),
+    template: ($) => repeat($._source_element),
+
+    _source_element: ($) =>
+      choice($.statement_directive, $.output_directive, $.comment, $.content),
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
+    _open_directive_token: () => choice('{%', '{%-', '{%~'),
+    _close_directive_token: () => choice('%}', '-%}', '~%}'),
+
     statement_directive: ($) =>
       seq(
-        choice('{%', '{%-', '{%~'),
+        $._open_directive_token,
         optional($._statement),
-        choice('%}', '-%}', '~%}')
+        $._close_directive_token
       ),
 
     output_directive: ($) =>
@@ -186,11 +189,10 @@ module.exports = grammar({
         ')'
       ),
 
-    _statement: ($) => choice($.tag_statement, $.assignment_statement),
+    tag_statement: ($) =>
+      seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
 
-    tag_statement: ($) => seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
-
-    assignment_statement: ($) =>
+    set_statement: ($) =>
       seq(
         'set',
         field('variable', $.identifier),
@@ -203,6 +205,8 @@ module.exports = grammar({
           )
         )
       ),
+
+    _statement: ($) => choice($.tag_statement, $.set_statement),
   },
 });
 

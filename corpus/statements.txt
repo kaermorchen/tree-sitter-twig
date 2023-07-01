@@ -1,12 +1,25 @@
 ==================
-Tag statement
+Tag
 ==================
-{% do 1 + 2 %}
+{% unknown_tag 2 + 3%}
 ---
 (template
   (statement_directive
     (tag_statement
       (tag)
       (binary_expression
+        (number_literal)
+        (number_literal)))))
+
+==================
+Set 1
+==================
+{% set foo = [1, 2] %}
+---
+(template
+  (statement_directive
+    (set_statement
+      (identifier)
+      (array_literal
         (number_literal)
         (number_literal)))))
