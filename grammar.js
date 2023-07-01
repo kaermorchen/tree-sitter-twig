@@ -222,12 +222,25 @@ module.exports = grammar({
         'endapply'
       ),
 
+    autoescape_statement: ($) =>
+      seq(
+        'autoescape',
+        optional(
+          field('strategy', choice($.string_literal, $.boolean_literal))
+        ),
+        $._close_directive_token,
+        field('value', repeat($._source_element)),
+        $._open_directive_token,
+        'endautoescape'
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
         $.set_inline_statement,
         $.set_block_statement,
-        $.apply_statement
+        $.apply_statement,
+        $.autoescape_statement
       ),
   },
 });

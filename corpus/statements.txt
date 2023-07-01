@@ -61,3 +61,41 @@ Apply block 2
       (arguments
         (string_literal)))
     (content)))
+
+==================
+Autoescape 1
+==================
+{% autoescape %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (content)))
+
+==================
+Autoescape 2
+==================
+{% autoescape 'html' %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (string_literal)
+    (content)))
+
+==================
+Autoescape 3
+==================
+{% autoescape false %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (boolean_literal)
+    (content)))

@@ -34,6 +34,10 @@
             "named": true
           },
           {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -300,6 +304,88 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "autoescape_statement",
+    "named": true,
+    "fields": {
+      "strategy": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_inline_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -859,6 +945,10 @@
             "named": true
           },
           {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -1260,6 +1350,10 @@
           "named": true
         },
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -1612,6 +1706,10 @@
     "named": false
   },
   {
+    "type": "autoescape",
+    "named": false
+  },
+  {
     "type": "b-and",
     "named": false
   },
@@ -1629,6 +1727,10 @@
   },
   {
     "type": "endapply",
+    "named": false
+  },
+  {
+    "type": "endautoescape",
     "named": false
   },
   {
