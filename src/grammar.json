@@ -13,7 +13,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "statement_directive"
+          "name": "_statement_directive"
         },
         {
           "type": "SYMBOL",
@@ -74,7 +74,7 @@
         }
       ]
     },
-    "statement_directive": {
+    "_statement_directive": {
       "type": "SEQ",
       "members": [
         {

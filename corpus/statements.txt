@@ -4,12 +4,11 @@ Tag
 {% unknown_tag 2 + 3%}
 ---
 (template
-  (statement_directive
-    (tag_statement
-      (tag)
-      (binary_expression
-        (number_literal)
-        (number_literal)))))
+  (tag_statement
+    (tag)
+    (binary_expression
+      (number_literal)
+      (number_literal))))
 
 ==================
 Set 1
@@ -17,12 +16,11 @@ Set 1
 {% set foo = [1, 2] %}
 ---
 (template
-  (statement_directive
-    (set_inline_statement
-      (identifier)
-      (array_literal
-        (number_literal)
-        (number_literal)))))
+  (set_inline_statement
+    (identifier)
+    (array_literal
+      (number_literal)
+      (number_literal))))
 
 ==================
 Set block
@@ -32,10 +30,9 @@ Set block
 {% endset %}
 ---
 (template
-  (statement_directive
-    (set_block_statement
-      (identifier)
-      (content))))
+  (set_block_statement
+    (identifier)
+    (content)))
 
 ==================
 Apply block 1
@@ -45,10 +42,9 @@ Apply block 1
 {% endapply %}
 ---
 (template
-  (statement_directive
-    (apply_statement
-      (identifier)
-      (content))))
+  (apply_statement
+    (identifier)
+    (content)))
 
 ==================
 Apply block 2
@@ -58,11 +54,10 @@ Apply block 2
 {% endapply %}
 ---
 (template
-  (statement_directive
-    (apply_statement
+  (apply_statement
+    (identifier)
+    (filter
       (identifier)
-      (filter
-        (identifier)
-        (arguments
-          (string_literal)))
-      (content))))
+      (arguments
+        (string_literal)))
+    (content)))

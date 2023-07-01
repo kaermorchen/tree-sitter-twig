@@ -5,14 +5,14 @@ module.exports = grammar({
     template: ($) => repeat($._source_element),
 
     _source_element: ($) =>
-      choice($.statement_directive, $.output_directive, $.comment, $.content),
+      choice($._statement_directive, $.output_directive, $.comment, $.content),
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     _open_directive_token: () => choice('{%', '{%-', '{%~'),
     _close_directive_token: () => choice('%}', '-%}', '~%}'),
 
-    statement_directive: ($) =>
+    _statement_directive: ($) =>
       seq(
         $._open_directive_token,
         optional($._statement),

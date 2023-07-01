@@ -22,6 +22,18 @@
         "required": false,
         "types": [
           {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -34,8 +46,32 @@
             "named": true
           },
           {
-            "type": "statement_directive",
+            "type": "set_block_statement",
             "named": true
+          },
+          {
+            "type": "set_inline_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
           }
         ]
       }
@@ -811,6 +847,18 @@
         "required": false,
         "types": [
           {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -823,8 +871,32 @@
             "named": true
           },
           {
-            "type": "statement_directive",
+            "type": "set_block_statement",
             "named": true
+          },
+          {
+            "type": "set_inline_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
           }
         ]
       },
@@ -932,33 +1004,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "statement_directive",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "apply_statement",
-          "named": true
-        },
-        {
-          "type": "set_block_statement",
-          "named": true
-        },
-        {
-          "type": "set_inline_statement",
-          "named": true
-        },
-        {
-          "type": "tag_statement",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1211,6 +1256,10 @@
       "required": false,
       "types": [
         {
+          "type": "apply_statement",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -1223,7 +1272,15 @@
           "named": true
         },
         {
-          "type": "statement_directive",
+          "type": "set_block_statement",
+          "named": true
+        },
+        {
+          "type": "set_inline_statement",
+          "named": true
+        },
+        {
+          "type": "tag_statement",
           "named": true
         }
       ]
