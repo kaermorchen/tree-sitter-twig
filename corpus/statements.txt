@@ -18,8 +18,21 @@ Set 1
 ---
 (template
   (statement_directive
-    (set_statement
+    (set_inline_statement
       (identifier)
       (array_literal
         (number_literal)
         (number_literal)))))
+
+==================
+Set block
+==================
+{% set foo %}
+  Hello
+{% endset %}
+---
+(template
+  (statement_directive
+    (set_block_statement
+      (identifier)
+      (content))))

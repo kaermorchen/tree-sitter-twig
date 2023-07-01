@@ -192,21 +192,28 @@ module.exports = grammar({
     tag_statement: ($) =>
       seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
 
-    set_statement: ($) =>
+    set_inline_statement: ($) =>
       seq(
         'set',
         field('variable', $.identifier),
         repeat(seq(',', field('variable', $.identifier))),
-        optional(
-          seq(
-            '=',
-            field('value', $._expression),
-            repeat(seq(',', field('value', $._expression)))
-          )
-        )
+        '=',
+        field('value', $._expression),
+        repeat(seq(',', field('value', $._expression)))
       ),
 
-    _statement: ($) => choice($.tag_statement, $.set_statement),
+    set_block_statement: ($) =>
+      seq(
+        'set',
+        field('variable', $.identifier),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endset'
+      ),
+
+    _statement: ($) =>
+      choice($.tag_statement, $.set_inline_statement, $.set_block_statement),
   },
 });
 
