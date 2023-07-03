@@ -118,53 +118,62 @@ module.exports = grammar({
       ),
 
     unary_expression: ($) =>
-      prec.left(
-        3,
-        seq(
-          field('operator', choice('+', '-', 'not')),
-          field('operand', $._expression)
+      choice(
+        ...[
+          ['+', 500],
+          ['-', 500],
+          ['not', 50],
+        ].map(([operator, precedence]) =>
+          prec.left(
+            precedence,
+            seq(field('operator', operator), field('operand', $._expression))
+          )
         )
       ),
 
     binary_expression: ($) =>
-      prec.right(
-        2,
-        seq(
-          $._expression,
-          choice(
-            'or',
-            'and',
-            'b-or',
-            'b-xor',
-            'b-and',
-            '==',
-            '!=',
-            '<=>',
-            '<',
-            '>',
-            '>=',
-            '<=',
-            'not in',
-            'in',
-            'matches',
-            'starts with',
-            'ends with',
-            'has some',
-            'has every',
-            '..',
-            '+',
-            '-',
-            '~',
-            '*',
-            '/',
-            '//',
-            '%',
-            'is',
-            'is not',
-            '**',
-            '??'
-          ),
-          $._expression
+      choice(
+        ...[
+          ['or', 10],
+          ['and', 15],
+          ['b-or', 16],
+          ['b-xor', 17],
+          ['b-and', 18],
+          ['==', 20],
+          ['!=', 20],
+          ['<=>', 20],
+          ['<', 20],
+          ['>', 20],
+          ['>=', 20],
+          ['<=', 20],
+          ['not in', 20],
+          ['in', 20],
+          ['matches', 20],
+          ['starts with', 20],
+          ['ends with', 20],
+          ['has some', 20],
+          ['has every', 20],
+          ['..', 25],
+          ['+', 30],
+          ['-', 30],
+          ['~', 40],
+          ['*', 60],
+          ['/', 60],
+          ['//', 60],
+          ['%', 60],
+          ['is', 100],
+          ['is not', 100],
+          ['**', 200, 'right'],
+          ['??', 300, 'right'],
+        ].map(([operator, precedence, associativity]) =>
+          (associativity === 'right' ? prec.right : prec.left)(
+            precedence,
+            seq(
+              field('left', $._expression),
+              field('operator', operator),
+              field('right', $._expression)
+            )
+          )
         )
       ),
 
