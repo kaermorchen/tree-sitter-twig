@@ -99,3 +99,35 @@ Autoescape 3
   (autoescape_statement
     (boolean_literal)
     (content)))
+
+==================
+Block
+==================
+{% block title %}Index{% endblock %}
+---
+(template
+  (block_statement
+    (identifier)
+    (content)))
+
+==================
+Block with end-tag
+==================
+{% block sidebar %}{% endblock sidebar %}
+---
+(template
+  (block_statement
+    (identifier)
+    (identifier)))
+
+==================
+Block shortcut syntax
+==================
+{% block title page_title|title %}
+---
+(template
+  (block_statement
+    (identifier)
+      (identifier)
+      (filter
+        (identifier))))

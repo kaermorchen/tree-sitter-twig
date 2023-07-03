@@ -234,13 +234,30 @@ module.exports = grammar({
         'endautoescape'
       ),
 
+    block_statement: ($) =>
+      seq(
+        'block',
+        field('name', $.identifier),
+        choice(
+          field('body', $._expression),
+          seq(
+            $._close_directive_token,
+            field('body', repeat($._source_element)),
+            $._open_directive_token,
+            'endblock',
+            optional($.identifier)
+          ),
+        )
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
         $.set_inline_statement,
         $.set_block_statement,
         $.apply_statement,
-        $.autoescape_statement
+        $.autoescape_statement,
+        $.block_statement,
       ),
   },
 });
