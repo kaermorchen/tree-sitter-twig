@@ -131,3 +131,31 @@ Block shortcut syntax
       (identifier)
       (filter
         (identifier))))
+
+==================
+Cache 1
+==================
+{% cache "cache key" %}
+    Cached forever (depending on the cache implementation)
+{% endcache %}
+---
+(template
+  (cache_statement
+    (string_literal)
+    (content)))
+
+==================
+Cache 2
+==================
+{% cache "cache key" ttl(300) %}
+    Cached for 300 seconds
+{% endcache %}
+---
+(template
+  (cache_statement
+    (string_literal)
+    (call_expression
+      (identifier)
+      (arguments
+        (number_literal)))
+    (content)))

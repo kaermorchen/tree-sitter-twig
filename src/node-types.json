@@ -42,6 +42,10 @@
             "named": true
           },
           {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -353,6 +357,10 @@
             "named": true
           },
           {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -524,6 +532,10 @@
             "named": true
           },
           {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
             "type": "call_expression",
             "named": true
           },
@@ -633,6 +645,238 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "cache_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_inline_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "expiration": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "arrow_function",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "null_literal",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "object_literal",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "arrow_function",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "filter",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "interpolated_string",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "null_literal",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "object_literal",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1125,6 +1369,10 @@
             "named": true
           },
           {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -1534,6 +1782,10 @@
           "named": true
         },
         {
+          "type": "cache_statement",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -1738,6 +1990,10 @@
     }
   },
   {
+    "type": " ",
+    "named": false
+  },
+  {
     "type": "!=",
     "named": false
   },
@@ -1910,6 +2166,10 @@
     "named": true
   },
   {
+    "type": "cache",
+    "named": false
+  },
+  {
     "type": "endapply",
     "named": false
   },
@@ -1919,6 +2179,10 @@
   },
   {
     "type": "endblock",
+    "named": false
+  },
+  {
+    "type": "endcache",
     "named": false
   },
   {

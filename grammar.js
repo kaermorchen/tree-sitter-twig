@@ -246,8 +246,20 @@ module.exports = grammar({
             $._open_directive_token,
             'endblock',
             optional($.identifier)
-          ),
+          )
         )
+      ),
+
+    cache_statement: ($) =>
+      seq(
+        'cache',
+        field('key', $._expression),
+        ' ',
+        optional(field('expiration', $._expression)),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endcache'
       ),
 
     _statement: ($) =>
@@ -258,6 +270,7 @@ module.exports = grammar({
         $.apply_statement,
         $.autoescape_statement,
         $.block_statement,
+        $.cache_statement
       ),
   },
 });
