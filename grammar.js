@@ -1,7 +1,7 @@
 module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
-
+  word: ($) => $.identifier,
   precedences: ($) => [['member']],
 
   rules: {
@@ -21,6 +21,16 @@ module.exports = grammar({
 
     comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
 
+    // _open_directive_token: () => choice('{%', '{%-', '{%~'),
+    // _close_directive_token: () => choice('%}', '-%}', '~%}'),
+
+    // _statement_directive: ($) =>
+    //   seq(
+    //     $._open_directive_token,
+    //     optional($._statement),
+    //     $._close_directive_token
+    //   ),
+
     expression: ($) =>
       choice(
         $.primary_expression,
@@ -36,85 +46,80 @@ module.exports = grammar({
         // $.member_expression,
         // $._parenthesized_expression,
         $.identifier,
-        // $._literal,
-        // $.interpolated_string,
-        // $.arrow_function
+        $.null,
+        $.number,
+        $.boolean,
+        $.string,
+        $.interpolated_string,
+        $.array,
+        $.object,
+        $.arrow_function,
       ),
-
-    // _open_directive_token: () => choice('{%', '{%-', '{%~'),
-    // _close_directive_token: () => choice('%}', '-%}', '~%}'),
-
-    // _statement_directive: ($) =>
-    //   seq(
-    //     $._open_directive_token,
-    //     optional($._statement),
-    //     $._close_directive_token
-    //   ),
 
     identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
 
-    // _literal: ($) =>
-    //   choice(
-    //     $.null_literal,
-    //     $.number_literal,
-    //     $.boolean_literal,
-    //     $.string_literal,
-    //     $.array_literal,
-    //     $.object_literal
-    //   ),
+    null: () => choice('null', 'none'),
+    number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
+    boolean: () => choice('true', 'false'),
+    string: () => /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
+    interpolated_string: ($) =>
+      seq(
+        '"',
+        repeat(
+          choice(
+            '\\"',
+            '\\#',
+            '\\\\',
+            /[^#"\\\\]+/,
+            seq('#{', $.expression, '}'),
+          ),
+        ),
+        '"',
+      ),
+    array: ($) => seq('[', commaSep($.expression), ']'),
+    object: ($) =>
+      seq('{', commaSep(choice($.pair, alias($.identifier, $.string))), '}'),
 
-    // null_literal: () => /null|none/i,
-    // number_literal: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
-    // boolean_literal: () => /true|false/i,
-    // string_literal: () =>
-    //   /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
-    // array_literal: ($) => seq('[', commaSep($._expression), ']'),
-    // object_literal: ($) => seq('{', commaSep($.property), '}'),
+    pair: ($) =>
+      seq(field('key', $._property_name), ':', field('value', $.expression)),
 
-    // property: ($) =>
-    //   choice(seq($.property_name, ':', $._expression), $.identifier),
+    _property_name: ($) =>
+      choice(
+        $.string,
+        $.number,
+        alias($.identifier, $.string),
+        $.computed_property_name,
+      ),
 
-    // property_name: ($) =>
-    //   choice(
-    //     $.identifier,
-    //     $.string_literal,
-    //     $.number_literal,
-    //     seq('(', $._expression, ')')
-    //   ),
+    computed_property_name: ($) => seq('(', $.expression, ')'),
 
-    // arrow_function: ($) =>
-    //   seq(
-    //     choice(field('parameter', $.identifier), $._call_signature),
-    //     '=>',
-    //     field('body', $._expression)
-    //   ),
+    arrow_function: ($) =>
+      seq(
+        choice(field('parameter', $.identifier), $._call_signature),
+        '=>',
+        field('body', $.expression),
+      ),
 
-    // _call_signature: ($) => field('parameters', $.formal_parameters),
-    // _formal_parameter: ($) => choice($.pattern, $.assignment_pattern),
+    _call_signature: ($) => field('parameters', $.formal_parameters),
+    _formal_parameter: ($) => $.pattern,
 
-    // formal_parameters: ($) =>
-    //   seq('(', optional(seq(commaSep1($._formal_parameter))), ')'),
+    formal_parameters: ($) =>
+      seq('(', optional(seq(commaSep1($._formal_parameter))), ')'),
 
-    // interpolated_string: ($) =>
-    //   seq(
-    //     '"',
-    //     repeat(
-    //       choice(
-    //         '\\"',
-    //         '\\#',
-    //         '\\\\',
-    //         /[^#"\\\\]+/,
-    //         seq('#{', $._expression, '}')
-    //       )
-    //     ),
-    //     '"'
-    //   ),
+    pattern: ($) => prec.dynamic(-1, $._lhs_expression),
+
+    _lhs_expression: ($) =>
+      choice(
+        // $.member_expression,
+        // $.subscript_expression,
+        $.identifier,
+      ),
 
     // member_expression: ($) =>
     //   prec(
     //     'member',
     //     seq(
-    //       field('object', choice($._expression, $._primary_expression)),
+    //       field('object', choice($.expression, $._primary_expression)),
     //       '.',
     //       field('property', alias($.identifier, $.property_identifier))
     //     )
@@ -124,9 +129,9 @@ module.exports = grammar({
     //   prec.right(
     //     'member',
     //     seq(
-    //       field('object', choice($._expression, $._primary_expression)),
+    //       field('object', choice($.expression, $._primary_expression)),
     //       '[',
-    //       field('index', $._expression),
+    //       field('index', $.expression),
     //       ']'
     //     )
     //   ),
@@ -139,7 +144,7 @@ module.exports = grammar({
     //     )
     //   ),
 
-    // _parenthesized_expression: ($) => seq('(', $._expression, ')'),
+    // _parenthesized_expression: ($) => seq('(', $.expression, ')'),
 
     // unary_expression: ($) =>
     //   choice(
@@ -150,7 +155,7 @@ module.exports = grammar({
     //     ].map(([operator, precedence]) =>
     //       prec.left(
     //         precedence,
-    //         seq(field('operator', operator), field('operand', $._expression))
+    //         seq(field('operator', operator), field('operand', $.expression))
     //       )
     //     )
     //   ),
@@ -193,9 +198,9 @@ module.exports = grammar({
     //       (associativity === 'right' ? prec.right : prec.left)(
     //         precedence,
     //         seq(
-    //           field('left', $._expression),
+    //           field('left', $.expression),
     //           field('operator', operator),
-    //           field('right', $._expression)
+    //           field('right', $.expression)
     //         )
     //       )
     //     )
@@ -204,10 +209,10 @@ module.exports = grammar({
     // ternary_expression: ($) =>
     //   prec.left(
     //     seq(
-    //       $._expression,
+    //       $.expression,
     //       choice('?', '?:'),
-    //       $._expression,
-    //       optional(seq(':', $._expression))
+    //       $.expression,
+    //       optional(seq(':', $.expression))
     //     )
     //   ),
 
@@ -216,12 +221,12 @@ module.exports = grammar({
     // arguments: ($) =>
     //   seq(
     //     '(',
-    //     commaSep(seq(optional(seq($.identifier, '=')), $._expression)),
+    //     commaSep(seq(optional(seq($.identifier, '=')), $.expression)),
     //     ')'
     //   ),
 
     // tag_statement: ($) =>
-    //   seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
+    //   seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
     // set_inline_statement: ($) =>
     //   seq(
@@ -229,8 +234,8 @@ module.exports = grammar({
     //     field('variable', $.identifier),
     //     repeat(seq(',', field('variable', $.identifier))),
     //     '=',
-    //     field('value', $._expression),
-    //     repeat(seq(',', field('value', $._expression)))
+    //     field('value', $.expression),
+    //     repeat(seq(',', field('value', $.expression)))
     //   ),
 
     // set_block_statement: ($) =>
@@ -257,7 +262,7 @@ module.exports = grammar({
     //   seq(
     //     'autoescape',
     //     optional(
-    //       field('strategy', choice($.string_literal, $.boolean_literal))
+    //       field('strategy', choice($.string, $.boolean))
     //     ),
     //     $._close_directive_token,
     //     field('value', repeat($._source_element)),
@@ -270,7 +275,7 @@ module.exports = grammar({
     //     'block',
     //     field('name', $.identifier),
     //     choice(
-    //       field('body', $._expression),
+    //       field('body', $.expression),
     //       seq(
     //         $._close_directive_token,
     //         field('body', repeat($._source_element)),
@@ -284,9 +289,9 @@ module.exports = grammar({
     // cache_statement: ($) =>
     //   seq(
     //     'cache',
-    //     field('key', $._expression),
+    //     field('key', $.expression),
     //     ' ',
-    //     optional(field('expiration', $._expression)),
+    //     optional(field('expiration', $.expression)),
     //     $._close_directive_token,
     //     field('body', repeat($._source_element)),
     //     $._open_directive_token,
