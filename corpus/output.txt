@@ -5,9 +5,7 @@ Identifier
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (identifier)))))
+    (identifier)))
 
 ==================
 Null 1
@@ -16,9 +14,7 @@ Null 1
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (null)))))
+    (null)))
 
 ==================
 Null 2
@@ -27,9 +23,7 @@ Null 2
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (null)))))
+    (null)))
 
 ==================
 Interger
@@ -38,9 +32,7 @@ Interger
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (number)))))
+    (number)))
 
 ==================
 Float
@@ -49,9 +41,7 @@ Float
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (number)))))
+    (number)))
 
 ==================
 True
@@ -60,9 +50,7 @@ True
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (boolean)))))
+    (boolean)))
 
 ==================
 False
@@ -71,9 +59,7 @@ False
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (boolean)))))
+    (boolean)))
 
 ==================
 String
@@ -82,9 +68,7 @@ String
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (string)))))
+    (string)))
 
 ==================
 String Interpolation 1
@@ -93,15 +77,9 @@ String Interpolation 1
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (interpolated_string
-          (expression
-            (primary_expression
-              (interpolated_string
-                (expression
-                  (primary_expression
-                    (identifier)))))))))))
+    (interpolated_string
+      (interpolated_string
+        (identifier)))))
 
 ==================
 String Interpolation 2
@@ -110,15 +88,9 @@ String Interpolation 2
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (interpolated_string
-          (expression
-            (primary_expression
-              (identifier)))
-          (expression
-            (primary_expression
-              (identifier))))))))
+    (interpolated_string
+      (identifier)
+      (identifier))))
 
 ==================
 Empty array
@@ -127,9 +99,7 @@ Empty array
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (array)))))
+    (array)))
 
 ==================
 Array
@@ -138,21 +108,11 @@ Array
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (array
-          (expression
-            (primary_expression
-              (number)))
-          (expression
-            (primary_expression
-              (number)))
-          (expression
-            (primary_expression
-              (string)))
-          (expression
-            (primary_expression
-              (string))))))))
+    (array
+      (number)
+      (number)
+      (string)
+      (string))))
 
 ==================
 Empty object
@@ -161,9 +121,7 @@ Empty object
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object)))))
+    (object)))
 
 ==================
 Object
@@ -172,14 +130,10 @@ Object
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object
-          (pair
-            (string)
-            (expression
-              (primary_expression
-                (string)))))))))
+    (object
+      (pair
+        (string)
+        (string)))))
 
 ==================
 Property keys as names
@@ -188,19 +142,13 @@ Property keys as names
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object
-          (pair
-            (string)
-            (expression
-              (primary_expression
-                (string))))
-          (pair
-            (string)
-            (expression
-              (primary_expression
-                (string)))))))))
+    (object
+      (pair
+        (string)
+        (string))
+      (pair
+        (string)
+        (string)))))
 
 ==================
 Property keys as integer
@@ -209,19 +157,13 @@ Property keys as integer
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object
-          (pair
-            (number)
-            (expression
-              (primary_expression
-                (string))))
-          (pair
-            (number)
-            (expression
-              (primary_expression
-                (string)))))))))
+    (object
+      (pair
+        (number)
+        (string))
+      (pair
+        (number)
+        (string)))))
 
 ==================
 Property as the variable name
@@ -230,10 +172,8 @@ Property as the variable name
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object
-          (string))))))
+    (object
+      (string))))
 
 ==================
 Parentheses property
@@ -242,17 +182,11 @@ Parentheses property
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (object
-          (pair
-            (computed_property_name
-              (expression
-                (primary_expression
-                  (identifier))))
-            (expression
-              (primary_expression
-                (string)))))))))
+    (object
+      (pair
+        (computed_property_name
+          (identifier))
+        (string)))))
 
 ==================
 Arrow function
@@ -261,17 +195,11 @@ Arrow function
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (arrow_function
-          (formal_parameters
-            (pattern
-              (identifier))
-            (pattern
-              (identifier)))
-          (expression
-            (primary_expression
-              (number))))))))
+    (arrow_function
+      (formal_parameters
+        (identifier)
+        (identifier))
+      (number))))
 
 ==================
 Arrow function empty params
@@ -280,13 +208,9 @@ Arrow function empty params
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (arrow_function
-          (formal_parameters)
-          (expression
-            (primary_expression
-              (number))))))))
+    (arrow_function
+      (formal_parameters)
+      (number))))
 
 ==================
 Arrow function single param
@@ -295,10 +219,16 @@ Arrow function single param
 ---
 (template
   (output_directive
-    (expression
-      (primary_expression
-        (arrow_function
-          (identifier)
-          (expression
-            (primary_expression
-              (number))))))))
+    (arrow_function
+      (identifier)
+      (number))))
+
+==================
+Parenthesized expression
+==================
+{{ (42) }}
+---
+(template
+  (output_directive
+    (parenthesized_expression
+      (number))))

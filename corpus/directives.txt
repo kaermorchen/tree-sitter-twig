@@ -42,6 +42,4 @@ Output directive
 
 (template
   (output_directive
-    (expression
-      (primary_expression
-      (identifier)))))
+    (identifier)))

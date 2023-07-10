@@ -2,8 +2,23 @@ module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
   word: ($) => $.identifier,
-  precedences: ($) => [['member']],
-
+  supertypes: $ => [
+    $.expression,
+    $.primary_expression,
+    $.pattern,
+  ],
+  inline: $ => [
+    $._call_signature,
+    $._formal_parameter,
+    $._lhs_expression,
+  ],
+  precedences: ($) => [['member', $.arrow_function]],
+  conflicts: $ => [
+    [$.primary_expression, $._property_name],
+    [$.primary_expression, $._property_name, $.arrow_function],
+    [$.primary_expression, $.arrow_function],
+    [$.primary_expression, $.pattern],
+  ],
   rules: {
     template: ($) => repeat($._source_element),
 
@@ -44,7 +59,7 @@ module.exports = grammar({
       choice(
         // $.subscript_expression,
         // $.member_expression,
-        // $._parenthesized_expression,
+        $.parenthesized_expression,
         $.identifier,
         $.null,
         $.number,
@@ -56,8 +71,9 @@ module.exports = grammar({
         $.arrow_function,
       ),
 
-    identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
+    parenthesized_expression: ($) => seq('(', $.expression, ')'),
 
+    identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
     null: () => choice('null', 'none'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
     boolean: () => choice('true', 'false'),
@@ -143,8 +159,6 @@ module.exports = grammar({
     //       optional(seq('|', $.identifier, optional($.arguments)))
     //     )
     //   ),
-
-    // _parenthesized_expression: ($) => seq('(', $.expression, ')'),
 
     // unary_expression: ($) =>
     //   choice(
