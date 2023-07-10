@@ -2,18 +2,10 @@ module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
   word: ($) => $.identifier,
-  supertypes: $ => [
-    $.expression,
-    $.primary_expression,
-    $.pattern,
-  ],
-  inline: $ => [
-    $._call_signature,
-    $._formal_parameter,
-    $._lhs_expression,
-  ],
-  precedences: ($) => [['member', $.arrow_function]],
-  conflicts: $ => [
+  supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
+  inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
+  precedences: ($) => [['member', $.expression, $.arrow_function]],
+  conflicts: ($) => [
     [$.primary_expression, $._property_name],
     [$.primary_expression, $._property_name, $.arrow_function],
     [$.primary_expression, $.arrow_function],
@@ -57,8 +49,8 @@ module.exports = grammar({
 
     primary_expression: ($) =>
       choice(
-        // $.subscript_expression,
-        // $.member_expression,
+        $.subscript_expression,
+        $.member_expression,
         $.parenthesized_expression,
         $.identifier,
         $.null,
@@ -125,32 +117,28 @@ module.exports = grammar({
     pattern: ($) => prec.dynamic(-1, $._lhs_expression),
 
     _lhs_expression: ($) =>
-      choice(
-        // $.member_expression,
-        // $.subscript_expression,
-        $.identifier,
+      choice($.member_expression, $.subscript_expression, $.identifier),
+
+    member_expression: ($) =>
+      prec(
+        'member',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '.',
+          field('property', alias($.identifier, $.property_identifier)),
+        ),
       ),
 
-    // member_expression: ($) =>
-    //   prec(
-    //     'member',
-    //     seq(
-    //       field('object', choice($.expression, $._primary_expression)),
-    //       '.',
-    //       field('property', alias($.identifier, $.property_identifier))
-    //     )
-    //   ),
-
-    // subscript_expression: ($) =>
-    //   prec.right(
-    //     'member',
-    //     seq(
-    //       field('object', choice($.expression, $._primary_expression)),
-    //       '[',
-    //       field('index', $.expression),
-    //       ']'
-    //     )
-    //   ),
+    subscript_expression: ($) =>
+      prec.right(
+        'member',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '[',
+          field('index', $.expression),
+          ']',
+        ),
+      ),
 
     // filter_expression: ($) =>
     //   prec.left(

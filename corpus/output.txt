@@ -232,3 +232,51 @@ Parenthesized expression
   (output_directive
     (parenthesized_expression
       (number))))
+
+==================
+Member expression 1
+==================
+{{ user.name }}
+---
+(template
+  (output_directive
+    (member_expression
+      (identifier)
+      (property_identifier))))
+
+==================
+Member expression 2
+==================
+{{ user.name.first }}
+---
+(template
+  (output_directive
+    (member_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (property_identifier))))
+
+==================
+Subscript expression 1
+==================
+{{ user['name'] }}
+---
+(template
+  (output_directive
+    (subscript_expression
+      (identifier)
+      (string))))
+
+==================
+Subscript expression 2
+==================
+{{ user['name'][prop] }}
+---
+(template
+  (output_directive
+    (subscript_expression
+      (subscript_expression
+        (identifier)
+        (string))
+      (identifier))))
