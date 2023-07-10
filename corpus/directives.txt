@@ -33,3 +33,15 @@ Lorem {# сomment #} ipsum
   (content)
   (comment)
   (content))
+
+==================
+Output directive
+==================
+{{ user }}
+---
+
+(template
+  (output_directive
+    (expression
+      (primary_expression
+      (identifier)))))

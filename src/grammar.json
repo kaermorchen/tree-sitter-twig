@@ -57,6 +57,10 @@
           ]
         },
         {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -91,6 +95,28 @@
           "value": "}"
         }
       ]
+    },
+    "expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "primary_expression"
+        }
+      ]
+    },
+    "primary_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"
     }
   },
   "extras": [

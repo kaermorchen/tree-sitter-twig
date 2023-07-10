@@ -11,27 +11,35 @@ module.exports = grammar({
       choice(
         /* $._statement_directive, */ $.output_directive,
         $.comment,
-        $.content
+        $.content,
       ),
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     output_directive: ($) =>
-      seq(
-        choice('{{', '{{-', '{{~'),
-        // $.expression,
-        choice('}}', '-}}', '~}}')
-      ),
+      seq(choice('{{', '{{-', '{{~'), $.expression, choice('}}', '-}}', '~}}')),
 
     comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
 
-    // expression: ($) =>
-    //   choice(
-    //     // $.filter_expression,
-    //     $.unary_expression,
-    //     $.binary_expression,
-    //     $.ternary_expression
-    //   ),
+    expression: ($) =>
+      choice(
+        $.primary_expression,
+        // $.filter_expression,
+        // $.unary_expression,
+        // $.binary_expression,
+        // $.ternary_expression
+      ),
+
+    primary_expression: ($) =>
+      choice(
+        // $.subscript_expression,
+        // $.member_expression,
+        // $._parenthesized_expression,
+        $.identifier,
+        // $._literal,
+        // $.interpolated_string,
+        // $.arrow_function
+      ),
 
     // _open_directive_token: () => choice('{%', '{%-', '{%~'),
     // _close_directive_token: () => choice('%}', '-%}', '~%}'),
@@ -43,7 +51,7 @@ module.exports = grammar({
     //     $._close_directive_token
     //   ),
 
-    // identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
+    identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
 
     // _literal: ($) =>
     //   choice(
@@ -102,17 +110,6 @@ module.exports = grammar({
     //     '"'
     //   ),
 
-    // _primary_expression: ($) =>
-    //   choice(
-    //     $.subscript_expression,
-    //     $.member_expression,
-    //     $._parenthesized_expression,
-    //     $.identifier,
-    //     $._literal,
-    //     $.interpolated_string
-    //     // $.arrow_function
-    //   ),
-
     // member_expression: ($) =>
     //   prec(
     //     'member',
@@ -141,8 +138,6 @@ module.exports = grammar({
     //       optional(seq('|', $.identifier, optional($.arguments)))
     //     )
     //   ),
-
-
 
     // _parenthesized_expression: ($) => seq('(', $._expression, ')'),
 
