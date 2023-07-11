@@ -356,3 +356,26 @@ Binary and unary expressions
       (binary_expression
         (identifier)
         (string)))))
+
+==================
+Ternary operator
+==================
+{{ foo ? 'yes' : 'no' }}
+---
+(template
+  (output_directive
+    (ternary_expression
+      (identifier)
+      (string)
+      (string))))
+
+==================
+Ternary operator short
+==================
+{{ foo ?: 'no' }}
+---
+(template
+  (output_directive
+    (ternary_expression
+      (identifier)
+      (string))))

@@ -5,7 +5,7 @@ module.exports = grammar({
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
   precedences: ($) => [
-    ['member', 'call', 'unary', $.expression, $.arrow_function],
+    ['member', 'call', 'unary', 'ternary', $.expression, $.arrow_function],
   ],
   conflicts: ($) => [
     [$.primary_expression, $._property_name],
@@ -46,7 +46,7 @@ module.exports = grammar({
         // $.filter_expression,
         $.unary_expression,
         $.binary_expression,
-        // $.ternary_expression
+        $.ternary_expression,
       ),
 
     primary_expression: ($) =>
@@ -233,6 +233,17 @@ module.exports = grammar({
               field('right', $.expression),
             ),
           ),
+        ),
+      ),
+
+    ternary_expression: ($) =>
+      prec.right(
+        'ternary',
+        seq(
+          field('condition', $.expression),
+          choice('?', '?:'),
+          field('consequence', $.expression),
+          optional(seq(':', field('alternative', $.expression))),
         ),
       ),
 
