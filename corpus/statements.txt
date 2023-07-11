@@ -143,3 +143,31 @@ Block shortcut
     (filter_expression
       (identifier)
       (identifier))))
+
+==================
+Cache
+==================
+{% cache "cache key" %}
+    Cached forever (depending on the cache implementation)
+{% endcache %}
+---
+(template
+  (cache_statement
+    (string)
+    (content)))
+
+==================
+Cache with key and expiration
+==================
+{% cache "cache key" ttl(300) %}
+    Cached for 300 seconds
+{% endcache %}
+---
+(template
+  (cache_statement
+    (string)
+    (call_expression
+      (identifier)
+      (arguments
+        (number)))
+    (content)))

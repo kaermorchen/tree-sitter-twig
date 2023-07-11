@@ -2159,6 +2159,10 @@
         {
           "type": "SYMBOL",
           "name": "block_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cache_statement"
         }
       ]
     },
@@ -2483,6 +2487,66 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    "cache_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cache"
+        },
+        {
+          "type": "FIELD",
+          "name": "key",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "expiration",
+              "content": {
+                "type": "SYMBOL",
+                "name": "call_expression"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_source_element"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
+          "type": "STRING",
+          "value": "endcache"
         }
       ]
     }

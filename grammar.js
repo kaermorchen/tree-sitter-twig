@@ -265,7 +265,7 @@ module.exports = grammar({
         $.apply_statement,
         $.autoescape_statement,
         $.block_statement,
-        // $.cache_statement,
+        $.cache_statement,
       ),
 
     tag_statement: ($) =>
@@ -320,22 +320,22 @@ module.exports = grammar({
             field('body', repeat($._source_element)),
             $._open_directive_token,
             'endblock',
-            optional(field('name', $.identifier))
-          )
-        )
+            optional(field('name', $.identifier)),
+          ),
+        ),
       ),
 
-    // cache_statement: ($) =>
-    //   seq(
-    //     'cache',
-    //     field('key', $.expression),
-    //     ' ',
-    //     optional(field('expiration', $.expression)),
-    //     $._close_directive_token,
-    //     field('body', repeat($._source_element)),
-    //     $._open_directive_token,
-    //     'endcache'
-    //   ),
+    cache_statement: ($) =>
+      seq(
+        'cache',
+        field('key', $.expression),
+        ' ',
+        optional(field('expiration', $.call_expression)),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endcache',
+      ),
   },
 });
 
