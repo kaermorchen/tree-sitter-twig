@@ -244,3 +244,24 @@ Embed ignore missing
   (embed_statement
     (string)
     (content)))
+
+==================
+Extends
+==================
+{% extends "base.twig" %}
+---
+(template
+  (extends_statement
+    (string)))
+
+==================
+Extends with ternary operator
+==================
+{% extends standalone ? "minimum.html" : "base.html" %}
+---
+(template
+  (extends_statement
+    (ternary_expression
+      (identifier)
+      (string)
+      (string))))

@@ -154,6 +154,10 @@
             "named": true
           },
           {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -323,6 +327,10 @@
           },
           {
             "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
             "named": true
           },
           {
@@ -588,6 +596,10 @@
             "named": true
           },
           {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -688,6 +700,10 @@
           },
           {
             "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
             "named": true
           },
           {
@@ -882,6 +898,10 @@
             "named": true
           },
           {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -948,6 +968,22 @@
       "variables": {
         "multiple": false,
         "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "extends_statement",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "expression",
@@ -1190,6 +1226,10 @@
             "named": true
           },
           {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1348,6 +1388,10 @@
         },
         {
           "type": "embed_statement",
+          "named": true
+        },
+        {
+          "type": "extends_statement",
           "named": true
         },
         {
@@ -1653,6 +1697,10 @@
   },
   {
     "type": "endset",
+    "named": false
+  },
+  {
+    "type": "extends",
     "named": false
   },
   {

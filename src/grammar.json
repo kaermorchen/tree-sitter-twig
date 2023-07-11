@@ -2648,6 +2648,23 @@
         }
       ]
     },
+    "extends_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "extends"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        }
+      ]
+    },
     "_statement": {
       "type": "CHOICE",
       "members": [
@@ -2690,6 +2707,10 @@
         {
           "type": "SYMBOL",
           "name": "embed_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "extends_statement"
         }
       ]
     }
