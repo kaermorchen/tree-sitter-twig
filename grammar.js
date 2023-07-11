@@ -263,7 +263,7 @@ module.exports = grammar({
         $.set_statement,
         $.set_block_statement,
         $.apply_statement,
-        // $.autoescape_statement,
+        $.autoescape_statement,
         // $.block_statement,
         // $.cache_statement,
       ),
@@ -296,20 +296,18 @@ module.exports = grammar({
         $._close_directive_token,
         field('value', repeat($._source_element)),
         $._open_directive_token,
-        'endapply'
+        'endapply',
       ),
 
-    // autoescape_statement: ($) =>
-    //   seq(
-    //     'autoescape',
-    //     optional(
-    //       field('strategy', choice($.string, $.boolean))
-    //     ),
-    //     $._close_directive_token,
-    //     field('value', repeat($._source_element)),
-    //     $._open_directive_token,
-    //     'endautoescape'
-    //   ),
+    autoescape_statement: ($) =>
+      seq(
+        'autoescape',
+        optional(field('strategy', choice($.string, $.boolean))),
+        $._close_directive_token,
+        field('value', repeat($._source_element)),
+        $._open_directive_token,
+        'endautoescape',
+      ),
 
     // block_statement: ($) =>
     //   seq(

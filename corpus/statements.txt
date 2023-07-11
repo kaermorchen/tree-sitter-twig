@@ -47,7 +47,7 @@ Set block
     (content)))
 
 ==================
-Apply block 1
+Apply
 ==================
 {% apply upper %}
   his text becomes uppercase
@@ -59,7 +59,7 @@ Apply block 1
     (content)))
 
 ==================
-Apply block 2
+Apply multiple filters
 ==================
 {% apply lower|escape('html') %}
   <strong>SOME TEXT</strong>
@@ -72,4 +72,42 @@ Apply block 2
       (identifier)
       (arguments
         (string)))
+    (content)))
+
+==================
+Autoescape
+==================
+{% autoescape %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (content)))
+
+==================
+Autoescape string argument
+==================
+{% autoescape 'html' %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (string)
+    (content)))
+
+==================
+Autoescape boolean argument
+==================
+{% autoescape false %}
+  Everything will be automatically escaped in this block
+  using the HTML strategy
+{% endautoescape %}
+---
+(template
+  (autoescape_statement
+    (boolean)
     (content)))
