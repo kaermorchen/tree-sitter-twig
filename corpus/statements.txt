@@ -111,3 +111,35 @@ Autoescape boolean argument
   (autoescape_statement
     (boolean)
     (content)))
+
+==================
+Block
+==================
+{% block title %}Index{% endblock %}
+---
+(template
+  (block_statement
+    (identifier)
+    (content)))
+
+==================
+Block with end-tag
+==================
+{% block sidebar %}{% endblock sidebar %}
+---
+(template
+  (block_statement
+    (identifier)
+    (identifier)))
+
+==================
+Block shortcut
+==================
+{% block title page_title|title %}
+---
+(template
+  (block_statement
+    (identifier)
+    (filter_expression
+      (identifier)
+      (identifier))))

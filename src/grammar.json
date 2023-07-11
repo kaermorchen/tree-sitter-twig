@@ -2155,6 +2155,10 @@
         {
           "type": "SYMBOL",
           "name": "autoescape_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block_statement"
         }
       ]
     },
@@ -2332,7 +2336,7 @@
         },
         {
           "type": "FIELD",
-          "name": "value",
+          "name": "body",
           "content": {
             "type": "REPEAT",
             "content": {
@@ -2389,7 +2393,7 @@
         },
         {
           "type": "FIELD",
-          "name": "value",
+          "name": "body",
           "content": {
             "type": "REPEAT",
             "content": {
@@ -2405,6 +2409,80 @@
         {
           "type": "STRING",
           "value": "endautoescape"
+        }
+      ]
+    },
+    "block_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "block"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "body",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_close_directive_token"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_source_element"
+                    }
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_open_directive_token"
+                },
+                {
+                  "type": "STRING",
+                  "value": "endblock"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "name",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "identifier"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

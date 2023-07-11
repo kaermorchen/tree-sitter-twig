@@ -105,21 +105,7 @@
     "type": "apply_statement",
     "named": true,
     "fields": {
-      "filter": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "filter_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "value": {
+      "body": {
         "multiple": true,
         "required": false,
         "types": [
@@ -137,6 +123,10 @@
           },
           {
             "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
             "named": true
           },
           {
@@ -178,6 +168,20 @@
           {
             "type": "~%}",
             "named": false
+          }
+        ]
+      },
+      "filter": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "filter_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
           }
         ]
       }
@@ -257,21 +261,7 @@
     "type": "autoescape_statement",
     "named": true,
     "fields": {
-      "strategy": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      },
-      "value": {
+      "body": {
         "multiple": true,
         "required": false,
         "types": [
@@ -289,6 +279,10 @@
           },
           {
             "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
             "named": true
           },
           {
@@ -330,6 +324,20 @@
           {
             "type": "~%}",
             "named": false
+          }
+        ]
+      },
+      "strategy": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
           }
         ]
       }
@@ -485,6 +493,92 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "block_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -752,6 +846,10 @@
             "named": true
           },
           {
+            "type": "block_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -890,6 +988,10 @@
         },
         {
           "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
           "named": true
         },
         {
@@ -1154,11 +1256,19 @@
     "named": false
   },
   {
+    "type": "block",
+    "named": false
+  },
+  {
     "type": "endapply",
     "named": false
   },
   {
     "type": "endautoescape",
+    "named": false
+  },
+  {
+    "type": "endblock",
     "named": false
   },
   {

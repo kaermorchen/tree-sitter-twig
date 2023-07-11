@@ -264,7 +264,7 @@ module.exports = grammar({
         $.set_block_statement,
         $.apply_statement,
         $.autoescape_statement,
-        // $.block_statement,
+        $.block_statement,
         // $.cache_statement,
       ),
 
@@ -294,7 +294,7 @@ module.exports = grammar({
         'apply',
         field('filter', choice($.identifier, $.filter_expression)),
         $._close_directive_token,
-        field('value', repeat($._source_element)),
+        field('body', repeat($._source_element)),
         $._open_directive_token,
         'endapply',
       ),
@@ -304,26 +304,26 @@ module.exports = grammar({
         'autoescape',
         optional(field('strategy', choice($.string, $.boolean))),
         $._close_directive_token,
-        field('value', repeat($._source_element)),
+        field('body', repeat($._source_element)),
         $._open_directive_token,
         'endautoescape',
       ),
 
-    // block_statement: ($) =>
-    //   seq(
-    //     'block',
-    //     field('name', $.identifier),
-    //     choice(
-    //       field('body', $.expression),
-    //       seq(
-    //         $._close_directive_token,
-    //         field('body', repeat($._source_element)),
-    //         $._open_directive_token,
-    //         'endblock',
-    //         optional($.identifier)
-    //       )
-    //     )
-    //   ),
+    block_statement: ($) =>
+      seq(
+        'block',
+        field('name', $.identifier),
+        choice(
+          field('body', $.expression),
+          seq(
+            $._close_directive_token,
+            field('body', repeat($._source_element)),
+            $._open_directive_token,
+            'endblock',
+            optional(field('name', $.identifier))
+          )
+        )
+      ),
 
     // cache_statement: ($) =>
     //   seq(
