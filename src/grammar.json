@@ -2133,43 +2133,6 @@
         ]
       }
     },
-    "_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "tag_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "set_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "set_block_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "apply_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "autoescape_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "cache_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "deprecated_statement"
-        }
-      ]
-    },
     "tag_statement": {
       "type": "SEQ",
       "members": [
@@ -2568,6 +2531,64 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        }
+      ]
+    },
+    "do_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "do"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        }
+      ]
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "set_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "set_block_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "apply_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "autoescape_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cache_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "deprecated_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "do_statement"
         }
       ]
     }

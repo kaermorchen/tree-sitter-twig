@@ -180,3 +180,14 @@ Deprecated
 (template
   (deprecated_statement
     (string)))
+
+==================
+Do
+==================
+{% do 1 + 2 %}
+---
+(template
+  (do_statement
+    (binary_expression
+      (number)
+      (number))))

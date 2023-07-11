@@ -257,18 +257,6 @@ module.exports = grammar({
         ),
       ),
 
-    _statement: ($) =>
-      choice(
-        $.tag_statement,
-        $.set_statement,
-        $.set_block_statement,
-        $.apply_statement,
-        $.autoescape_statement,
-        $.block_statement,
-        $.cache_statement,
-        $.deprecated_statement,
-      ),
-
     tag_statement: ($) =>
       seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
@@ -339,6 +327,20 @@ module.exports = grammar({
       ),
 
     deprecated_statement: ($) => seq('deprecated', field('expr', $.expression)),
+    do_statement: ($) => seq('do', field('expr', $.expression)),
+
+    _statement: ($) =>
+      choice(
+        $.tag_statement,
+        $.set_statement,
+        $.set_block_statement,
+        $.apply_statement,
+        $.autoescape_statement,
+        $.block_statement,
+        $.cache_statement,
+        $.deprecated_statement,
+        $.do_statement,
+      ),
   },
 });
 

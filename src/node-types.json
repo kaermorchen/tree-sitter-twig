@@ -146,6 +146,10 @@
             "named": true
           },
           {
+            "type": "do_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -307,6 +311,10 @@
           },
           {
             "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
             "named": true
           },
           {
@@ -560,6 +568,10 @@
             "named": true
           },
           {
+            "type": "do_statement",
+            "named": true
+          },
+          {
             "type": "expression",
             "named": true
           },
@@ -656,6 +668,10 @@
           },
           {
             "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
             "named": true
           },
           {
@@ -767,6 +783,22 @@
   },
   {
     "type": "deprecated_statement",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "do_statement",
     "named": true,
     "fields": {
       "expr": {
@@ -1006,6 +1038,10 @@
             "named": true
           },
           {
+            "type": "do_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1156,6 +1192,10 @@
         },
         {
           "type": "deprecated_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
           "named": true
         },
         {
@@ -1425,6 +1465,10 @@
   },
   {
     "type": "deprecated",
+    "named": false
+  },
+  {
+    "type": "do",
     "named": false
   },
   {
