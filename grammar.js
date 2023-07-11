@@ -5,7 +5,16 @@ module.exports = grammar({
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
   precedences: ($) => [
-    ['member', 'call', 'unary', 'ternary', $.expression, $.arrow_function],
+    [
+      'member',
+      'filter',
+      'call',
+      'unary',
+      'ternary',
+      $.expression,
+      $.arrow_function,
+    ],
+    [$.primary_expression, $.filter_expression],
   ],
   conflicts: ($) => [
     [$.primary_expression, $._property_name],
@@ -43,7 +52,6 @@ module.exports = grammar({
     expression: ($) =>
       choice(
         $.primary_expression,
-        // $.filter_expression,
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
@@ -53,6 +61,7 @@ module.exports = grammar({
       choice(
         $.subscript_expression,
         $.member_expression,
+        $.filter_expression,
         $.parenthesized_expression,
         $.identifier,
         $.null,
@@ -165,14 +174,6 @@ module.exports = grammar({
         ')',
       ),
 
-    // filter_expression: ($) =>
-    //   prec.left(
-    //     seq(
-    //       $.member_expression,
-    //       optional(seq('|', $.identifier, optional($.arguments)))
-    //     )
-    //   ),
-
     unary_expression: ($) =>
       prec.left(
         'unary',
@@ -247,15 +248,18 @@ module.exports = grammar({
         ),
       ),
 
-    // ternary_expression: ($) =>
-    //   prec.left(
-    //     seq(
-    //       $.expression,
-    //       choice('?', '?:'),
-    //       $.expression,
-    //       optional(seq(':', $.expression))
-    //     )
-    //   ),
+    filter_expression: ($) =>
+      prec.right(
+        'filter',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '|',
+          field(
+            'filter',
+            seq($.identifier, optional(field('arguments', $.arguments))),
+          ),
+        ),
+      ),
 
     // tag_statement: ($) =>
     //   seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),

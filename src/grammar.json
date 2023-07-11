@@ -131,6 +131,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "filter_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "parenthesized_expression"
         },
         {
@@ -2006,6 +2010,65 @@
           }
         ]
       }
+    },
+    "filter_expression": {
+      "type": "PREC_RIGHT",
+      "value": "filter",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "primary_expression"
+                }
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "FIELD",
+            "name": "filter",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "arguments",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "arguments"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   },
   "extras": [
@@ -2041,6 +2104,10 @@
       },
       {
         "type": "STRING",
+        "value": "filter"
+      },
+      {
+        "type": "STRING",
         "value": "call"
       },
       {
@@ -2058,6 +2125,16 @@
       {
         "type": "SYMBOL",
         "name": "arrow_function"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "primary_expression"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "filter_expression"
       }
     ]
   ],

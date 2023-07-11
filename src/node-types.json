@@ -60,6 +60,10 @@
         "named": true
       },
       {
+        "type": "filter_expression",
+        "named": true
+      },
+      {
         "type": "identifier",
         "named": true
       },
@@ -378,6 +382,42 @@
     "type": "content",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "filter_expression",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "arguments",
+            "named": true
+          }
+        ]
+      },
+      "filter": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "object": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "formal_parameters",
@@ -884,6 +924,10 @@
   },
   {
     "type": "{{~",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

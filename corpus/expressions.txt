@@ -379,3 +379,40 @@ Ternary operator short
     (ternary_expression
       (identifier)
       (string))))
+
+==================
+Filter without arguments
+==================
+{{ name|title }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (identifier)
+      (identifier))))
+
+==================
+Filter with arguments
+==================
+{{ name|join(', ') }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (identifier)
+      (identifier)
+      (arguments
+        (string)))))
+
+==================
+Filter multiple
+==================
+{{ name|striptags|title }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (filter_expression
+        (identifier)
+        (identifier))
+      (identifier))))
