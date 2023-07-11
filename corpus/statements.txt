@@ -191,3 +191,56 @@ Do
     (binary_expression
       (number)
       (number))))
+
+==================
+Embed
+==================
+{% embed "teasers_skeleton.twig" %}{% endembed %}
+---
+(template
+  (embed_statement
+    (string)))
+
+==================
+Embed with variable
+==================
+{% embed "base" with {'foo': 'bar'} %}
+    ...
+{% endembed %}
+---
+(template
+  (embed_statement
+    (string)
+    (object
+      (pair
+        (string)
+        (string)))
+    (content)))
+
+==================
+Embed with variable only
+==================
+{% embed "base" with {'foo': 'bar'} only %}
+    ...
+{% endembed %}
+---
+(template
+  (embed_statement
+    (string)
+    (object
+      (pair
+        (string)
+        (string)))
+    (content)))
+
+==================
+Embed ignore missing
+==================
+{% embed "base" ignore missing %}
+    ...
+{% endembed %}
+---
+(template
+  (embed_statement
+    (string)
+    (content)))

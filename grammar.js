@@ -328,6 +328,17 @@ module.exports = grammar({
 
     deprecated_statement: ($) => seq('deprecated', field('expr', $.expression)),
     do_statement: ($) => seq('do', field('expr', $.expression)),
+    embed_statement: ($) => seq(
+      'embed',
+      field('name', $.expression),
+      optional(field('ignore_missing', 'ignore missing')),
+      optional(seq('with', field('variables', $.expression))),
+      optional(field('only', 'only')),
+      $._close_directive_token,
+      field('body', repeat($._source_element)),
+      $._open_directive_token,
+      'endembed',
+    ),
 
     _statement: ($) =>
       choice(
@@ -340,6 +351,7 @@ module.exports = grammar({
         $.cache_statement,
         $.deprecated_statement,
         $.do_statement,
+        $.embed_statement,
       ),
   },
 });
