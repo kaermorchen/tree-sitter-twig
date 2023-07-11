@@ -2665,6 +2665,10 @@
         }
       ]
     },
+    "flush_statement": {
+      "type": "STRING",
+      "value": "flush"
+    },
     "_statement": {
       "type": "CHOICE",
       "members": [
@@ -2711,6 +2715,10 @@
         {
           "type": "SYMBOL",
           "name": "extends_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flush_statement"
         }
       ]
     }

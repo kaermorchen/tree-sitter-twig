@@ -343,6 +343,7 @@ module.exports = grammar({
       ),
 
     extends_statement: ($) => seq('extends', field('expr', $.expression)),
+    flush_statement: ($) => 'flush',
 
     _statement: ($) =>
       choice(
@@ -357,6 +358,7 @@ module.exports = grammar({
         $.do_statement,
         $.embed_statement,
         $.extends_statement,
+        $.flush_statement,
       ),
   },
 });

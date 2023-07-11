@@ -158,6 +158,10 @@
             "named": true
           },
           {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -331,6 +335,10 @@
           },
           {
             "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
             "named": true
           },
           {
@@ -600,6 +608,10 @@
             "named": true
           },
           {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -704,6 +716,10 @@
           },
           {
             "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
             "named": true
           },
           {
@@ -899,6 +915,10 @@
           },
           {
             "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
             "named": true
           },
           {
@@ -1230,6 +1250,10 @@
             "named": true
           },
           {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1392,6 +1416,10 @@
         },
         {
           "type": "extends_statement",
+          "named": true
+        },
+        {
+          "type": "flush_statement",
           "named": true
         },
         {
@@ -1706,6 +1734,10 @@
   {
     "type": "false",
     "named": false
+  },
+  {
+    "type": "flush_statement",
+    "named": true
   },
   {
     "type": "has every",

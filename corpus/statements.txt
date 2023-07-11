@@ -265,3 +265,11 @@ Extends with ternary operator
       (identifier)
       (string)
       (string))))
+
+==================
+Flush
+==================
+{% flush %}
+---
+(template
+  (flush_statement))
