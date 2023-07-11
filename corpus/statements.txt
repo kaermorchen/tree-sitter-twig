@@ -9,3 +9,39 @@ Tag
     (binary_expression
       (number)
       (number))))
+
+==================
+Set
+==================
+{% set foo = [1, 2] %}
+---
+(template
+  (set_inline_statement
+    (identifier)
+    (array
+      (number)
+      (number))))
+
+==================
+Set several variables
+==================
+{% set foo, bar = 'foo', 'bar' %}
+---
+(template
+  (set_inline_statement
+    (identifier)
+    (identifier)
+    (string)
+    (string)))
+
+==================
+Set block
+==================
+{% set foo %}
+  Hello
+{% endset %}
+---
+(template
+  (set_block_statement
+    (identifier)
+    (content)))

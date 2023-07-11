@@ -564,6 +564,102 @@
     }
   },
   {
+    "type": "set_block_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_inline_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "set_inline_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "subscript_expression",
     "named": true,
     "fields": {
@@ -626,6 +722,14 @@
         },
         {
           "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "set_block_statement",
+          "named": true
+        },
+        {
+          "type": "set_inline_statement",
           "named": true
         },
         {
@@ -866,6 +970,10 @@
     "named": false
   },
   {
+    "type": "endset",
+    "named": false
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -924,6 +1032,10 @@
   {
     "type": "property_identifier",
     "named": true
+  },
+  {
+    "type": "set",
+    "named": false
   },
   {
     "type": "starts with",
