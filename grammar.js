@@ -26,11 +26,7 @@ module.exports = grammar({
     template: ($) => repeat($._source_element),
 
     _source_element: ($) =>
-      choice(
-        /* $._statement_directive, */ $.output_directive,
-        $.comment,
-        $.content,
-      ),
+      choice($._statement_directive, $.output_directive, $.comment, $.content),
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
@@ -39,15 +35,15 @@ module.exports = grammar({
 
     comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
 
-    // _open_directive_token: () => choice('{%', '{%-', '{%~'),
-    // _close_directive_token: () => choice('%}', '-%}', '~%}'),
+    _open_directive_token: () => choice('{%', '{%-', '{%~'),
+    _close_directive_token: () => choice('%}', '-%}', '~%}'),
 
-    // _statement_directive: ($) =>
-    //   seq(
-    //     $._open_directive_token,
-    //     optional($._statement),
-    //     $._close_directive_token
-    //   ),
+    _statement_directive: ($) =>
+      seq(
+        $._open_directive_token,
+        optional($._statement),
+        $._close_directive_token,
+      ),
 
     expression: ($) =>
       choice(
@@ -261,8 +257,19 @@ module.exports = grammar({
         ),
       ),
 
-    // tag_statement: ($) =>
-    //   seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
+    _statement: ($) =>
+      choice(
+        $.tag_statement,
+        // $.set_inline_statement,
+        // $.set_block_statement,
+        // $.apply_statement,
+        // $.autoescape_statement,
+        // $.block_statement,
+        // $.cache_statement,
+      ),
+
+    tag_statement: ($) =>
+      seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
     // set_inline_statement: ($) =>
     //   seq(
@@ -332,17 +339,6 @@ module.exports = grammar({
     //     field('body', repeat($._source_element)),
     //     $._open_directive_token,
     //     'endcache'
-    //   ),
-
-    // _statement: ($) =>
-    //   choice(
-    //     $.tag_statement,
-    //     $.set_inline_statement,
-    //     $.set_block_statement,
-    //     $.apply_statement,
-    //     $.autoescape_statement,
-    //     $.block_statement,
-    //     $.cache_statement
     //   ),
   },
 });

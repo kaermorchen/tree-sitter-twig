@@ -14,6 +14,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "_statement_directive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "output_directive"
         },
         {
@@ -94,6 +98,65 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "_open_directive_token": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{%"
+        },
+        {
+          "type": "STRING",
+          "value": "{%-"
+        },
+        {
+          "type": "STRING",
+          "value": "{%~"
+        }
+      ]
+    },
+    "_close_directive_token": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%}"
+        },
+        {
+          "type": "STRING",
+          "value": "-%}"
+        },
+        {
+          "type": "STRING",
+          "value": "~%}"
+        }
+      ]
+    },
+    "_statement_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_statement"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
@@ -2069,6 +2132,40 @@
           }
         ]
       }
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag_statement"
+        }
+      ]
+    },
+    "tag_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "tag"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PREC_LEFT",
+            "value": 0,
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          }
+        }
+      ]
     }
   },
   "extras": [

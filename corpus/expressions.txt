@@ -8,7 +8,7 @@ Identifier
     (identifier)))
 
 ==================
-Null 1
+Null
 ==================
 {{ null }}
 ---
@@ -17,7 +17,7 @@ Null 1
     (null)))
 
 ==================
-Null 2
+None
 ==================
 {{ none }}
 ---
@@ -71,18 +71,7 @@ String
     (string)))
 
 ==================
-String Interpolation 1
-==================
-{{ "foo #{"foo #{bar} baz"} baz" }}
----
-(template
-  (output_directive
-    (interpolated_string
-      (interpolated_string
-        (identifier)))))
-
-==================
-String Interpolation 2
+String interpolation
 ==================
 {{ "foo #{bar}#{bar} baz" }}
 ---
@@ -93,7 +82,18 @@ String Interpolation 2
       (identifier))))
 
 ==================
-Empty array
+String interpolation deeper
+==================
+{{ "foo #{"foo #{bar} baz"} baz" }}
+---
+(template
+  (output_directive
+    (interpolated_string
+      (interpolated_string
+        (identifier)))))
+
+==================
+Array empty
 ==================
 {{ [] }}
 ---
@@ -115,7 +115,7 @@ Array
       (string))))
 
 ==================
-Empty object
+Object empty
 ==================
 {{ {} }}
 ---
@@ -136,7 +136,7 @@ Object
         (string)))))
 
 ==================
-Property keys as names
+Object property keys as names
 ==================
 {{ { foo: 'foo', bar: 'bar' } }}
 ---
@@ -151,7 +151,7 @@ Property keys as names
         (string)))))
 
 ==================
-Property keys as integer
+Object property keys as integer
 ==================
 {{ { 2: 'foo', 4: 'bar' } }}
 ---
@@ -166,7 +166,7 @@ Property keys as integer
         (string)))))
 
 ==================
-Property as the variable name
+Object property as the variable name
 ==================
 {{ { foo } }}
 ---
@@ -176,7 +176,7 @@ Property as the variable name
       (string))))
 
 ==================
-Parentheses property
+Object parentheses property
 ==================
 {{ { (foo): 'foo' } }}
 ---
@@ -189,7 +189,7 @@ Parentheses property
         (string)))))
 
 ==================
-Arrow function
+Arrow function with arguments
 ==================
 {{ (a, b) => 42 }}
 ---
@@ -202,7 +202,7 @@ Arrow function
       (number))))
 
 ==================
-Arrow function empty params
+Arrow function without arguments
 ==================
 {{ () => 42 }}
 ---
@@ -213,7 +213,7 @@ Arrow function empty params
       (number))))
 
 ==================
-Arrow function single param
+Arrow function single argument
 ==================
 {{ v => 42 }}
 ---
@@ -234,7 +234,7 @@ Parenthesized expression
       (number))))
 
 ==================
-Member expression 1
+Member expression
 ==================
 {{ user.name }}
 ---
@@ -245,7 +245,7 @@ Member expression 1
       (property_identifier))))
 
 ==================
-Member expression 2
+Member expression deeper
 ==================
 {{ user.name.first }}
 ---
@@ -258,7 +258,7 @@ Member expression 2
       (property_identifier))))
 
 ==================
-Subscript expression 1
+Subscript expression
 ==================
 {{ user['name'] }}
 ---
@@ -269,7 +269,7 @@ Subscript expression 1
       (string))))
 
 ==================
-Subscript expression 2
+Subscript expression deeper
 ==================
 {{ user['name'][prop] }}
 ---
