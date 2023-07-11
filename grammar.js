@@ -156,7 +156,12 @@ module.exports = grammar({
         ),
       ),
 
-    arguments: ($) => seq('(', commaSep($.expression), ')'),
+    arguments: ($) =>
+      seq(
+        '(',
+        commaSep(seq(optional(seq($.identifier, '=')), $.expression)),
+        ')',
+      ),
 
     // filter_expression: ($) =>
     //   prec.left(
@@ -234,13 +239,6 @@ module.exports = grammar({
     //       $.expression,
     //       optional(seq(':', $.expression))
     //     )
-    //   ),
-
-    // arguments: ($) =>
-    //   seq(
-    //     '(',
-    //     commaSep(seq(optional(seq($.identifier, '=')), $.expression)),
-    //     ')'
     //   ),
 
     // tag_statement: ($) =>

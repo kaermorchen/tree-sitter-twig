@@ -304,3 +304,20 @@ Call expression with arguments
       (arguments
         (number)
         (number)))))
+
+==================
+Call expression with named arguments
+==================
+{{ range(low=1, high=10, step=2) }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments
+        (identifier)
+        (number)
+        (identifier)
+        (number)
+        (identifier)
+        (number)))))
