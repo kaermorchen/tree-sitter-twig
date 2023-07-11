@@ -16,7 +16,7 @@ Set
 {% set foo = [1, 2] %}
 ---
 (template
-  (set_inline_statement
+  (set_statement
     (identifier)
     (array
       (number)
@@ -28,7 +28,7 @@ Set several variables
 {% set foo, bar = 'foo', 'bar' %}
 ---
 (template
-  (set_inline_statement
+  (set_statement
     (identifier)
     (identifier)
     (string)
@@ -44,4 +44,32 @@ Set block
 (template
   (set_block_statement
     (identifier)
+    (content)))
+
+==================
+Apply block 1
+==================
+{% apply upper %}
+  his text becomes uppercase
+{% endapply %}
+---
+(template
+  (apply_statement
+    (identifier)
+    (content)))
+
+==================
+Apply block 2
+==================
+{% apply lower|escape('html') %}
+  <strong>SOME TEXT</strong>
+{% endapply %}
+---
+(template
+  (apply_statement
+    (filter_expression
+      (identifier)
+      (identifier)
+      (arguments
+        (string)))
     (content)))

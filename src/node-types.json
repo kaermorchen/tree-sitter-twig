@@ -102,6 +102,84 @@
     ]
   },
   {
+    "type": "apply_statement",
+    "named": true,
+    "fields": {
+      "filter": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "filter_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -580,6 +658,10 @@
             "named": false
           },
           {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -596,7 +678,7 @@
             "named": true
           },
           {
-            "type": "set_inline_statement",
+            "type": "set_statement",
             "named": true
           },
           {
@@ -634,7 +716,7 @@
     }
   },
   {
-    "type": "set_inline_statement",
+    "type": "set_statement",
     "named": true,
     "fields": {
       "value": {
@@ -713,6 +795,10 @@
       "required": false,
       "types": [
         {
+          "type": "apply_statement",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -729,7 +815,7 @@
           "named": true
         },
         {
-          "type": "set_inline_statement",
+          "type": "set_statement",
           "named": true
         },
         {
@@ -954,6 +1040,10 @@
     "named": false
   },
   {
+    "type": "apply",
+    "named": false
+  },
+  {
     "type": "b-and",
     "named": false
   },
@@ -963,6 +1053,10 @@
   },
   {
     "type": "b-xor",
+    "named": false
+  },
+  {
+    "type": "endapply",
     "named": false
   },
   {

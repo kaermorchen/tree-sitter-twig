@@ -260,9 +260,9 @@ module.exports = grammar({
     _statement: ($) =>
       choice(
         $.tag_statement,
-        $.set_inline_statement,
+        $.set_statement,
         $.set_block_statement,
-        // $.apply_statement,
+        $.apply_statement,
         // $.autoescape_statement,
         // $.block_statement,
         // $.cache_statement,
@@ -271,7 +271,7 @@ module.exports = grammar({
     tag_statement: ($) =>
       seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
-    set_inline_statement: ($) =>
+    set_statement: ($) =>
       seq(
         'set',
         commaSep1(field('variable', $.identifier)),
@@ -289,15 +289,15 @@ module.exports = grammar({
         'endset',
       ),
 
-    // apply_statement: ($) =>
-    //   seq(
-    //     'apply',
-    //     // field('filter', seq($.identifier, optional(repeat($.filter)))),
-    //     $._close_directive_token,
-    //     field('value', repeat($._source_element)),
-    //     $._open_directive_token,
-    //     'endapply'
-    //   ),
+    apply_statement: ($) =>
+      seq(
+        'apply',
+        field('filter', choice($.identifier, $.filter_expression)),
+        $._close_directive_token,
+        field('value', repeat($._source_element)),
+        $._open_directive_token,
+        'endapply'
+      ),
 
     // autoescape_statement: ($) =>
     //   seq(
