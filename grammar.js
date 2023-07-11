@@ -4,7 +4,7 @@ module.exports = grammar({
   word: ($) => $.identifier,
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
-  precedences: ($) => [['member', $.expression, $.arrow_function]],
+  precedences: ($) => [['member', 'call', $.expression, $.arrow_function]],
   conflicts: ($) => [
     [$.primary_expression, $._property_name],
     [$.primary_expression, $._property_name, $.arrow_function],
@@ -61,6 +61,7 @@ module.exports = grammar({
         $.array,
         $.object,
         $.arrow_function,
+        $.call_expression,
       ),
 
     parenthesized_expression: ($) => seq('(', $.expression, ')'),
@@ -140,6 +141,23 @@ module.exports = grammar({
         ),
       ),
 
+    call_expression: ($) =>
+      choice(
+        prec(
+          'call',
+          seq(field('function', $.expression), field('arguments', $.arguments)),
+        ),
+        prec(
+          'member',
+          seq(
+            field('function', $.primary_expression),
+            field('arguments', $.arguments),
+          ),
+        ),
+      ),
+
+    arguments: ($) => seq('(', commaSep($.expression), ')'),
+
     // filter_expression: ($) =>
     //   prec.left(
     //     seq(
@@ -217,8 +235,6 @@ module.exports = grammar({
     //       optional(seq(':', $.expression))
     //     )
     //   ),
-
-    // call_expression: ($) => seq($.identifier, $.arguments),
 
     // arguments: ($) =>
     //   seq(

@@ -280,3 +280,27 @@ Subscript expression 2
         (identifier)
         (string))
       (identifier))))
+
+==================
+Call expression without arguments
+==================
+{{ range() }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments))))
+
+==================
+Call expression with arguments
+==================
+{{ range(0, 3) }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments
+        (number)
+        (number)))))
