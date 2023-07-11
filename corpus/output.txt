@@ -321,3 +321,38 @@ Call expression with named arguments
         (number)
         (identifier)
         (number)))))
+
+==================
+Unary expression
+==================
+{{ -42 }}
+---
+(template
+  (output_directive
+    (unary_expression
+      (number))))
+
+==================
+Binary expression
+==================
+{{ a + b }}
+---
+(template
+  (output_directive
+    (binary_expression
+      (identifier)
+      (identifier))))
+
+==================
+Binary and unary expressions
+==================
+{{ -42 + a * 'b' }}
+---
+(template
+  (output_directive
+    (binary_expression
+      (unary_expression
+        (number))
+      (binary_expression
+        (identifier)
+        (string)))))

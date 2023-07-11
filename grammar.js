@@ -4,7 +4,9 @@ module.exports = grammar({
   word: ($) => $.identifier,
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
-  precedences: ($) => [['member', 'call', $.expression, $.arrow_function]],
+  precedences: ($) => [
+    ['member', 'call', 'unary', $.expression, $.arrow_function],
+  ],
   conflicts: ($) => [
     [$.primary_expression, $._property_name],
     [$.primary_expression, $._property_name, $.arrow_function],
@@ -42,8 +44,8 @@ module.exports = grammar({
       choice(
         $.primary_expression,
         // $.filter_expression,
-        // $.unary_expression,
-        // $.binary_expression,
+        $.unary_expression,
+        $.binary_expression,
         // $.ternary_expression
       ),
 
@@ -171,65 +173,68 @@ module.exports = grammar({
     //     )
     //   ),
 
-    // unary_expression: ($) =>
-    //   choice(
-    //     ...[
-    //       ['+', 500],
-    //       ['-', 500],
-    //       ['not', 50],
-    //     ].map(([operator, precedence]) =>
-    //       prec.left(
-    //         precedence,
-    //         seq(field('operator', operator), field('operand', $.expression))
-    //       )
-    //     )
-    //   ),
+    unary_expression: ($) =>
+      prec.left(
+        'unary',
+        choice(
+          ...[
+            ['+', 500],
+            ['-', 500],
+            ['not', 50],
+          ].map(([operator, precedence]) =>
+            prec.left(
+              precedence,
+              seq(field('operator', operator), field('argument', $.expression)),
+            ),
+          ),
+        ),
+      ),
 
-    // binary_expression: ($) =>
-    //   choice(
-    //     ...[
-    //       ['or', 10],
-    //       ['and', 15],
-    //       ['b-or', 16],
-    //       ['b-xor', 17],
-    //       ['b-and', 18],
-    //       ['==', 20],
-    //       ['!=', 20],
-    //       ['<=>', 20],
-    //       ['<', 20],
-    //       ['>', 20],
-    //       ['>=', 20],
-    //       ['<=', 20],
-    //       ['not in', 20],
-    //       ['in', 20],
-    //       ['matches', 20],
-    //       ['starts with', 20],
-    //       ['ends with', 20],
-    //       ['has some', 20],
-    //       ['has every', 20],
-    //       ['..', 25],
-    //       ['+', 30],
-    //       ['-', 30],
-    //       ['~', 40],
-    //       ['*', 60],
-    //       ['/', 60],
-    //       ['//', 60],
-    //       ['%', 60],
-    //       ['is', 100],
-    //       ['is not', 100],
-    //       ['**', 200, 'right'],
-    //       ['??', 300, 'right'],
-    //     ].map(([operator, precedence, associativity]) =>
-    //       (associativity === 'right' ? prec.right : prec.left)(
-    //         precedence,
-    //         seq(
-    //           field('left', $.expression),
-    //           field('operator', operator),
-    //           field('right', $.expression)
-    //         )
-    //       )
-    //     )
-    //   ),
+    binary_expression: ($) =>
+      choice(
+        ...[
+          ['or', 10],
+          ['and', 15],
+          ['b-or', 16],
+          ['b-xor', 17],
+          ['b-and', 18],
+          ['==', 20],
+          ['!=', 20],
+          ['<=>', 20],
+          ['<', 20],
+          ['>', 20],
+          ['>=', 20],
+          ['<=', 20],
+          ['not in', 20],
+          ['in', 20],
+          ['matches', 20],
+          ['starts with', 20],
+          ['ends with', 20],
+          ['has some', 20],
+          ['has every', 20],
+          ['..', 25],
+          ['+', 30],
+          ['-', 30],
+          ['~', 40],
+          ['*', 60],
+          ['/', 60],
+          ['//', 60],
+          ['%', 60],
+          ['is', 100],
+          ['is not', 100],
+          ['**', 200, 'right'],
+          ['??', 300, 'right'],
+        ].map(([operator, precedence, associativity = 'left']) =>
+          prec[associativity](
+            precedence,
+            seq(
+              field('left', $.expression),
+              field('operator', operator),
+              field('right', $.expression),
+            ),
+          ),
+        ),
+      ),
 
     // ternary_expression: ($) =>
     //   prec.left(
