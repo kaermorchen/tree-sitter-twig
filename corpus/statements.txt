@@ -171,3 +171,12 @@ Cache with key and expiration
       (arguments
         (number)))
     (content)))
+
+==================
+Deprecated
+==================
+{% deprecated 'The "base.twig" template is deprecated, use "layout.twig" instead.' %}
+---
+(template
+  (deprecated_statement
+    (string)))

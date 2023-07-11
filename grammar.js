@@ -266,6 +266,7 @@ module.exports = grammar({
         $.autoescape_statement,
         $.block_statement,
         $.cache_statement,
+        $.deprecated_statement,
       ),
 
     tag_statement: ($) =>
@@ -336,6 +337,8 @@ module.exports = grammar({
         $._open_directive_token,
         'endcache',
       ),
+
+    deprecated_statement: ($) => seq('deprecated', field('expr', $.expression)),
   },
 });
 

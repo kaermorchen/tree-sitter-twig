@@ -2163,6 +2163,10 @@
         {
           "type": "SYMBOL",
           "name": "cache_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "deprecated_statement"
         }
       ]
     },
@@ -2547,6 +2551,23 @@
         {
           "type": "STRING",
           "value": "endcache"
+        }
+      ]
+    },
+    "deprecated_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "deprecated"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
         }
       ]
     }
