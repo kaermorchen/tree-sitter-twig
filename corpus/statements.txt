@@ -608,3 +608,44 @@ Verbatim
 (template
   (verbatim_statement
     (content)))
+
+==================
+With
+==================
+{% with %}
+  ...
+{% endwith %}
+---
+(template
+  (with_statement
+    (content)))
+
+==================
+With variables
+==================
+{% with { foo: 42 } %}
+  ...
+{% endwith %}
+---
+(template
+  (with_statement
+    (object
+      (pair
+        (string)
+        (number)))
+    (content)))
+
+==================
+With variables only
+==================
+{% with { foo: 42 } only %}
+  ...
+{% endwith %}
+---
+(template
+  (with_statement
+    (object
+      (pair
+        (string)
+        (number)))
+    (content)))

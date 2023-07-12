@@ -461,6 +461,17 @@ module.exports = grammar({
         'endverbatim',
       ),
 
+    with_statement: ($) =>
+      seq(
+        'with',
+        optional(field('expr', $.expression)),
+        optional(field('only', 'only')),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endwith',
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -484,6 +495,7 @@ module.exports = grammar({
         $.set_block_statement,
         $.use_statement,
         $.verbatim_statement,
+        $.with_statement,
       ),
   },
 });
