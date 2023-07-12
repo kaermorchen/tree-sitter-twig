@@ -380,6 +380,33 @@ module.exports = grammar({
         field('right', $.identifier),
       ),
 
+    if_statement: ($) =>
+      seq(
+        'if',
+        field('test', $.expression),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        optional(
+          seq(
+            $._open_directive_token,
+            'elseif',
+            field('elseif_test', $.expression),
+            $._close_directive_token,
+            field('elseif_body', repeat($._source_element)),
+          ),
+        ),
+        optional(
+          seq(
+            $._open_directive_token,
+            'else',
+            $._close_directive_token,
+            field('alternate', repeat($._source_element)),
+          ),
+        ),
+        $._open_directive_token,
+        'endif',
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -396,6 +423,7 @@ module.exports = grammar({
         $.flush_statement,
         $.for_statement,
         $.from_statement,
+        $.if_statement,
       ),
   },
 });

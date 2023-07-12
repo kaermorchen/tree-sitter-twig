@@ -381,3 +381,97 @@ From as operator
     (as_operator
       (identifier)
       (identifier))))
+
+==================
+If
+==================
+{% if online == false %}
+  Our website is in maintenance mode
+{% endif %}
+---
+(template
+  (if_statement
+    (binary_expression
+      (identifier)
+      (boolean))
+    (content)))
+
+==================
+If else
+==================
+{% if product.stock > 10 %}
+   Available
+{% else %}
+   Sold-out!
+{% endif %}
+---
+(template
+  (if_statement
+    (binary_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (number))
+    (content)
+    (content)))
+
+==================
+If elseif
+==================
+{% if product.stock > 10 %}
+   Available
+{% elseif product.stock > 0 %}
+   Only {{ product.stock }} left!
+{% endif %}
+---
+(template
+  (if_statement
+    (binary_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (number))
+    (content)
+    (binary_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (number))
+    (content)
+    (output_directive
+      (member_expression
+        (identifier)
+        (property_identifier)))
+    (content)))
+
+==================
+If elseif else
+==================
+{% if product.stock > 10 %}
+   Available
+{% elseif product.stock > 0 %}
+   Only {{ product.stock }} left!
+{% else %}
+   Sold-out!
+{% endif %}
+---
+(template
+  (if_statement
+    (binary_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (number))
+    (content)
+    (binary_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (number))
+    (content)
+    (output_directive
+      (member_expression
+        (identifier)
+        (property_identifier)))
+    (content)
+    (content)))
