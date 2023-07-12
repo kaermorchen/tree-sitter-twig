@@ -348,3 +348,36 @@ For with kye, value
           (property_identifier))
         (identifier)))
     (content)))
+
+==================
+From
+==================
+{% from "macros.twig" import hello %}
+---
+(template
+  (from_statement
+    (string)
+    (identifier)))
+
+==================
+From multiple
+==================
+{% from "macros.twig" import hello, world %}
+---
+(template
+  (from_statement
+    (string)
+    (identifier)
+    (identifier)))
+
+==================
+From as operator
+==================
+{% from "macros.twig" import input as input_field %}
+---
+(template
+  (from_statement
+    (string)
+    (as_operator
+      (identifier)
+      (identifier))))

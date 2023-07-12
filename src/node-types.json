@@ -166,6 +166,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -286,6 +290,42 @@
     }
   },
   {
+    "type": "as_operator",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "as",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "autoescape_statement",
     "named": true,
     "fields": {
@@ -347,6 +387,10 @@
           },
           {
             "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "from_statement",
             "named": true
           },
           {
@@ -624,6 +668,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -736,6 +784,10 @@
           },
           {
             "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "from_statement",
             "named": true
           },
           {
@@ -942,6 +994,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1134,6 +1190,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1228,6 +1288,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1296,6 +1360,36 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "from_statement",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "as_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1492,6 +1586,10 @@
             "named": true
           },
           {
+            "type": "from_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1662,6 +1760,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "from_statement",
           "named": true
         },
         {
@@ -1906,6 +2008,10 @@
     "named": false
   },
   {
+    "type": "as",
+    "named": false
+  },
+  {
     "type": "autoescape",
     "named": false
   },
@@ -1994,6 +2100,10 @@
     "named": false
   },
   {
+    "type": "from",
+    "named": false
+  },
+  {
     "type": "has every",
     "named": false
   },
@@ -2007,6 +2117,10 @@
   },
   {
     "type": "ignore missing",
+    "named": false
+  },
+  {
+    "type": "import",
     "named": false
   },
   {

@@ -353,14 +353,31 @@ module.exports = grammar({
         field('expr', $.expression),
         $._close_directive_token,
         field('body', repeat($._source_element)),
-        optional(seq(
-          $._open_directive_token,
-          'else',
-          $._close_directive_token,
-          field('alternate', repeat($._source_element)),
-        )),
+        optional(
+          seq(
+            $._open_directive_token,
+            'else',
+            $._close_directive_token,
+            field('alternate', repeat($._source_element)),
+          ),
+        ),
         $._open_directive_token,
         'endfor',
+      ),
+
+    from_statement: ($) =>
+      seq(
+        'from',
+        field('expr', $.expression),
+        'import',
+        commaSep1(field('variable', choice($.identifier, $.as_operator))),
+      ),
+
+    as_operator: ($) =>
+      seq(
+        field('left', $.identifier),
+        field('operator', 'as'),
+        field('right', $.identifier),
       ),
 
     _statement: ($) =>
@@ -378,6 +395,7 @@ module.exports = grammar({
         $.extends_statement,
         $.flush_statement,
         $.for_statement,
+        $.from_statement,
       ),
   },
 });
