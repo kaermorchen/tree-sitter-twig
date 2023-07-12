@@ -529,3 +529,36 @@ Include ignore missing
 (template
   (include_statement
     (string)))
+
+==================
+Macro
+==================
+{% macro input(name, size = 20) %}
+  <input name="{{ name }}"/>
+{% endmacro %}
+---
+(template
+  (macro_statement
+    (identifier)
+    (arguments
+      (identifier)
+      (identifier)
+      (number))
+    (content)
+    (output_directive
+      (identifier))
+    (content)))
+
+==================
+Macro with end name
+==================
+{% macro input() %}
+    ...
+{% endmacro input %}
+---
+(template
+  (macro_statement
+    (identifier)
+    (arguments)
+    (content)
+    (identifier)))

@@ -182,6 +182,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -415,6 +419,10 @@
           },
           {
             "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
             "named": true
           },
           {
@@ -708,6 +716,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -836,6 +848,10 @@
           },
           {
             "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
             "named": true
           },
           {
@@ -1058,6 +1074,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1266,6 +1286,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1373,6 +1397,10 @@
           },
           {
             "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
             "named": true
           },
           {
@@ -1557,6 +1585,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1667,6 +1699,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1774,6 +1810,10 @@
           },
           {
             "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
             "named": true
           },
           {
@@ -1914,6 +1954,156 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_statement",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arguments",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "from_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -2114,6 +2304,10 @@
             "named": true
           },
           {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -2300,6 +2494,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -2620,6 +2818,10 @@
     "named": false
   },
   {
+    "type": "endmacro",
+    "named": false
+  },
+  {
     "type": "ends with",
     "named": false
   },
@@ -2685,6 +2887,10 @@
   },
   {
     "type": "is not",
+    "named": false
+  },
+  {
+    "type": "macro",
     "named": false
   },
   {

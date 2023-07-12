@@ -424,6 +424,18 @@ module.exports = grammar({
         optional(field('only', 'only')),
       ),
 
+    macro_statement: ($) =>
+      seq(
+        'macro',
+        field('name', $.identifier),
+        field('arguments', $.arguments),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endmacro',
+        optional($.identifier),
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -443,6 +455,7 @@ module.exports = grammar({
         $.if_statement,
         $.import_statement,
         $.include_statement,
+        $.macro_statement,
       ),
   },
 });
