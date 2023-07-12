@@ -345,6 +345,24 @@ module.exports = grammar({
     extends_statement: ($) => seq('extends', field('expr', $.expression)),
     flush_statement: ($) => 'flush',
 
+    for_statement: ($) =>
+      seq(
+        'for',
+        commaSep1(field('variable', $.identifier)),
+        'in',
+        field('expr', $.expression),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        optional(seq(
+          $._open_directive_token,
+          'else',
+          $._close_directive_token,
+          field('alternate', repeat($._source_element)),
+        )),
+        $._open_directive_token,
+        'endfor',
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -359,6 +377,7 @@ module.exports = grammar({
         $.embed_statement,
         $.extends_statement,
         $.flush_statement,
+        $.for_statement,
       ),
   },
 });

@@ -162,6 +162,10 @@
             "named": true
           },
           {
+            "type": "for_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -339,6 +343,10 @@
           },
           {
             "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
             "named": true
           },
           {
@@ -612,6 +620,10 @@
             "named": true
           },
           {
+            "type": "for_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -720,6 +732,10 @@
           },
           {
             "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
             "named": true
           },
           {
@@ -922,6 +938,10 @@
             "named": true
           },
           {
+            "type": "for_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1043,6 +1063,220 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "for_statement",
+    "named": true,
+    "fields": {
+      "alternate": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1254,6 +1488,10 @@
             "named": true
           },
           {
+            "type": "for_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1420,6 +1658,10 @@
         },
         {
           "type": "flush_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
           "named": true
         },
         {
@@ -1696,6 +1938,10 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "embed",
     "named": false
   },
@@ -1720,6 +1966,10 @@
     "named": false
   },
   {
+    "type": "endfor",
+    "named": false
+  },
+  {
     "type": "ends with",
     "named": false
   },
@@ -1738,6 +1988,10 @@
   {
     "type": "flush_statement",
     "named": true
+  },
+  {
+    "type": "for",
+    "named": false
   },
   {
     "type": "has every",

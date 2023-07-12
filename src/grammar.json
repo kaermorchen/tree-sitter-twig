@@ -2669,6 +2669,119 @@
       "type": "STRING",
       "value": "flush"
     },
+    "for_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "for"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "variable",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "variable",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "in"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_source_element"
+            }
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_open_directive_token"
+                },
+                {
+                  "type": "STRING",
+                  "value": "else"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_close_directive_token"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "alternate",
+                  "content": {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_source_element"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
+          "type": "STRING",
+          "value": "endfor"
+        }
+      ]
+    },
     "_statement": {
       "type": "CHOICE",
       "members": [
@@ -2719,6 +2832,10 @@
         {
           "type": "SYMBOL",
           "name": "flush_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "for_statement"
         }
       ]
     }

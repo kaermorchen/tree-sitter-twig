@@ -273,3 +273,78 @@ Flush
 ---
 (template
   (flush_statement))
+
+==================
+For
+==================
+{% for user in users %}
+  {{ user.username }}
+{% endfor %}
+---
+(template
+  (for_statement
+    (identifier)
+    (identifier)
+    (output_directive
+      (member_expression
+        (identifier)
+        (property_identifier)))))
+
+==================
+For with sequence of numbers
+==================
+{% for i in 0..10 %}
+  {{ i }}
+{% endfor %}
+---
+(template
+  (for_statement
+    (identifier)
+    (binary_expression
+      (number)
+      (number))
+    (output_directive
+      (identifier))))
+
+==================
+For with else
+==================
+{% for user in users %}
+  {{ user.username }}
+{% else %}
+  no user found
+{% endfor %}
+---
+(template
+  (for_statement
+    (identifier)
+    (identifier)
+    (output_directive
+      (member_expression
+        (identifier)
+        (property_identifier)))
+    (content)))
+
+==================
+For with kye, value
+==================
+{% for key, user in users %}
+    <li>{{ key }}: {{ user.username|e }}</li>
+{% endfor %}
+---
+(template
+  (for_statement
+    (identifier)
+    (identifier)
+    (identifier)
+    (content)
+    (output_directive
+      (identifier))
+    (content)
+    (output_directive
+      (filter_expression
+        (member_expression
+          (identifier)
+          (property_identifier))
+        (identifier)))
+    (content)))
