@@ -445,11 +445,21 @@ module.exports = grammar({
         'endsandbox',
       ),
 
+    use_statement: ($) =>
+      seq(
+        'use',
+        field('expr', $.expression),
+        optional(
+          seq(
+            'with',
+            commaSep1(field('variable', $.as_operator)),
+          ),
+        ),
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
-        $.set_statement,
-        $.set_block_statement,
         $.apply_statement,
         $.autoescape_statement,
         $.block_statement,
@@ -466,6 +476,9 @@ module.exports = grammar({
         $.include_statement,
         $.macro_statement,
         $.sandbox_statement,
+        $.set_statement,
+        $.set_block_statement,
+        $.use_statement,
       ),
   },
 });

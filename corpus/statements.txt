@@ -11,42 +11,6 @@ Tag
       (number))))
 
 ==================
-Set
-==================
-{% set foo = [1, 2] %}
----
-(template
-  (set_statement
-    (identifier)
-    (array
-      (number)
-      (number))))
-
-==================
-Set several variables
-==================
-{% set foo, bar = 'foo', 'bar' %}
----
-(template
-  (set_statement
-    (identifier)
-    (identifier)
-    (string)
-    (string)))
-
-==================
-Set block
-==================
-{% set foo %}
-  Hello
-{% endset %}
----
-(template
-  (set_block_statement
-    (identifier)
-    (content)))
-
-==================
 Apply
 ==================
 {% apply upper %}
@@ -573,3 +537,63 @@ Sandbox
 (template
   (sandbox_statement
     (content)))
+
+==================
+Set
+==================
+{% set foo = [1, 2] %}
+---
+(template
+  (set_statement
+    (identifier)
+    (array
+      (number)
+      (number))))
+
+==================
+Set several variables
+==================
+{% set foo, bar = 'foo', 'bar' %}
+---
+(template
+  (set_statement
+    (identifier)
+    (identifier)
+    (string)
+    (string)))
+
+==================
+Set block
+==================
+{% set foo %}
+  Hello
+{% endset %}
+---
+(template
+  (set_block_statement
+    (identifier)
+    (content)))
+
+==================
+Use
+==================
+{% use "blocks.html" %}
+---
+(template
+  (use_statement
+    (string)))
+
+==================
+Use with variable
+==================
+{% use "blocks.html" with sidebar as base_sidebar, title as base_title %}
+---
+(template
+  (use_statement
+    (string)
+    (as_operator
+      (identifier)
+      (identifier))
+    (as_operator
+      (identifier)
+      (identifier))))
