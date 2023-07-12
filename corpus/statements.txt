@@ -475,3 +475,13 @@ If elseif else
         (property_identifier)))
     (content)
     (content)))
+
+==================
+Import
+==================
+{% import "macros.twig" as macros %}
+---
+(template
+  (import_statement
+    (string)
+    (identifier)))

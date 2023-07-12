@@ -407,6 +407,14 @@ module.exports = grammar({
         'endif',
       ),
 
+      import_statement: ($) =>
+      seq(
+        'import',
+        field('expr', $.expression),
+        'as',
+        field('variable', $.identifier),
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -424,6 +432,7 @@ module.exports = grammar({
         $.for_statement,
         $.from_statement,
         $.if_statement,
+        $.import_statement,
       ),
   },
 });

@@ -174,6 +174,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -399,6 +403,10 @@
           },
           {
             "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
             "named": true
           },
           {
@@ -684,6 +692,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -804,6 +816,10 @@
           },
           {
             "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
             "named": true
           },
           {
@@ -1018,6 +1034,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1218,6 +1238,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1317,6 +1341,10 @@
           },
           {
             "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
             "named": true
           },
           {
@@ -1493,6 +1521,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1592,6 +1624,10 @@
           },
           {
             "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
             "named": true
           },
           {
@@ -1697,6 +1733,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1746,6 +1786,32 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "import_statement",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1954,6 +2020,10 @@
             "named": true
           },
           {
+            "type": "import_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -2132,6 +2202,10 @@
         },
         {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
