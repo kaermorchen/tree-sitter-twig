@@ -449,12 +449,16 @@ module.exports = grammar({
       seq(
         'use',
         field('expr', $.expression),
-        optional(
-          seq(
-            'with',
-            commaSep1(field('variable', $.as_operator)),
-          ),
-        ),
+        optional(seq('with', commaSep1(field('variable', $.as_operator)))),
+      ),
+
+    verbatim_statement: ($) =>
+      seq(
+        'verbatim',
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endverbatim',
       ),
 
     _statement: ($) =>
@@ -479,6 +483,7 @@ module.exports = grammar({
         $.set_statement,
         $.set_block_statement,
         $.use_statement,
+        $.verbatim_statement,
       ),
   },
 });

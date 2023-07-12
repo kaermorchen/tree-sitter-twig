@@ -597,3 +597,14 @@ Use with variable
     (as_operator
       (identifier)
       (identifier))))
+
+==================
+Verbatim
+==================
+{% verbatim %}
+  ...
+{% endverbatim %}
+---
+(template
+  (verbatim_statement
+    (content)))
