@@ -190,6 +190,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -427,6 +431,10 @@
           },
           {
             "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
             "named": true
           },
           {
@@ -724,6 +732,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -856,6 +868,10 @@
           },
           {
             "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
             "named": true
           },
           {
@@ -1082,6 +1098,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -1294,6 +1314,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -1405,6 +1429,10 @@
           },
           {
             "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
             "named": true
           },
           {
@@ -1593,6 +1621,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -1707,6 +1739,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -1818,6 +1854,10 @@
           },
           {
             "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
             "named": true
           },
           {
@@ -2058,6 +2098,10 @@
             "named": true
           },
           {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
             "type": "set_block_statement",
             "named": true
           },
@@ -2224,6 +2268,130 @@
     }
   },
   {
+    "type": "sandbox_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "-%}",
+            "named": false
+          },
+          {
+            "type": "apply_statement",
+            "named": true
+          },
+          {
+            "type": "autoescape_statement",
+            "named": true
+          },
+          {
+            "type": "block_statement",
+            "named": true
+          },
+          {
+            "type": "cache_statement",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "deprecated_statement",
+            "named": true
+          },
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "embed_statement",
+            "named": true
+          },
+          {
+            "type": "extends_statement",
+            "named": true
+          },
+          {
+            "type": "flush_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "from_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
+            "named": true
+          },
+          {
+            "type": "macro_statement",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
+            "named": true
+          },
+          {
+            "type": "set_block_statement",
+            "named": true
+          },
+          {
+            "type": "set_statement",
+            "named": true
+          },
+          {
+            "type": "tag_statement",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          },
+          {
+            "type": "{%-",
+            "named": false
+          },
+          {
+            "type": "{%~",
+            "named": false
+          },
+          {
+            "type": "~%}",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "set_block_statement",
     "named": true,
     "fields": {
@@ -2309,6 +2477,10 @@
           },
           {
             "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "sandbox_statement",
             "named": true
           },
           {
@@ -2502,6 +2674,10 @@
         },
         {
           "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "sandbox_statement",
           "named": true
         },
         {
@@ -2826,6 +3002,10 @@
     "named": false
   },
   {
+    "type": "endsandbox",
+    "named": false
+  },
+  {
     "type": "endset",
     "named": false
   },
@@ -2928,6 +3108,10 @@
   {
     "type": "property_identifier",
     "named": true
+  },
+  {
+    "type": "sandbox",
+    "named": false
   },
   {
     "type": "set",

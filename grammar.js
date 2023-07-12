@@ -436,6 +436,15 @@ module.exports = grammar({
         optional($.identifier),
       ),
 
+    sandbox_statement: ($) =>
+      seq(
+        'sandbox',
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endsandbox',
+      ),
+
     _statement: ($) =>
       choice(
         $.tag_statement,
@@ -456,6 +465,7 @@ module.exports = grammar({
         $.import_statement,
         $.include_statement,
         $.macro_statement,
+        $.sandbox_statement,
       ),
   },
 });

@@ -562,3 +562,14 @@ Macro with end name
     (arguments)
     (content)
     (identifier)))
+
+==================
+Sandbox
+==================
+{% sandbox %}
+  ...
+{% endsandbox %}
+---
+(template
+  (sandbox_statement
+    (content)))
