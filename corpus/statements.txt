@@ -485,3 +485,47 @@ Import
   (import_statement
     (string)
     (identifier)))
+
+==================
+Include
+==================
+{% include 'header.html' %}
+---
+(template
+  (include_statement
+    (string)))
+
+==================
+Include with variable
+==================
+{% include 'template.html' with {'foo': 'bar'} %}
+---
+(template
+  (include_statement
+    (string)
+    (object
+      (pair
+        (string)
+        (string)))))
+
+==================
+Include with variable only
+==================
+{% include 'template.html' with {'foo': 'bar'} only %}
+---
+(template
+  (include_statement
+    (string)
+    (object
+      (pair
+        (string)
+        (string)))))
+
+==================
+Include ignore missing
+==================
+{% include 'sidebar.html' ignore missing %}
+---
+(template
+  (include_statement
+    (string)))

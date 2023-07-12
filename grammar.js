@@ -407,12 +407,21 @@ module.exports = grammar({
         'endif',
       ),
 
-      import_statement: ($) =>
+    import_statement: ($) =>
       seq(
         'import',
         field('expr', $.expression),
         'as',
         field('variable', $.identifier),
+      ),
+
+    include_statement: ($) =>
+      seq(
+        'include',
+        field('expr', $.expression),
+        optional(field('ignore_missing', 'ignore missing')),
+        optional(seq('with', field('variables', $.expression))),
+        optional(field('only', 'only')),
       ),
 
     _statement: ($) =>
@@ -433,6 +442,7 @@ module.exports = grammar({
         $.from_statement,
         $.if_statement,
         $.import_statement,
+        $.include_statement,
       ),
   },
 });

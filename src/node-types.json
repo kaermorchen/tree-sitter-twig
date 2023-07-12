@@ -178,6 +178,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -407,6 +411,10 @@
           },
           {
             "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
             "named": true
           },
           {
@@ -696,6 +704,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -820,6 +832,10 @@
           },
           {
             "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
             "named": true
           },
           {
@@ -1038,6 +1054,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1242,6 +1262,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1345,6 +1369,10 @@
           },
           {
             "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
             "named": true
           },
           {
@@ -1525,6 +1553,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1628,6 +1660,10 @@
           },
           {
             "type": "import_statement",
+            "named": true
+          },
+          {
+            "type": "include_statement",
             "named": true
           },
           {
@@ -1737,6 +1773,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -1812,6 +1852,52 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "include_statement",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "ignore_missing": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "ignore missing",
+            "named": false
+          }
+        ]
+      },
+      "only": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "only",
+            "named": false
+          }
+        ]
+      },
+      "variables": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
@@ -2024,6 +2110,10 @@
             "named": true
           },
           {
+            "type": "include_statement",
+            "named": true
+          },
+          {
             "type": "output_directive",
             "named": true
           },
@@ -2206,6 +2296,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "include_statement",
           "named": true
         },
         {
@@ -2579,6 +2673,10 @@
   },
   {
     "type": "in",
+    "named": false
+  },
+  {
+    "type": "include",
     "named": false
   },
   {
