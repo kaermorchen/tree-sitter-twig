@@ -21,6 +21,7 @@ module.exports = grammar({
     [$.primary_expression, $.arrow_function],
     [$.primary_expression, $.pattern],
   ],
+  externals: ($) => [$.comment],
   rules: {
     template: ($) => repeat($._source_element),
 
@@ -31,8 +32,6 @@ module.exports = grammar({
 
     output_directive: ($) =>
       seq(choice('{{', '{{-', '{{~'), $.expression, choice('}}', '-}}', '~}}')),
-
-    comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
 
     _open_directive_token: () => choice('{%', '{%-', '{%~'),
     _close_directive_token: () => choice('%}', '-%}', '~%}'),

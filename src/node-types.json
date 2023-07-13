@@ -1001,11 +1001,6 @@
     }
   },
   {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "computed_property_name",
     "named": true,
     "fields": {},
@@ -3452,6 +3447,10 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "deprecated",
     "named": false
   },
@@ -3653,10 +3652,6 @@
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "{#",
     "named": false
   },
   {

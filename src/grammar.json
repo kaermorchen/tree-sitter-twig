@@ -83,23 +83,6 @@
         }
       ]
     },
-    "comment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{#"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[^#]*\\#+([^\\}#][^#]*\\#+)*"
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
-    },
     "_open_directive_token": {
       "type": "CHOICE",
       "members": [
@@ -3534,7 +3517,12 @@
       }
     ]
   ],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    }
+  ],
   "inline": [
     "_call_signature",
     "_formal_parameter",

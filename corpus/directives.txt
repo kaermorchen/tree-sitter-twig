@@ -15,9 +15,22 @@ Lorem ipsum
   (content))
 
 ==================
-Comment
+Comment single line
 ==================
 {# сomment #}
+---
+
+(template
+  (comment))
+
+==================
+Comment multi line
+==================
+{# note: disabled template because we no longer use this
+  {% for user in users %}
+    ...
+  {% endfor %}
+#}
 ---
 
 (template
