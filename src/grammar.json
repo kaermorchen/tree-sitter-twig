@@ -1,6 +1,5 @@
 {
   "name": "twig",
-  "word": "identifier",
   "rules": {
     "template": {
       "type": "REPEAT",
@@ -260,8 +259,21 @@
       ]
     },
     "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "divisible by"
+        },
+        {
+          "type": "STRING",
+          "value": "same as"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"
+        }
+      ]
     },
     "null": {
       "type": "CHOICE",

@@ -1617,6 +1617,11 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -2400,6 +2405,11 @@
     }
   },
   {
+    "type": "property_identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "sandbox_statement",
     "named": true,
     "fields": {
@@ -2708,6 +2718,11 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "subscript_expression",
     "named": true,
     "fields": {
@@ -2732,6 +2747,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "tag_statement",
@@ -3436,6 +3456,10 @@
     "named": false
   },
   {
+    "type": "divisible by",
+    "named": false
+  },
+  {
     "type": "do",
     "named": false
   },
@@ -3532,10 +3556,6 @@
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "if",
     "named": false
   },
@@ -3600,8 +3620,8 @@
     "named": false
   },
   {
-    "type": "property_identifier",
-    "named": true
+    "type": "same as",
+    "named": false
   },
   {
     "type": "sandbox",
@@ -3614,14 +3634,6 @@
   {
     "type": "starts with",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
-  },
-  {
-    "type": "tag",
-    "named": true
   },
   {
     "type": "true",

@@ -1,7 +1,6 @@
 module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
-  word: ($) => $.identifier,
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
   precedences: ($) => [
@@ -73,7 +72,13 @@ module.exports = grammar({
 
     parenthesized_expression: ($) => seq('(', $.expression, ')'),
 
-    identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
+    identifier: ($) =>
+      choice(
+        'divisible by',
+        'same as',
+        /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
+      ),
+
     null: () => choice('null', 'none'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
     boolean: () => choice('true', 'false'),
