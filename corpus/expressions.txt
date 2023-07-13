@@ -1,0 +1,418 @@
+==================
+Identifier
+==================
+{{ user }}
+---
+(template
+  (output_directive
+    (identifier)))
+
+==================
+Null
+==================
+{{ null }}
+---
+(template
+  (output_directive
+    (null)))
+
+==================
+None
+==================
+{{ none }}
+---
+(template
+  (output_directive
+    (null)))
+
+==================
+Interger
+==================
+{{ 42 }}
+---
+(template
+  (output_directive
+    (number)))
+
+==================
+Float
+==================
+{{ 42.35 }}
+---
+(template
+  (output_directive
+    (number)))
+
+==================
+True
+==================
+{{ true }}
+---
+(template
+  (output_directive
+    (boolean)))
+
+==================
+False
+==================
+{{ false }}
+---
+(template
+  (output_directive
+    (boolean)))
+
+==================
+String
+==================
+{{ 'hello' }}
+---
+(template
+  (output_directive
+    (string)))
+
+==================
+String interpolation
+==================
+{{ "foo #{bar}#{bar} baz" }}
+---
+(template
+  (output_directive
+    (interpolated_string
+      (identifier)
+      (identifier))))
+
+==================
+String interpolation deeper
+==================
+{{ "foo #{"foo #{bar} baz"} baz" }}
+---
+(template
+  (output_directive
+    (interpolated_string
+      (interpolated_string
+        (identifier)))))
+
+==================
+Array empty
+==================
+{{ [] }}
+---
+(template
+  (output_directive
+    (array)))
+
+==================
+Array
+==================
+{{ [1, 2, 'foo', "bar"] }}
+---
+(template
+  (output_directive
+    (array
+      (number)
+      (number)
+      (string)
+      (string))))
+
+==================
+Object empty
+==================
+{{ {} }}
+---
+(template
+  (output_directive
+    (object)))
+
+==================
+Object
+==================
+{{ {'foo': 'bar'} }}
+---
+(template
+  (output_directive
+    (object
+      (pair
+        (string)
+        (string)))))
+
+==================
+Object property keys as names
+==================
+{{ { foo: 'foo', bar: 'bar' } }}
+---
+(template
+  (output_directive
+    (object
+      (pair
+        (string)
+        (string))
+      (pair
+        (string)
+        (string)))))
+
+==================
+Object property keys as integer
+==================
+{{ { 2: 'foo', 4: 'bar' } }}
+---
+(template
+  (output_directive
+    (object
+      (pair
+        (number)
+        (string))
+      (pair
+        (number)
+        (string)))))
+
+==================
+Object property as the variable name
+==================
+{{ { foo } }}
+---
+(template
+  (output_directive
+    (object
+      (string))))
+
+==================
+Object parentheses property
+==================
+{{ { (foo): 'foo' } }}
+---
+(template
+  (output_directive
+    (object
+      (pair
+        (computed_property_name
+          (identifier))
+        (string)))))
+
+==================
+Arrow function with arguments
+==================
+{{ (a, b) => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (formal_parameters
+        (identifier)
+        (identifier))
+      (number))))
+
+==================
+Arrow function without arguments
+==================
+{{ () => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (formal_parameters)
+      (number))))
+
+==================
+Arrow function single argument
+==================
+{{ v => 42 }}
+---
+(template
+  (output_directive
+    (arrow_function
+      (identifier)
+      (number))))
+
+==================
+Parenthesized expression
+==================
+{{ (42) }}
+---
+(template
+  (output_directive
+    (parenthesized_expression
+      (number))))
+
+==================
+Member expression
+==================
+{{ user.name }}
+---
+(template
+  (output_directive
+    (member_expression
+      (identifier)
+      (property_identifier))))
+
+==================
+Member expression deeper
+==================
+{{ user.name.first }}
+---
+(template
+  (output_directive
+    (member_expression
+      (member_expression
+        (identifier)
+        (property_identifier))
+      (property_identifier))))
+
+==================
+Subscript expression
+==================
+{{ user['name'] }}
+---
+(template
+  (output_directive
+    (subscript_expression
+      (identifier)
+      (string))))
+
+==================
+Subscript expression deeper
+==================
+{{ user['name'][prop] }}
+---
+(template
+  (output_directive
+    (subscript_expression
+      (subscript_expression
+        (identifier)
+        (string))
+      (identifier))))
+
+==================
+Call expression without arguments
+==================
+{{ range() }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments))))
+
+==================
+Call expression with arguments
+==================
+{{ range(0, 3) }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments
+        (number)
+        (number)))))
+
+==================
+Call expression with named arguments
+==================
+{{ range(low=1, high=10, step=2) }}
+---
+(template
+  (output_directive
+    (call_expression
+      (identifier)
+      (arguments
+        (identifier)
+        (number)
+        (identifier)
+        (number)
+        (identifier)
+        (number)))))
+
+==================
+Unary expression
+==================
+{{ -42 }}
+---
+(template
+  (output_directive
+    (unary_expression
+      (number))))
+
+==================
+Binary expression
+==================
+{{ a + b }}
+---
+(template
+  (output_directive
+    (binary_expression
+      (identifier)
+      (identifier))))
+
+==================
+Binary and unary expressions
+==================
+{{ -42 + a * 'b' }}
+---
+(template
+  (output_directive
+    (binary_expression
+      (unary_expression
+        (number))
+      (binary_expression
+        (identifier)
+        (string)))))
+
+==================
+Ternary operator
+==================
+{{ foo ? 'yes' : 'no' }}
+---
+(template
+  (output_directive
+    (ternary_expression
+      (identifier)
+      (string)
+      (string))))
+
+==================
+Ternary operator short
+==================
+{{ foo ?: 'no' }}
+---
+(template
+  (output_directive
+    (ternary_expression
+      (identifier)
+      (string))))
+
+==================
+Filter without arguments
+==================
+{{ name|title }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (identifier)
+      (identifier))))
+
+==================
+Filter with arguments
+==================
+{{ name|join(', ') }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (identifier)
+      (identifier)
+      (arguments
+        (string)))))
+
+==================
+Filter multiple
+==================
+{{ name|striptags|title }}
+---
+(template
+  (output_directive
+    (filter_expression
+      (filter_expression
+        (identifier)
+        (identifier))
+      (identifier))))

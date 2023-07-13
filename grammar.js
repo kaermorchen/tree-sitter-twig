@@ -1,6 +1,26 @@
 module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
+  supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
+  inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
+  precedences: ($) => [
+    [
+      'member',
+      'filter',
+      'call',
+      'unary',
+      'ternary',
+      $.expression,
+      $.arrow_function,
+    ],
+    [$.primary_expression, $.filter_expression],
+  ],
+  conflicts: ($) => [
+    [$.primary_expression, $._property_name],
+    [$.primary_expression, $._property_name, $.arrow_function],
+    [$.primary_expression, $.arrow_function],
+    [$.primary_expression, $.pattern],
+  ],
   rules: {
     template: ($) => repeat($._source_element),
 
@@ -9,6 +29,11 @@ module.exports = grammar({
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
+    output_directive: ($) =>
+      seq(choice('{{', '{{-', '{{~'), $.expression, choice('}}', '-}}', '~}}')),
+
+    comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
+
     _open_directive_token: () => choice('{%', '{%-', '{%~'),
     _close_directive_token: () => choice('%}', '-%}', '~%}'),
 
@@ -16,59 +41,48 @@ module.exports = grammar({
       seq(
         $._open_directive_token,
         optional($._statement),
-        $._close_directive_token
+        $._close_directive_token,
       ),
 
-    output_directive: ($) =>
-      seq(
-        choice('{{', '{{-', '{{~'),
-        optional($._expression),
-        choice('}}', '-}}', '~}}')
-      ),
-
-    comment: () => seq('{#', /[^#]*\#+([^\}#][^#]*\#+)*/, '}'),
-
-    identifier: () => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
-
-    _literal: ($) =>
+    expression: ($) =>
       choice(
-        $.null_literal,
-        $.number_literal,
-        $.boolean_literal,
-        $.string_literal,
-        $.array_literal,
-        $.object_literal
+        $.primary_expression,
+        $.unary_expression,
+        $.binary_expression,
+        $.ternary_expression,
       ),
 
-    null_literal: () => /null|none/i,
-    number_literal: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
-    boolean_literal: () => /true|false/i,
-    string_literal: () =>
-      /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
-    array_literal: ($) => seq('[', commaSep($._expression), ']'),
-    object_literal: ($) => seq('{', commaSep($.property), '}'),
-
-    property: ($) =>
-      choice(seq($.property_name, ':', $._expression), $.identifier),
-
-    property_name: ($) =>
+    primary_expression: ($) =>
       choice(
+        $.subscript_expression,
+        $.member_expression,
+        $.filter_expression,
+        $.parenthesized_expression,
         $.identifier,
-        $.string_literal,
-        $.number_literal,
-        seq('(', $._expression, ')')
+        $.null,
+        $.number,
+        $.boolean,
+        $.string,
+        $.interpolated_string,
+        $.array,
+        $.object,
+        $.arrow_function,
+        $.call_expression,
       ),
 
-    arrow_function: ($) =>
-      prec(
-        1,
-        seq(
-          choice($.identifier, seq('(', commaSep($.identifier), ')')),
-          '=>',
-          $._expression
-        )
+    parenthesized_expression: ($) => seq('(', $.expression, ')'),
+
+    identifier: ($) =>
+      choice(
+        'divisible by',
+        'same as',
+        /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
       ),
 
+    null: () => choice('null', 'none'),
+    number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
+    boolean: () => choice('true', 'false'),
+    string: () => /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
     interpolated_string: ($) =>
       seq(
         '"',
@@ -78,57 +92,104 @@ module.exports = grammar({
             '\\#',
             '\\\\',
             /[^#"\\\\]+/,
-            seq('#{', $._expression, '}')
-          )
-        ),
-        '"'
-      ),
-
-    _expression: ($) =>
-      prec.right(
-        seq(
-          choice(
-            $.identifier,
-            $._literal,
-            $.interpolated_string,
-            $.arrow_function,
-            $._parenthesized_expression,
-            $.member_expression,
-            $.subscript_expression,
-            $.unary_expression,
-            $.binary_expression,
-            $.ternary_expression,
-            $.call_expression
+            seq('#{', $.expression, '}'),
           ),
-          repeat($.filter)
-        )
+        ),
+        '"',
+      ),
+    array: ($) => seq('[', commaSep($.expression), ']'),
+    object: ($) =>
+      seq('{', commaSep(choice($.pair, alias($.identifier, $.string))), '}'),
+
+    pair: ($) =>
+      seq(field('key', $._property_name), ':', field('value', $.expression)),
+
+    _property_name: ($) =>
+      choice(
+        $.string,
+        $.number,
+        alias($.identifier, $.string),
+        $.computed_property_name,
       ),
 
-    _parenthesized_expression: ($) => seq('(', $._expression, ')'),
+    computed_property_name: ($) => seq('(', $.expression, ')'),
+
+    arrow_function: ($) =>
+      seq(
+        choice(field('parameter', $.identifier), $._call_signature),
+        '=>',
+        field('body', $.expression),
+      ),
+
+    _call_signature: ($) => field('parameters', $.formal_parameters),
+    _formal_parameter: ($) => $.pattern,
+
+    formal_parameters: ($) =>
+      seq('(', optional(seq(commaSep1($._formal_parameter))), ')'),
+
+    pattern: ($) => prec.dynamic(-1, $._lhs_expression),
+
+    _lhs_expression: ($) =>
+      choice($.member_expression, $.subscript_expression, $.identifier),
 
     member_expression: ($) =>
-      seq(field('object', $._expression), '.', field('property', $.identifier)),
+      prec(
+        'member',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '.',
+          field('property', alias($.identifier, $.property_identifier)),
+        ),
+      ),
 
     subscript_expression: ($) =>
+      prec.right(
+        'member',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '[',
+          field('index', $.expression),
+          ']',
+        ),
+      ),
+
+    call_expression: ($) =>
+      choice(
+        prec(
+          'call',
+          seq(field('function', $.expression), field('arguments', $.arguments)),
+        ),
+        prec(
+          'member',
+          seq(
+            field('function', $.primary_expression),
+            field('arguments', $.arguments),
+          ),
+        ),
+      ),
+
+    arguments: ($) =>
       seq(
-        field('object', $._expression),
-        '[',
-        field('index', $._expression),
-        ']'
+        '(',
+        commaSep(seq(optional(seq($.identifier, '=')), $.expression)),
+        ')',
       ),
 
     unary_expression: ($) =>
-      choice(
-        ...[
-          ['+', 500],
-          ['-', 500],
-          ['not', 50],
-        ].map(([operator, precedence]) =>
-          prec.left(
-            precedence,
-            seq(field('operator', operator), field('operand', $._expression))
-          )
-        )
+      prec.left(
+        'unary',
+        choice(
+          ...[
+            ['+', 500],
+            ['-', 500],
+            ['not', 50],
+          ].map(([operator, precedence]) =>
+            prec.left(
+              precedence,
+              seq(field('operator', operator), field('argument', $.expression)),
+            ),
+          ),
+        ),
       ),
 
     binary_expression: ($) =>
@@ -165,50 +226,51 @@ module.exports = grammar({
           ['is not', 100],
           ['**', 200, 'right'],
           ['??', 300, 'right'],
-        ].map(([operator, precedence, associativity]) =>
-          (associativity === 'right' ? prec.right : prec.left)(
+        ].map(([operator, precedence, associativity = 'left']) =>
+          prec[associativity](
             precedence,
             seq(
-              field('left', $._expression),
+              field('left', $.expression),
               field('operator', operator),
-              field('right', $._expression)
-            )
-          )
-        )
+              field('right', $.expression),
+            ),
+          ),
+        ),
       ),
 
     ternary_expression: ($) =>
-      prec.left(
+      prec.right(
+        'ternary',
         seq(
-          $._expression,
+          field('condition', $.expression),
           choice('?', '?:'),
-          $._expression,
-          optional(seq(':', $._expression))
-        )
+          field('consequence', $.expression),
+          optional(seq(':', field('alternative', $.expression))),
+        ),
       ),
 
-    filter: ($) => prec.left(seq('|', $.identifier, optional($.arguments))),
-
-    call_expression: ($) => seq($.identifier, $.arguments),
-
-    arguments: ($) =>
-      seq(
-        '(',
-        commaSep(seq(optional(seq($.identifier, '=')), $._expression)),
-        ')'
+    filter_expression: ($) =>
+      prec.right(
+        'filter',
+        seq(
+          field('object', choice($.expression, $.primary_expression)),
+          '|',
+          field(
+            'filter',
+            seq($.identifier, optional(field('arguments', $.arguments))),
+          ),
+        ),
       ),
 
     tag_statement: ($) =>
-      seq(alias($.identifier, $.tag), repeat(prec.left($._expression))),
+      seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
-    set_inline_statement: ($) =>
+    set_statement: ($) =>
       seq(
         'set',
-        field('variable', $.identifier),
-        repeat(seq(',', field('variable', $.identifier))),
+        commaSep1(field('variable', $.identifier)),
         '=',
-        field('value', $._expression),
-        repeat(seq(',', field('value', $._expression)))
+        commaSep1(field('value', $.expression)),
       ),
 
     set_block_statement: ($) =>
@@ -218,29 +280,27 @@ module.exports = grammar({
         $._close_directive_token,
         field('value', repeat($._source_element)),
         $._open_directive_token,
-        'endset'
+        'endset',
       ),
 
     apply_statement: ($) =>
       seq(
         'apply',
-        field('filter', seq($.identifier, optional(repeat($.filter)))),
+        field('filter', choice($.identifier, $.filter_expression)),
         $._close_directive_token,
-        field('value', repeat($._source_element)),
+        field('body', repeat($._source_element)),
         $._open_directive_token,
-        'endapply'
+        'endapply',
       ),
 
     autoescape_statement: ($) =>
       seq(
         'autoescape',
-        optional(
-          field('strategy', choice($.string_literal, $.boolean_literal))
-        ),
+        optional(field('strategy', choice($.string, $.boolean))),
         $._close_directive_token,
-        field('value', repeat($._source_element)),
+        field('body', repeat($._source_element)),
         $._open_directive_token,
-        'endautoescape'
+        'endautoescape',
       ),
 
     block_statement: ($) =>
@@ -248,38 +308,199 @@ module.exports = grammar({
         'block',
         field('name', $.identifier),
         choice(
-          field('body', $._expression),
+          field('body', $.expression),
           seq(
             $._close_directive_token,
             field('body', repeat($._source_element)),
             $._open_directive_token,
             'endblock',
-            optional($.identifier)
-          )
-        )
+            optional(field('name', $.identifier)),
+          ),
+        ),
       ),
 
     cache_statement: ($) =>
       seq(
         'cache',
-        field('key', $._expression),
+        field('key', $.expression),
         ' ',
-        optional(field('expiration', $._expression)),
+        optional(field('expiration', $.call_expression)),
         $._close_directive_token,
         field('body', repeat($._source_element)),
         $._open_directive_token,
-        'endcache'
+        'endcache',
+      ),
+
+    deprecated_statement: ($) => seq('deprecated', field('expr', $.expression)),
+    do_statement: ($) => seq('do', field('expr', $.expression)),
+
+    embed_statement: ($) =>
+      seq(
+        'embed',
+        field('name', $.expression),
+        optional(field('ignore_missing', 'ignore missing')),
+        optional(seq('with', field('variables', $.expression))),
+        optional(field('only', 'only')),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endembed',
+      ),
+
+    extends_statement: ($) => seq('extends', field('expr', $.expression)),
+    flush_statement: ($) => 'flush',
+
+    for_statement: ($) =>
+      seq(
+        'for',
+        commaSep1(field('variable', $.identifier)),
+        'in',
+        field('expr', $.expression),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        optional(
+          seq(
+            $._open_directive_token,
+            'else',
+            $._close_directive_token,
+            field('alternate', repeat($._source_element)),
+          ),
+        ),
+        $._open_directive_token,
+        'endfor',
+      ),
+
+    from_statement: ($) =>
+      seq(
+        'from',
+        field('expr', $.expression),
+        'import',
+        commaSep1(field('variable', choice($.identifier, $.as_operator))),
+      ),
+
+    as_operator: ($) =>
+      seq(
+        field('left', $.identifier),
+        field('operator', 'as'),
+        field('right', $.identifier),
+      ),
+
+    if_statement: ($) =>
+      seq(
+        'if',
+        field('test', $.expression),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        optional(
+          seq(
+            $._open_directive_token,
+            'elseif',
+            field('elseif_test', $.expression),
+            $._close_directive_token,
+            field('elseif_body', repeat($._source_element)),
+          ),
+        ),
+        optional(
+          seq(
+            $._open_directive_token,
+            'else',
+            $._close_directive_token,
+            field('alternate', repeat($._source_element)),
+          ),
+        ),
+        $._open_directive_token,
+        'endif',
+      ),
+
+    import_statement: ($) =>
+      seq(
+        'import',
+        field('expr', $.expression),
+        'as',
+        field('variable', $.identifier),
+      ),
+
+    include_statement: ($) =>
+      seq(
+        'include',
+        field('expr', $.expression),
+        optional(field('ignore_missing', 'ignore missing')),
+        optional(seq('with', field('variables', $.expression))),
+        optional(field('only', 'only')),
+      ),
+
+    macro_statement: ($) =>
+      seq(
+        'macro',
+        field('name', $.identifier),
+        field('arguments', $.arguments),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endmacro',
+        optional($.identifier),
+      ),
+
+    sandbox_statement: ($) =>
+      seq(
+        'sandbox',
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endsandbox',
+      ),
+
+    use_statement: ($) =>
+      seq(
+        'use',
+        field('expr', $.expression),
+        optional(seq('with', commaSep1(field('variable', $.as_operator)))),
+      ),
+
+    verbatim_statement: ($) =>
+      seq(
+        'verbatim',
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endverbatim',
+      ),
+
+    with_statement: ($) =>
+      seq(
+        'with',
+        optional(field('expr', $.expression)),
+        optional(field('only', 'only')),
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+        'endwith',
       ),
 
     _statement: ($) =>
       choice(
         $.tag_statement,
-        $.set_inline_statement,
-        $.set_block_statement,
         $.apply_statement,
         $.autoescape_statement,
         $.block_statement,
-        $.cache_statement
+        $.cache_statement,
+        $.deprecated_statement,
+        $.do_statement,
+        $.embed_statement,
+        $.extends_statement,
+        $.flush_statement,
+        $.for_statement,
+        $.from_statement,
+        $.if_statement,
+        $.import_statement,
+        $.include_statement,
+        $.macro_statement,
+        $.sandbox_statement,
+        $.set_statement,
+        $.set_block_statement,
+        $.use_statement,
+        $.verbatim_statement,
+        $.with_statement,
       ),
   },
 });
