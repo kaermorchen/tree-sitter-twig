@@ -20,7 +20,8 @@ Apply
 (template
   (apply_statement
     (identifier)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Apply multiple filters
@@ -36,7 +37,8 @@ Apply multiple filters
       (identifier)
       (arguments
         (string)))
-    (content)))
+    (body
+      (content))))
 
 ==================
 Autoescape
@@ -48,7 +50,8 @@ Autoescape
 ---
 (template
   (autoescape_statement
-    (content)))
+    (body
+      (content))))
 
 ==================
 Autoescape string argument
@@ -61,7 +64,8 @@ Autoescape string argument
 (template
   (autoescape_statement
     (string)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Autoescape boolean argument
@@ -74,7 +78,8 @@ Autoescape boolean argument
 (template
   (autoescape_statement
     (boolean)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Block
@@ -84,7 +89,8 @@ Block
 (template
   (block_statement
     (identifier)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Block with end-tag
@@ -94,6 +100,7 @@ Block with end-tag
 (template
   (block_statement
     (identifier)
+    (body)
     (identifier)))
 
 ==================
@@ -118,7 +125,8 @@ Cache
 (template
   (cache_statement
     (string)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Cache with key and expiration
@@ -134,7 +142,8 @@ Cache with key and expiration
       (identifier)
       (arguments
         (number)))
-    (content)))
+    (body
+      (content))))
 
 ==================
 Deprecated
@@ -163,7 +172,8 @@ Embed
 ---
 (template
   (embed_statement
-    (string)))
+    (string)
+    (body)))
 
 ==================
 Embed with variable
@@ -179,7 +189,8 @@ Embed with variable
       (pair
         (string)
         (string)))
-    (content)))
+    (body
+      (content))))
 
 ==================
 Embed with variable only
@@ -195,7 +206,8 @@ Embed with variable only
       (pair
         (string)
         (string)))
-    (content)))
+    (body
+      (content))))
 
 ==================
 Embed ignore missing
@@ -207,7 +219,8 @@ Embed ignore missing
 (template
   (embed_statement
     (string)
-    (content)))
+    (body
+      (content))))
 
 ==================
 Extends
@@ -508,10 +521,11 @@ Macro
       (identifier)
       (identifier)
       (number))
-    (content)
-    (output_directive
-      (identifier))
-    (content)))
+    (body
+      (content)
+      (output_directive
+        (identifier))
+      (content))))
 
 ==================
 Macro with end name
@@ -524,7 +538,8 @@ Macro with end name
   (macro_statement
     (identifier)
     (arguments)
-    (content)
+    (body
+      (content))
     (identifier)))
 
 ==================
@@ -536,7 +551,8 @@ Sandbox
 ---
 (template
   (sandbox_statement
-    (content)))
+    (body
+      (content))))
 
 ==================
 Set
@@ -566,14 +582,17 @@ Set several variables
 Set block
 ==================
 {% set foo %}
-  Hello
+  Hello {{ username }}!
 {% endset %}
 ---
 (template
   (set_block_statement
     (identifier)
-    (content)))
-
+    (body
+      (content)
+      (output_directive
+        (identifier))
+      (content))))
 ==================
 Use
 ==================
@@ -607,7 +626,8 @@ Verbatim
 ---
 (template
   (verbatim_statement
-    (content)))
+    (body
+      (content))))
 
 ==================
 With
@@ -618,7 +638,8 @@ With
 ---
 (template
   (with_statement
-    (content)))
+    (body
+      (content))))
 
 ==================
 With variables
@@ -633,7 +654,8 @@ With variables
       (pair
         (string)
         (number)))
-    (content)))
+    (body
+      (content))))
 
 ==================
 With variables only
@@ -648,4 +670,5 @@ With variables only
       (pair
         (string)
         (number)))
-    (content)))
+    (body
+      (content))))

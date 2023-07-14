@@ -261,6 +261,13 @@ module.exports = grammar({
         ),
       ),
 
+    body: ($) =>
+      seq(
+        $._close_directive_token,
+        field('body', repeat($._source_element)),
+        $._open_directive_token,
+      ),
+
     tag_statement: ($) =>
       seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
@@ -273,22 +280,13 @@ module.exports = grammar({
       ),
 
     set_block_statement: ($) =>
-      seq(
-        'set',
-        field('variable', $.identifier),
-        $._close_directive_token,
-        field('value', repeat($._source_element)),
-        $._open_directive_token,
-        'endset',
-      ),
+      seq('set', field('variable', $.identifier), $.body, 'endset'),
 
     apply_statement: ($) =>
       seq(
         'apply',
         field('filter', choice($.identifier, $.filter_expression)),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endapply',
       ),
 
@@ -296,9 +294,7 @@ module.exports = grammar({
       seq(
         'autoescape',
         optional(field('strategy', choice($.string, $.boolean))),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endautoescape',
       ),
 
@@ -309,9 +305,7 @@ module.exports = grammar({
         choice(
           field('body', $.expression),
           seq(
-            $._close_directive_token,
-            field('body', repeat($._source_element)),
-            $._open_directive_token,
+            $.body,
             'endblock',
             optional(field('name', $.identifier)),
           ),
@@ -324,9 +318,7 @@ module.exports = grammar({
         field('key', $.expression),
         ' ',
         optional(field('expiration', $.call_expression)),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endcache',
       ),
 
@@ -340,9 +332,7 @@ module.exports = grammar({
         optional(field('ignore_missing', 'ignore missing')),
         optional(seq('with', field('variables', $.expression))),
         optional(field('only', 'only')),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endembed',
       ),
 
@@ -433,9 +423,7 @@ module.exports = grammar({
         'macro',
         field('name', $.identifier),
         field('arguments', $.arguments),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endmacro',
         optional($.identifier),
       ),
@@ -443,9 +431,7 @@ module.exports = grammar({
     sandbox_statement: ($) =>
       seq(
         'sandbox',
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endsandbox',
       ),
 
@@ -459,9 +445,7 @@ module.exports = grammar({
     verbatim_statement: ($) =>
       seq(
         'verbatim',
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endverbatim',
       ),
 
@@ -470,9 +454,7 @@ module.exports = grammar({
         'with',
         optional(field('expr', $.expression)),
         optional(field('only', 'only')),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        $.body,
         'endwith',
       ),
 

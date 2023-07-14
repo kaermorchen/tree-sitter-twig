@@ -2128,6 +2128,30 @@
         ]
       }
     },
+    "body": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_source_element"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        }
+      ]
+    },
     "tag_statement": {
       "type": "SEQ",
       "members": [
@@ -2249,22 +2273,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -2298,22 +2307,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -2355,22 +2349,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -2409,22 +2388,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "body",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_source_element"
-                    }
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
+                  "name": "body"
                 },
                 {
                   "type": "STRING",
@@ -2489,22 +2453,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -2620,22 +2569,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -3126,22 +3060,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -3170,22 +3089,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -3269,22 +3173,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
@@ -3333,22 +3222,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "body"
         },
         {
           "type": "STRING",
