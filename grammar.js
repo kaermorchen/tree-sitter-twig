@@ -264,7 +264,7 @@ module.exports = grammar({
     body: ($) =>
       seq(
         $._close_directive_token,
-        field('body', repeat($._source_element)),
+        repeat($._source_element),
         $._open_directive_token,
       ),
 
@@ -304,11 +304,7 @@ module.exports = grammar({
         field('name', $.identifier),
         choice(
           field('body', $.expression),
-          seq(
-            $.body,
-            'endblock',
-            optional(field('name', $.identifier)),
-          ),
+          seq($.body, 'endblock', optional(field('name', $.identifier))),
         ),
       ),
 
@@ -377,29 +373,15 @@ module.exports = grammar({
     if_statement: ($) =>
       seq(
         'if',
-        field('test', $.expression),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        optional(
-          seq(
-            $._open_directive_token,
-            'elseif',
-            field('elseif_test', $.expression),
-            $._close_directive_token,
-            field('elseif_body', repeat($._source_element)),
-          ),
-        ),
-        optional(
-          seq(
-            $._open_directive_token,
-            'else',
-            $._close_directive_token,
-            field('alternate', repeat($._source_element)),
-          ),
-        ),
-        $._open_directive_token,
+        field('expr', $.expression),
+        field('then', $.body),
+        optional(field('elseif', repeat($.elseif))),
+        optional(seq('else', field('else', $.body))),
         'endif',
       ),
+
+    elseif: ($) =>
+      seq('elseif', field('expr', $.expression), field('then', $.body)),
 
     import_statement: ($) =>
       seq(
@@ -428,12 +410,7 @@ module.exports = grammar({
         optional($.identifier),
       ),
 
-    sandbox_statement: ($) =>
-      seq(
-        'sandbox',
-        $.body,
-        'endsandbox',
-      ),
+    sandbox_statement: ($) => seq('sandbox', $.body, 'endsandbox'),
 
     use_statement: ($) =>
       seq(
@@ -442,12 +419,7 @@ module.exports = grammar({
         optional(seq('with', commaSep1(field('variable', $.as_operator)))),
       ),
 
-    verbatim_statement: ($) =>
-      seq(
-        'verbatim',
-        $.body,
-        'endverbatim',
-      ),
+    verbatim_statement: ($) => seq('verbatim', $.body, 'endverbatim'),
 
     with_statement: ($) =>
       seq(

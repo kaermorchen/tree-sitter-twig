@@ -2136,14 +2136,10 @@
           "name": "_close_directive_token"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "REPEAT",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
+            "type": "SYMBOL",
+            "name": "_source_element"
           }
         },
         {
@@ -2821,65 +2817,33 @@
         },
         {
           "type": "FIELD",
-          "name": "test",
+          "name": "expr",
           "content": {
             "type": "SYMBOL",
             "name": "expression"
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
           "type": "FIELD",
-          "name": "body",
+          "name": "then",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
+            "type": "SYMBOL",
+            "name": "body"
           }
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
+              "type": "FIELD",
+              "name": "elseif",
+              "content": {
+                "type": "REPEAT",
+                "content": {
                   "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
-                {
-                  "type": "STRING",
-                  "value": "elseif"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "elseif_test",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "expression"
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "elseif_body",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_source_element"
-                    }
-                  }
+                  "name": "elseif"
                 }
-              ]
+              }
             },
             {
               "type": "BLANK"
@@ -2893,26 +2857,15 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
-                {
                   "type": "STRING",
                   "value": "else"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
                   "type": "FIELD",
-                  "name": "alternate",
+                  "name": "else",
                   "content": {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_source_element"
-                    }
+                    "type": "SYMBOL",
+                    "name": "body"
                   }
                 }
               ]
@@ -2923,12 +2876,33 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
-        },
-        {
           "type": "STRING",
           "value": "endif"
+        }
+      ]
+    },
+    "elseif": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "elseif"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "then",
+          "content": {
+            "type": "SYMBOL",
+            "name": "body"
+          }
         }
       ]
     },

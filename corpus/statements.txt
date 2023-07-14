@@ -371,7 +371,8 @@ If
     (binary_expression
       (identifier)
       (boolean))
-    (content)))
+    (body
+      (content))))
 
 ==================
 If else
@@ -389,8 +390,10 @@ If else
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (content)))
+    (body
+      (content))
+    (body
+      (content))))
 
 ==================
 If elseif
@@ -408,18 +411,21 @@ If elseif
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (binary_expression
-      (member_expression
-        (identifier)
-        (property_identifier))
-      (number))
-    (content)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)))
+    (body
+      (content))
+    (elseif
+      (binary_expression
+        (member_expression
+          (identifier)
+          (property_identifier))
+        (number))
+      (body
+        (content)
+        (output_directive
+          (member_expression
+            (identifier)
+            (property_identifier)))
+        (content)))))
 
 ==================
 If elseif else
@@ -439,19 +445,23 @@ If elseif else
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (binary_expression
-      (member_expression
-        (identifier)
-        (property_identifier))
-      (number))
-    (content)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)
-    (content)))
+    (body
+      (content))
+    (elseif
+      (binary_expression
+        (member_expression
+          (identifier)
+          (property_identifier))
+        (number))
+      (body
+        (content)
+        (output_directive
+          (member_expression
+            (identifier)
+            (property_identifier)))
+        (content)))
+    (body
+      (content))))
 
 ==================
 Import
