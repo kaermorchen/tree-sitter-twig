@@ -262,10 +262,11 @@ For
   (for_statement
     (identifier)
     (identifier)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))))
+    (body
+      (output_directive
+        (member_expression
+          (identifier)
+          (property_identifier))))))
 
 ==================
 For with sequence of numbers
@@ -280,8 +281,9 @@ For with sequence of numbers
     (binary_expression
       (number)
       (number))
-    (output_directive
-      (identifier))))
+    (body
+      (output_directive
+        (identifier)))))
 
 ==================
 For with else
@@ -296,17 +298,19 @@ For with else
   (for_statement
     (identifier)
     (identifier)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)))
+    (body
+      (output_directive
+        (member_expression
+          (identifier)
+          (property_identifier))))
+    (body
+      (content))))
 
 ==================
 For with kye, value
 ==================
 {% for key, user in users %}
-    <li>{{ key }}: {{ user.username|e }}</li>
+  <li>{{ key }}: {{ user.username|e }}</li>
 {% endfor %}
 ---
 (template
@@ -314,17 +318,18 @@ For with kye, value
     (identifier)
     (identifier)
     (identifier)
-    (content)
-    (output_directive
-      (identifier))
-    (content)
-    (output_directive
-      (filter_expression
-        (member_expression
-          (identifier)
-          (property_identifier))
-        (identifier)))
-    (content)))
+    (body
+      (content)
+      (output_directive
+        (identifier))
+      (content)
+      (output_directive
+        (filter_expression
+          (member_expression
+            (identifier)
+            (property_identifier))
+          (identifier)))
+      (content))))
 
 ==================
 From

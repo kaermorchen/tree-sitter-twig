@@ -2648,18 +2648,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_source_element"
-            }
-          }
+          "name": "body"
         },
         {
           "type": "CHOICE",
@@ -2668,27 +2657,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
-                {
                   "type": "STRING",
                   "value": "else"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "alternate",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_source_element"
-                    }
-                  }
+                  "name": "body"
                 }
               ]
             },
@@ -2696,10 +2670,6 @@
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
         },
         {
           "type": "STRING",

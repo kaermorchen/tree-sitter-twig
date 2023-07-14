@@ -341,17 +341,8 @@ module.exports = grammar({
         commaSep1(field('variable', $.identifier)),
         'in',
         field('expr', $.expression),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        optional(
-          seq(
-            $._open_directive_token,
-            'else',
-            $._close_directive_token,
-            field('alternate', repeat($._source_element)),
-          ),
-        ),
-        $._open_directive_token,
+        $.body,
+        optional(seq('else', $.body)),
         'endfor',
       ),
 
