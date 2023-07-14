@@ -117,7 +117,7 @@ module.exports = grammar({
       seq(
         choice(field('parameter', $.identifier), $._call_signature),
         '=>',
-        field('body', $.expression),
+        field('expr', $.expression),
       ),
 
     _call_signature: ($) => field('parameters', $.formal_parameters),
@@ -303,7 +303,7 @@ module.exports = grammar({
         'block',
         field('name', $.identifier),
         choice(
-          field('body', $.expression),
+          field('expr', $.expression),
           seq($.body, 'endblock', optional(field('name', $.identifier))),
         ),
       ),

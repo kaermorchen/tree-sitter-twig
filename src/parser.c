@@ -20,7 +20,7 @@
 #define ALIAS_COUNT 2
 #define TOKEN_COUNT 114
 #define EXTERNAL_TOKEN_COUNT 1
-#define FIELD_COUNT 29
+#define FIELD_COUNT 28
 #define MAX_ALIAS_SEQUENCE_LENGTH 9
 #define PRODUCTION_ID_COUNT 56
 
@@ -1330,32 +1330,31 @@ enum {
   field_alternative = 1,
   field_argument = 2,
   field_arguments = 3,
-  field_body = 4,
-  field_condition = 5,
-  field_consequence = 6,
-  field_else = 7,
-  field_elseif = 8,
-  field_expiration = 9,
-  field_expr = 10,
-  field_filter = 11,
-  field_function = 12,
-  field_ignore_missing = 13,
-  field_index = 14,
-  field_key = 15,
-  field_left = 16,
-  field_name = 17,
-  field_object = 18,
-  field_only = 19,
-  field_operator = 20,
-  field_parameter = 21,
-  field_parameters = 22,
-  field_property = 23,
-  field_right = 24,
-  field_strategy = 25,
-  field_then = 26,
-  field_value = 27,
-  field_variable = 28,
-  field_variables = 29,
+  field_condition = 4,
+  field_consequence = 5,
+  field_else = 6,
+  field_elseif = 7,
+  field_expiration = 8,
+  field_expr = 9,
+  field_filter = 10,
+  field_function = 11,
+  field_ignore_missing = 12,
+  field_index = 13,
+  field_key = 14,
+  field_left = 15,
+  field_name = 16,
+  field_object = 17,
+  field_only = 18,
+  field_operator = 19,
+  field_parameter = 20,
+  field_parameters = 21,
+  field_property = 22,
+  field_right = 23,
+  field_strategy = 24,
+  field_then = 25,
+  field_value = 26,
+  field_variable = 27,
+  field_variables = 28,
 };
 
 static const char * const ts_field_names[] = {
@@ -1363,7 +1362,6 @@ static const char * const ts_field_names[] = {
   [field_alternative] = "alternative",
   [field_argument] = "argument",
   [field_arguments] = "arguments",
-  [field_body] = "body",
   [field_condition] = "condition",
   [field_consequence] = "consequence",
   [field_else] = "else",
@@ -1469,13 +1467,13 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_filter, 2},
     {field_object, 0},
   [14] =
-    {field_body, 2},
+    {field_expr, 2},
     {field_parameter, 0},
   [16] =
-    {field_body, 2},
+    {field_expr, 2},
     {field_parameters, 0},
   [18] =
-    {field_body, 2},
+    {field_expr, 2},
     {field_name, 1},
   [20] =
     {field_expr, 1},

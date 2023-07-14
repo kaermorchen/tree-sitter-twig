@@ -169,7 +169,7 @@
     "type": "arrow_function",
     "named": true,
     "fields": {
-      "body": {
+      "expr": {
         "multiple": false,
         "required": true,
         "types": [
@@ -427,7 +427,7 @@
     "type": "block_statement",
     "named": true,
     "fields": {
-      "body": {
+      "expr": {
         "multiple": false,
         "required": false,
         "types": [
