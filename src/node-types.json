@@ -105,6 +105,16 @@
     "type": "apply_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "filter": {
         "multiple": false,
         "required": true,
@@ -119,16 +129,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -241,6 +241,16 @@
     "type": "autoescape_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "strategy": {
         "multiple": false,
         "required": false,
@@ -255,16 +265,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -427,6 +427,16 @@
     "type": "block_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "expr": {
         "multiple": false,
         "required": false,
@@ -447,127 +457,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "body",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "apply_statement",
-          "named": true
-        },
-        {
-          "type": "autoescape_statement",
-          "named": true
-        },
-        {
-          "type": "block_statement",
-          "named": true
-        },
-        {
-          "type": "cache_statement",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "content",
-          "named": true
-        },
-        {
-          "type": "deprecated_statement",
-          "named": true
-        },
-        {
-          "type": "do_statement",
-          "named": true
-        },
-        {
-          "type": "embed_statement",
-          "named": true
-        },
-        {
-          "type": "extends_statement",
-          "named": true
-        },
-        {
-          "type": "flush_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "from_statement",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "import_statement",
-          "named": true
-        },
-        {
-          "type": "include_statement",
-          "named": true
-        },
-        {
-          "type": "macro_statement",
-          "named": true
-        },
-        {
-          "type": "output_directive",
-          "named": true
-        },
-        {
-          "type": "sandbox_statement",
-          "named": true
-        },
-        {
-          "type": "set_block_statement",
-          "named": true
-        },
-        {
-          "type": "set_statement",
-          "named": true
-        },
-        {
-          "type": "tag_statement",
-          "named": true
-        },
-        {
-          "type": "use_statement",
-          "named": true
-        },
-        {
-          "type": "verbatim_statement",
-          "named": true
-        },
-        {
-          "type": "with_statement",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -579,6 +468,16 @@
     "type": "cache_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "expiration": {
         "multiple": false,
         "required": false,
@@ -599,16 +498,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -705,10 +594,10 @@
       },
       "then": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "source_elements",
             "named": true
           }
         ]
@@ -719,6 +608,16 @@
     "type": "embed_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "ignore_missing": {
         "multiple": false,
         "required": false,
@@ -759,16 +658,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -827,6 +716,16 @@
     "type": "for_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "expr": {
         "multiple": false,
         "required": true,
@@ -847,16 +746,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -918,7 +807,7 @@
         "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "source_elements",
             "named": true
           }
         ]
@@ -945,10 +834,10 @@
       },
       "then": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "source_elements",
             "named": true
           }
         ]
@@ -1056,6 +945,16 @@
           }
         ]
       },
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1068,13 +967,9 @@
       }
     },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "body",
-          "named": true
-        },
         {
           "type": "identifier",
           "named": true
@@ -1204,22 +1099,33 @@
   {
     "type": "sandbox_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "set_block_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "variable": {
         "multiple": false,
         "required": true,
@@ -1230,16 +1136,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1266,6 +1162,117 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "source_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "apply_statement",
+          "named": true
+        },
+        {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "cache_statement",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "deprecated_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "embed_statement",
+          "named": true
+        },
+        {
+          "type": "extends_statement",
+          "named": true
+        },
+        {
+          "type": "flush_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "from_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
+          "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "sandbox_statement",
+          "named": true
+        },
+        {
+          "type": "set_block_statement",
+          "named": true
+        },
+        {
+          "type": "set_statement",
+          "named": true
+        },
+        {
+          "type": "tag_statement",
+          "named": true
+        },
+        {
+          "type": "use_statement",
+          "named": true
+        },
+        {
+          "type": "verbatim_statement",
+          "named": true
+        },
+        {
+          "type": "with_statement",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1533,22 +1540,33 @@
   {
     "type": "verbatim_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "with_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
       "expr": {
         "multiple": false,
         "required": false,
@@ -1569,16 +1587,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        }
-      ]
     }
   },
   {

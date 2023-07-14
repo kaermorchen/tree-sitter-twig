@@ -15,7 +15,7 @@ Divisible by
         (identifier)
         (arguments
           (number))))
-    (body
+    (source_elements
       (content))))
 
 ==================
@@ -35,5 +35,5 @@ Same as
         (identifier)
         (arguments
           (boolean))))
-    (body
+    (source_elements
       (content))))
