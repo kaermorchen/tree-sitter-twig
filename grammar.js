@@ -237,9 +237,14 @@ module.exports = grammar({
         'ternary',
         seq(
           field('condition', $.expression),
-          choice('?', '?:'),
-          field('consequence', $.expression),
-          optional(seq(':', field('alternative', $.expression))),
+          choice(
+            seq(
+              '?',
+              field('consequence', $.expression),
+              optional(seq(':', field('alternative', $.expression))),
+            ),
+            seq('?:', field('alternative', $.expression)),
+          ),
         ),
       ),
 
