@@ -26,7 +26,7 @@ module.exports = grammar({
     template: ($) => repeat($._source_element),
 
     _source_element: ($) =>
-      choice($._statement_directive, $.output_directive, $.comment, $.content),
+      choice($._statement, $.output_directive, $.comment, $.content),
 
     source_elements: ($) => prec.left(repeat1($._source_element)),
 
@@ -37,13 +37,6 @@ module.exports = grammar({
 
     _open_directive_token: () => choice('{%', '{%-', '{%~'),
     _close_directive_token: () => choice('%}', '-%}', '~%}'),
-
-    _statement_directive: ($) =>
-      seq(
-        $._open_directive_token,
-        optional($._statement),
-        $._close_directive_token,
-      ),
 
     expression: ($) =>
       choice(
@@ -264,10 +257,11 @@ module.exports = grammar({
       ),
 
     tag_statement: ($) =>
-      seq(alias($.identifier, $.tag), repeat(prec.left($.expression))),
+      statement($, alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
     set_statement: ($) =>
-      seq(
+      statement(
+        $,
         'set',
         commaSep1(field('variable', $.identifier)),
         '=',
@@ -275,10 +269,17 @@ module.exports = grammar({
       ),
 
     set_block_statement: ($) =>
-      seq('set', field('variable', $.identifier), source_elements($), 'endset'),
+      statement(
+        $,
+        'set',
+        field('variable', $.identifier),
+        source_elements($),
+        'endset',
+      ),
 
     apply_statement: ($) =>
-      seq(
+      statement(
+        $,
         'apply',
         field('filter', choice($.identifier, $.filter_expression)),
         source_elements($),
@@ -286,7 +287,8 @@ module.exports = grammar({
       ),
 
     autoescape_statement: ($) =>
-      seq(
+      statement(
+        $,
         'autoescape',
         optional(field('strategy', choice($.string, $.boolean))),
         source_elements($),
@@ -294,17 +296,23 @@ module.exports = grammar({
       ),
 
     block_statement: ($) =>
-      seq(
+      statement(
+        $,
         'block',
         field('name', $.identifier),
         choice(
           field('expr', $.expression),
-          seq(source_elements($), 'endblock', optional(field('name', $.identifier))),
+          seq(
+            source_elements($),
+            'endblock',
+            optional(field('name', $.identifier)),
+          ),
         ),
       ),
 
     cache_statement: ($) =>
-      seq(
+      statement(
+        $,
         'cache',
         field('key', $.expression),
         ' ',
@@ -313,11 +321,14 @@ module.exports = grammar({
         'endcache',
       ),
 
-    deprecated_statement: ($) => seq('deprecated', field('expr', $.expression)),
-    do_statement: ($) => seq('do', field('expr', $.expression)),
+    deprecated_statement: ($) =>
+      statement($, 'deprecated', field('expr', $.expression)),
+
+    do_statement: ($) => statement($, 'do', field('expr', $.expression)),
 
     embed_statement: ($) =>
-      seq(
+      statement(
+        $,
         'embed',
         field('name', $.expression),
         optional(field('ignore_missing', 'ignore missing')),
@@ -327,11 +338,13 @@ module.exports = grammar({
         'endembed',
       ),
 
-    extends_statement: ($) => seq('extends', field('expr', $.expression)),
-    flush_statement: ($) => 'flush',
+    extends_statement: ($) =>
+      statement($, 'extends', field('expr', $.expression)),
+    flush_statement: ($) => statement($, 'flush'),
 
     for_statement: ($) =>
-      seq(
+      statement(
+        $,
         'for',
         commaSep1(field('variable', $.identifier)),
         'in',
@@ -342,7 +355,8 @@ module.exports = grammar({
       ),
 
     from_statement: ($) =>
-      seq(
+      statement(
+        $,
         'from',
         field('expr', $.expression),
         'import',
@@ -357,7 +371,8 @@ module.exports = grammar({
       ),
 
     if_statement: ($) =>
-      seq(
+      statement(
+        $,
         'if',
         field('expr', $.expression),
         source_elements($, 'then'),
@@ -370,7 +385,8 @@ module.exports = grammar({
       seq('elseif', field('expr', $.expression), source_elements($, 'then')),
 
     import_statement: ($) =>
-      seq(
+      statement(
+        $,
         'import',
         field('expr', $.expression),
         'as',
@@ -378,7 +394,8 @@ module.exports = grammar({
       ),
 
     include_statement: ($) =>
-      seq(
+      statement(
+        $,
         'include',
         field('expr', $.expression),
         optional(field('ignore_missing', 'ignore missing')),
@@ -387,7 +404,8 @@ module.exports = grammar({
       ),
 
     macro_statement: ($) =>
-      seq(
+      statement(
+        $,
         'macro',
         field('name', $.identifier),
         field('arguments', $.arguments),
@@ -396,19 +414,23 @@ module.exports = grammar({
         optional($.identifier),
       ),
 
-    sandbox_statement: ($) => seq('sandbox', source_elements($), 'endsandbox'),
+    sandbox_statement: ($) =>
+      statement($, 'sandbox', source_elements($), 'endsandbox'),
 
     use_statement: ($) =>
-      seq(
+      statement(
+        $,
         'use',
         field('expr', $.expression),
         optional(seq('with', commaSep1(field('variable', $.as_operator)))),
       ),
 
-    verbatim_statement: ($) => seq('verbatim', source_elements($), 'endverbatim'),
+    verbatim_statement: ($) =>
+      statement($, 'verbatim', source_elements($), 'endverbatim'),
 
     with_statement: ($) =>
-      seq(
+      statement(
+        $,
         'with',
         optional(field('expr', $.expression)),
         optional(field('only', 'only')),
@@ -458,4 +480,8 @@ function source_elements($, fieldName = 'body') {
     optional(field(fieldName, $.source_elements)),
     $._open_directive_token,
   );
+}
+
+function statement($, ...args) {
+  return seq($._open_directive_token, ...args, $._close_directive_token);
 }

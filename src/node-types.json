@@ -713,6 +713,11 @@
     }
   },
   {
+    "type": "flush_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "for_statement",
     "named": true,
     "fields": {
@@ -1170,7 +1175,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "apply_statement",
@@ -1858,8 +1863,8 @@
     "named": false
   },
   {
-    "type": "flush_statement",
-    "named": true
+    "type": "flush",
+    "named": false
   },
   {
     "type": "for",

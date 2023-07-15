@@ -13,7 +13,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_statement_directive"
+          "name": "_statement"
         },
         {
           "type": "SYMBOL",
@@ -125,31 +125,6 @@
         {
           "type": "STRING",
           "value": "~%}"
-        }
-      ]
-    },
-    "_statement_directive": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_statement"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
         }
       ]
     },
@@ -2143,6 +2118,10 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -2161,12 +2140,20 @@
               "name": "expression"
             }
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "set_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "set"
@@ -2240,12 +2227,20 @@
               }
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "set_block_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "set"
@@ -2290,12 +2285,20 @@
         {
           "type": "STRING",
           "value": "endset"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "apply_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "apply"
@@ -2349,12 +2352,20 @@
         {
           "type": "STRING",
           "value": "endapply"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "autoescape_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "autoescape"
@@ -2416,12 +2427,20 @@
         {
           "type": "STRING",
           "value": "endautoescape"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "block_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "block"
@@ -2500,12 +2519,20 @@
               ]
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "cache_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "cache"
@@ -2570,12 +2597,20 @@
         {
           "type": "STRING",
           "value": "endcache"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "deprecated_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "deprecated"
@@ -2587,12 +2622,20 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "do_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "do"
@@ -2604,12 +2647,20 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "embed_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "embed"
@@ -2711,12 +2762,20 @@
         {
           "type": "STRING",
           "value": "endembed"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "extends_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "extends"
@@ -2728,16 +2787,37 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "flush_statement": {
-      "type": "STRING",
-      "value": "flush"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
+          "type": "STRING",
+          "value": "flush"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
+        }
+      ]
     },
     "for_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "for"
@@ -2865,12 +2945,20 @@
         {
           "type": "STRING",
           "value": "endfor"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "from_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "from"
@@ -2937,6 +3025,10 @@
               }
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
@@ -2972,6 +3064,10 @@
     "if_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "if"
@@ -3081,6 +3177,10 @@
         {
           "type": "STRING",
           "value": "endif"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
@@ -3134,6 +3234,10 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
+        {
           "type": "STRING",
           "value": "import"
         },
@@ -3156,12 +3260,20 @@
             "type": "SYMBOL",
             "name": "identifier"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "include_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "include"
@@ -3230,12 +3342,20 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "macro_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "macro"
@@ -3300,12 +3420,20 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "sandbox_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "sandbox"
@@ -3342,12 +3470,20 @@
         {
           "type": "STRING",
           "value": "endsandbox"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "use_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "use"
@@ -3409,12 +3545,20 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "verbatim_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "verbatim"
@@ -3451,12 +3595,20 @@
         {
           "type": "STRING",
           "value": "endverbatim"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
     "with_statement": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_open_directive_token"
+        },
         {
           "type": "STRING",
           "value": "with"
@@ -3525,6 +3677,10 @@
         {
           "type": "STRING",
           "value": "endwith"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_close_directive_token"
         }
       ]
     },
