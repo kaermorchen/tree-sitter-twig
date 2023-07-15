@@ -322,6 +322,32 @@ Call expression with arguments
         (number)))))
 
 ==================
+Call expression with one argument
+==================
+{{ join(',') }}
+---
+(template
+  (output
+    (call_expression
+      (identifier)
+      (arguments
+        (string)))))
+
+==================
+Call expression with one named argument
+==================
+{{ join(splitter=',') }}
+---
+(template
+  (output
+    (call_expression
+      (identifier)
+      (arguments
+        (named_argument
+          (string)
+          (string))))))
+
+==================
 Call expression with named arguments
 ==================
 {{ range(low=1, high=10, step=2) }}
@@ -331,12 +357,31 @@ Call expression with named arguments
     (call_expression
       (identifier)
       (arguments
-        (identifier)
-        (number)
-        (identifier)
-        (number)
-        (identifier)
-        (number)))))
+        (named_argument
+          (string)
+          (number))
+        (named_argument
+          (string)
+          (number))
+        (named_argument
+          (string)
+          (number))))))
+
+==================
+Call expression with arguments and named arguments
+==================
+{{ "now"|date('d/m/Y H:i', timezone="Europe/Paris") }}
+---
+(template
+  (output
+    (filter_expression
+      (string)
+      (identifier)
+      (arguments
+        (string)
+        (named_argument
+          (string)
+          (string))))))
 
 ==================
 Unary expression

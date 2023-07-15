@@ -523,7 +523,7 @@ Include ignore missing
 ==================
 Macro
 ==================
-{% macro input(name, size = 20) %}
+{% macro input(name) %}
   <input name="{{ name }}"/>
 {% endmacro %}
 ---
@@ -531,9 +531,7 @@ Macro
   (macro
     (identifier)
     (arguments
-      (identifier)
-      (identifier)
-      (number))
+      (identifier))
     (source_elements
       (content)
       (output

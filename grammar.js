@@ -2,7 +2,12 @@ module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
-  inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression, $._statement],
+  inline: ($) => [
+    $._call_signature,
+    $._formal_parameter,
+    $._lhs_expression,
+    $._statement,
+  ],
   precedences: ($) => [
     [
       'member',
@@ -160,10 +165,13 @@ module.exports = grammar({
       ),
 
     arguments: ($) =>
+      seq('(', commaSep(choice($.named_argument, $.expression)), ')'),
+
+    named_argument: ($) =>
       seq(
-        '(',
-        commaSep(seq(optional(seq($.identifier, '=')), $.expression)),
-        ')',
+        field('key', alias($.identifier, $.string)),
+        '=',
+        field('value', $.expression),
       ),
 
     unary_expression: ($) =>
@@ -323,8 +331,7 @@ module.exports = grammar({
         'endcache',
       ),
 
-    deprecated: ($) =>
-      statement($, 'deprecated', field('expr', $.expression)),
+    deprecated: ($) => statement($, 'deprecated', field('expr', $.expression)),
 
     do: ($) => statement($, 'do', field('expr', $.expression)),
 
@@ -340,8 +347,7 @@ module.exports = grammar({
         'endembed',
       ),
 
-    extends: ($) =>
-      statement($, 'extends', field('expr', $.expression)),
+    extends: ($) => statement($, 'extends', field('expr', $.expression)),
 
     flush: ($) => statement($, 'flush'),
 
@@ -417,8 +423,7 @@ module.exports = grammar({
         optional($.identifier),
       ),
 
-    sandbox: ($) =>
-      statement($, 'sandbox', source_elements($), 'endsandbox'),
+    sandbox: ($) => statement($, 'sandbox', source_elements($), 'endsandbox'),
 
     use: ($) =>
       statement(

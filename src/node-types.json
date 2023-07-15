@@ -144,7 +144,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "named_argument",
           "named": true
         }
       ]
@@ -1006,6 +1006,32 @@
         "types": [
           {
             "type": "property_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "named_argument",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
