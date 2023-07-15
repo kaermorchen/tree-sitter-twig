@@ -102,7 +102,7 @@
     ]
   },
   {
-    "type": "apply_statement",
+    "type": "apply",
     "named": true,
     "fields": {
       "body": {
@@ -238,7 +238,7 @@
     }
   },
   {
-    "type": "autoescape_statement",
+    "type": "autoescape",
     "named": true,
     "fields": {
       "body": {
@@ -424,7 +424,7 @@
     }
   },
   {
-    "type": "block_statement",
+    "type": "block",
     "named": true,
     "fields": {
       "body": {
@@ -465,7 +465,7 @@
     "fields": {}
   },
   {
-    "type": "cache_statement",
+    "type": "cache",
     "named": true,
     "fields": {
       "body": {
@@ -547,7 +547,7 @@
     "fields": {}
   },
   {
-    "type": "deprecated_statement",
+    "type": "deprecated",
     "named": true,
     "fields": {
       "expr": {
@@ -563,7 +563,7 @@
     }
   },
   {
-    "type": "do_statement",
+    "type": "do",
     "named": true,
     "fields": {
       "expr": {
@@ -605,7 +605,7 @@
     }
   },
   {
-    "type": "embed_statement",
+    "type": "embed",
     "named": true,
     "fields": {
       "body": {
@@ -661,7 +661,7 @@
     }
   },
   {
-    "type": "extends_statement",
+    "type": "extends",
     "named": true,
     "fields": {
       "expr": {
@@ -713,12 +713,12 @@
     }
   },
   {
-    "type": "flush_statement",
+    "type": "flush",
     "named": true,
     "fields": {}
   },
   {
-    "type": "for_statement",
+    "type": "for",
     "named": true,
     "fields": {
       "body": {
@@ -769,7 +769,7 @@
     }
   },
   {
-    "type": "from_statement",
+    "type": "from",
     "named": true,
     "fields": {
       "expr": {
@@ -804,7 +804,7 @@
     "fields": {}
   },
   {
-    "type": "if_statement",
+    "type": "if",
     "named": true,
     "fields": {
       "else": {
@@ -850,7 +850,7 @@
     }
   },
   {
-    "type": "import_statement",
+    "type": "import",
     "named": true,
     "fields": {
       "expr": {
@@ -876,7 +876,7 @@
     }
   },
   {
-    "type": "include_statement",
+    "type": "include",
     "named": true,
     "fields": {
       "expr": {
@@ -941,7 +941,7 @@
     }
   },
   {
-    "type": "macro_statement",
+    "type": "macro",
     "named": true,
     "fields": {
       "arguments": {
@@ -1037,7 +1037,7 @@
     }
   },
   {
-    "type": "output_directive",
+    "type": "output",
     "named": true,
     "fields": {},
     "children": {
@@ -1106,7 +1106,7 @@
     "fields": {}
   },
   {
-    "type": "sandbox_statement",
+    "type": "sandbox",
     "named": true,
     "fields": {
       "body": {
@@ -1122,33 +1122,7 @@
     }
   },
   {
-    "type": "set_block_statement",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "source_elements",
-            "named": true
-          }
-        ]
-      },
-      "variable": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "set_statement",
+    "type": "set",
     "named": true,
     "fields": {
       "value": {
@@ -1174,6 +1148,32 @@
     }
   },
   {
+    "type": "set_block",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_elements",
     "named": true,
     "fields": {},
@@ -1182,19 +1182,19 @@
       "required": true,
       "types": [
         {
-          "type": "apply_statement",
+          "type": "apply",
           "named": true
         },
         {
-          "type": "autoescape_statement",
+          "type": "autoescape",
           "named": true
         },
         {
-          "type": "block_statement",
+          "type": "block",
           "named": true
         },
         {
-          "type": "cache_statement",
+          "type": "cache",
           "named": true
         },
         {
@@ -1206,79 +1206,79 @@
           "named": true
         },
         {
-          "type": "deprecated_statement",
+          "type": "deprecated",
           "named": true
         },
         {
-          "type": "do_statement",
+          "type": "do",
           "named": true
         },
         {
-          "type": "embed_statement",
+          "type": "embed",
           "named": true
         },
         {
-          "type": "extends_statement",
+          "type": "extends",
           "named": true
         },
         {
-          "type": "flush_statement",
+          "type": "flush",
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "for",
           "named": true
         },
         {
-          "type": "from_statement",
+          "type": "from",
           "named": true
         },
         {
-          "type": "if_statement",
+          "type": "if",
           "named": true
         },
         {
-          "type": "import_statement",
+          "type": "import",
           "named": true
         },
         {
-          "type": "include_statement",
+          "type": "include",
           "named": true
         },
         {
-          "type": "macro_statement",
+          "type": "macro",
           "named": true
         },
         {
-          "type": "output_directive",
+          "type": "output",
           "named": true
         },
         {
-          "type": "sandbox_statement",
+          "type": "sandbox",
           "named": true
         },
         {
-          "type": "set_block_statement",
+          "type": "set",
           "named": true
         },
         {
-          "type": "set_statement",
+          "type": "set_block",
           "named": true
         },
         {
-          "type": "tag_statement",
+          "type": "tag",
           "named": true
         },
         {
-          "type": "use_statement",
+          "type": "use",
           "named": true
         },
         {
-          "type": "verbatim_statement",
+          "type": "verbatim",
           "named": true
         },
         {
-          "type": "with_statement",
+          "type": "with",
           "named": true
         }
       ]
@@ -1318,15 +1318,10 @@
   {
     "type": "tag",
     "named": true,
-    "fields": {}
-  },
-  {
-    "type": "tag_statement",
-    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "expression",
@@ -1348,19 +1343,19 @@
       "required": false,
       "types": [
         {
-          "type": "apply_statement",
+          "type": "apply",
           "named": true
         },
         {
-          "type": "autoescape_statement",
+          "type": "autoescape",
           "named": true
         },
         {
-          "type": "block_statement",
+          "type": "block",
           "named": true
         },
         {
-          "type": "cache_statement",
+          "type": "cache",
           "named": true
         },
         {
@@ -1372,79 +1367,79 @@
           "named": true
         },
         {
-          "type": "deprecated_statement",
+          "type": "deprecated",
           "named": true
         },
         {
-          "type": "do_statement",
+          "type": "do",
           "named": true
         },
         {
-          "type": "embed_statement",
+          "type": "embed",
           "named": true
         },
         {
-          "type": "extends_statement",
+          "type": "extends",
           "named": true
         },
         {
-          "type": "flush_statement",
+          "type": "flush",
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "for",
           "named": true
         },
         {
-          "type": "from_statement",
+          "type": "from",
           "named": true
         },
         {
-          "type": "if_statement",
+          "type": "if",
           "named": true
         },
         {
-          "type": "import_statement",
+          "type": "import",
           "named": true
         },
         {
-          "type": "include_statement",
+          "type": "include",
           "named": true
         },
         {
-          "type": "macro_statement",
+          "type": "macro",
           "named": true
         },
         {
-          "type": "output_directive",
+          "type": "output",
           "named": true
         },
         {
-          "type": "sandbox_statement",
+          "type": "sandbox",
           "named": true
         },
         {
-          "type": "set_block_statement",
+          "type": "set",
           "named": true
         },
         {
-          "type": "set_statement",
+          "type": "set_block",
           "named": true
         },
         {
-          "type": "tag_statement",
+          "type": "tag",
           "named": true
         },
         {
-          "type": "use_statement",
+          "type": "use",
           "named": true
         },
         {
-          "type": "verbatim_statement",
+          "type": "verbatim",
           "named": true
         },
         {
-          "type": "with_statement",
+          "type": "with",
           "named": true
         }
       ]
@@ -1521,7 +1516,7 @@
     }
   },
   {
-    "type": "use_statement",
+    "type": "use",
     "named": true,
     "fields": {
       "expr": {
@@ -1547,7 +1542,7 @@
     }
   },
   {
-    "type": "verbatim_statement",
+    "type": "verbatim",
     "named": true,
     "fields": {
       "body": {
@@ -1563,7 +1558,7 @@
     }
   },
   {
-    "type": "with_statement",
+    "type": "with",
     "named": true,
     "fields": {
       "body": {

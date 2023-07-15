@@ -4,7 +4,7 @@ Identifier
 {{ user }}
 ---
 (template
-  (output_directive
+  (output
     (identifier)))
 
 ==================
@@ -13,7 +13,7 @@ Null
 {{ null }}
 ---
 (template
-  (output_directive
+  (output
     (null)))
 
 ==================
@@ -22,7 +22,7 @@ None
 {{ none }}
 ---
 (template
-  (output_directive
+  (output
     (null)))
 
 ==================
@@ -31,7 +31,7 @@ Interger
 {{ 42 }}
 ---
 (template
-  (output_directive
+  (output
     (number)))
 
 ==================
@@ -40,7 +40,7 @@ Float
 {{ 42.35 }}
 ---
 (template
-  (output_directive
+  (output
     (number)))
 
 ==================
@@ -49,7 +49,7 @@ True
 {{ true }}
 ---
 (template
-  (output_directive
+  (output
     (boolean)))
 
 ==================
@@ -58,7 +58,7 @@ False
 {{ false }}
 ---
 (template
-  (output_directive
+  (output
     (boolean)))
 
 ==================
@@ -67,7 +67,7 @@ String
 {{ 'hello' }}
 ---
 (template
-  (output_directive
+  (output
     (string)))
 
 ==================
@@ -76,7 +76,7 @@ String interpolation
 {{ "foo #{ 43 } #{ bar } baz" }}
 ---
 (template
-  (output_directive
+  (output
     (interpolated_string
       (string)
       (number)
@@ -90,7 +90,7 @@ String interpolation deeper
 {{ "foo #{"foo #{bar} baz"} baz" }}
 ---
 (template
-  (output_directive
+  (output
     (interpolated_string
       (string)
       (interpolated_string
@@ -105,7 +105,7 @@ String interpolation escaped character
 {{ "foo \#{} \" \n" }}
 ---
 (template
-  (output_directive
+  (output
     (string)))
 
 ==================
@@ -114,7 +114,7 @@ Array empty
 {{ [] }}
 ---
 (template
-  (output_directive
+  (output
     (array)))
 
 ==================
@@ -123,7 +123,7 @@ Array
 {{ [1, 2, 'foo', "bar"] }}
 ---
 (template
-  (output_directive
+  (output
     (array
       (number)
       (number)
@@ -136,7 +136,7 @@ Object empty
 {{ {} }}
 ---
 (template
-  (output_directive
+  (output
     (object)))
 
 ==================
@@ -145,7 +145,7 @@ Object
 {{ {'foo': 'bar'} }}
 ---
 (template
-  (output_directive
+  (output
     (object
       (pair
         (string)
@@ -157,7 +157,7 @@ Object property keys as names
 {{ { foo: 'foo', bar: 'bar' } }}
 ---
 (template
-  (output_directive
+  (output
     (object
       (pair
         (string)
@@ -172,7 +172,7 @@ Object property keys as integer
 {{ { 2: 'foo', 4: 'bar' } }}
 ---
 (template
-  (output_directive
+  (output
     (object
       (pair
         (number)
@@ -187,7 +187,7 @@ Object property as the variable name
 {{ { foo } }}
 ---
 (template
-  (output_directive
+  (output
     (object
       (string))))
 
@@ -197,7 +197,7 @@ Object parentheses property
 {{ { (foo): 'foo' } }}
 ---
 (template
-  (output_directive
+  (output
     (object
       (pair
         (computed_property_name
@@ -210,7 +210,7 @@ Arrow function with arguments
 {{ (a, b) => 42 }}
 ---
 (template
-  (output_directive
+  (output
     (arrow_function
       (formal_parameters
         (identifier)
@@ -223,7 +223,7 @@ Arrow function without arguments
 {{ () => 42 }}
 ---
 (template
-  (output_directive
+  (output
     (arrow_function
       (formal_parameters)
       (number))))
@@ -234,7 +234,7 @@ Arrow function single argument
 {{ v => 42 }}
 ---
 (template
-  (output_directive
+  (output
     (arrow_function
       (identifier)
       (number))))
@@ -245,7 +245,7 @@ Parenthesized expression
 {{ (42) }}
 ---
 (template
-  (output_directive
+  (output
     (parenthesized_expression
       (number))))
 
@@ -255,7 +255,7 @@ Member expression
 {{ user.name }}
 ---
 (template
-  (output_directive
+  (output
     (member_expression
       (identifier)
       (property_identifier))))
@@ -266,7 +266,7 @@ Member expression deeper
 {{ user.name.first }}
 ---
 (template
-  (output_directive
+  (output
     (member_expression
       (member_expression
         (identifier)
@@ -279,7 +279,7 @@ Subscript expression
 {{ user['name'] }}
 ---
 (template
-  (output_directive
+  (output
     (subscript_expression
       (identifier)
       (string))))
@@ -290,7 +290,7 @@ Subscript expression deeper
 {{ user['name'][prop] }}
 ---
 (template
-  (output_directive
+  (output
     (subscript_expression
       (subscript_expression
         (identifier)
@@ -303,7 +303,7 @@ Call expression without arguments
 {{ range() }}
 ---
 (template
-  (output_directive
+  (output
     (call_expression
       (identifier)
       (arguments))))
@@ -314,7 +314,7 @@ Call expression with arguments
 {{ range(0, 3) }}
 ---
 (template
-  (output_directive
+  (output
     (call_expression
       (identifier)
       (arguments
@@ -327,7 +327,7 @@ Call expression with named arguments
 {{ range(low=1, high=10, step=2) }}
 ---
 (template
-  (output_directive
+  (output
     (call_expression
       (identifier)
       (arguments
@@ -344,7 +344,7 @@ Unary expression
 {{ -42 }}
 ---
 (template
-  (output_directive
+  (output
     (unary_expression
       (number))))
 
@@ -354,7 +354,7 @@ Binary expression
 {{ a + b }}
 ---
 (template
-  (output_directive
+  (output
     (binary_expression
       (identifier)
       (identifier))))
@@ -365,7 +365,7 @@ Binary and unary expressions
 {{ -42 + a * 'b' }}
 ---
 (template
-  (output_directive
+  (output
     (binary_expression
       (unary_expression
         (number))
@@ -379,7 +379,7 @@ Ternary operator
 {{ foo ? 'yes' : 'no' }}
 ---
 (template
-  (output_directive
+  (output
     (ternary_expression
       (identifier)
       (string)
@@ -391,7 +391,7 @@ Ternary operator short
 {{ foo ?: 'no' }}
 ---
 (template
-  (output_directive
+  (output
     (ternary_expression
       (identifier)
       (string))))
@@ -402,7 +402,7 @@ Filter without arguments
 {{ name|title }}
 ---
 (template
-  (output_directive
+  (output
     (filter_expression
       (identifier)
       (identifier))))
@@ -413,7 +413,7 @@ Filter with arguments
 {{ name|join(', ') }}
 ---
 (template
-  (output_directive
+  (output
     (filter_expression
       (identifier)
       (identifier)
@@ -426,7 +426,7 @@ Filter multiple
 {{ name|striptags|title }}
 ---
 (template
-  (output_directive
+  (output
     (filter_expression
       (filter_expression
         (identifier)

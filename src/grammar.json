@@ -17,7 +17,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "output_directive"
+          "name": "output"
         },
         {
           "type": "SYMBOL",
@@ -51,7 +51,7 @@
         }
       }
     },
-    "output_directive": {
+    "output": {
       "type": "SEQ",
       "members": [
         {
@@ -94,7 +94,7 @@
         }
       ]
     },
-    "_open_directive_token": {
+    "_statement_start": {
       "type": "CHOICE",
       "members": [
         {
@@ -111,7 +111,7 @@
         }
       ]
     },
-    "_close_directive_token": {
+    "_statement_stop": {
       "type": "CHOICE",
       "members": [
         {
@@ -2142,12 +2142,12 @@
         ]
       }
     },
-    "tag_statement": {
+    "tag": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "ALIAS",
@@ -2171,16 +2171,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "set_statement": {
+    "set": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2258,16 +2258,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "set_block_statement": {
+    "set_block": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2286,7 +2286,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2306,7 +2306,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2316,16 +2316,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "apply_statement": {
+    "apply": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2353,7 +2353,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2373,7 +2373,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2383,16 +2383,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "autoescape_statement": {
+    "autoescape": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2428,7 +2428,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2448,7 +2448,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2458,16 +2458,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "block_statement": {
+    "block": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2500,7 +2500,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_close_directive_token"
+                      "name": "_statement_stop"
                     },
                     {
                       "type": "CHOICE",
@@ -2520,7 +2520,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "_open_directive_token"
+                      "name": "_statement_start"
                     }
                   ]
                 },
@@ -2550,16 +2550,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "cache_statement": {
+    "cache": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2598,7 +2598,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2618,7 +2618,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2628,16 +2628,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "deprecated_statement": {
+    "deprecated": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2653,16 +2653,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "do_statement": {
+    "do": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2678,16 +2678,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "embed_statement": {
+    "embed": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2763,7 +2763,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2783,7 +2783,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2793,16 +2793,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "extends_statement": {
+    "extends": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2818,16 +2818,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "flush_statement": {
+    "flush": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2835,16 +2835,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "for_statement": {
+    "for": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -2900,7 +2900,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -2920,7 +2920,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -2939,7 +2939,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_close_directive_token"
+                      "name": "_statement_stop"
                     },
                     {
                       "type": "CHOICE",
@@ -2959,7 +2959,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "_open_directive_token"
+                      "name": "_statement_start"
                     }
                   ]
                 }
@@ -2976,16 +2976,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "from_statement": {
+    "from": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3056,7 +3056,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
@@ -3089,12 +3089,12 @@
         }
       ]
     },
-    "if_statement": {
+    "if": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3113,7 +3113,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3133,7 +3133,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -3171,7 +3171,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_close_directive_token"
+                      "name": "_statement_stop"
                     },
                     {
                       "type": "CHOICE",
@@ -3191,7 +3191,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "_open_directive_token"
+                      "name": "_statement_start"
                     }
                   ]
                 }
@@ -3208,7 +3208,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
@@ -3232,7 +3232,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3252,18 +3252,18 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         }
       ]
     },
-    "import_statement": {
+    "import": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3291,16 +3291,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "include_statement": {
+    "include": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3373,16 +3373,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "macro_statement": {
+    "macro": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3409,7 +3409,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3429,7 +3429,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -3451,16 +3451,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "sandbox_statement": {
+    "sandbox": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3471,7 +3471,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3491,7 +3491,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -3501,16 +3501,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "use_statement": {
+    "use": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3576,16 +3576,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "verbatim_statement": {
+    "verbatim": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3596,7 +3596,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3616,7 +3616,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -3626,16 +3626,16 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
-    "with_statement": {
+    "with": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_open_directive_token"
+          "name": "_statement_start"
         },
         {
           "type": "STRING",
@@ -3678,7 +3678,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_close_directive_token"
+              "name": "_statement_stop"
             },
             {
               "type": "CHOICE",
@@ -3698,7 +3698,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_open_directive_token"
+              "name": "_statement_start"
             }
           ]
         },
@@ -3708,7 +3708,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_close_directive_token"
+          "name": "_statement_stop"
         }
       ]
     },
@@ -3717,91 +3717,91 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "tag_statement"
+          "name": "tag"
         },
         {
           "type": "SYMBOL",
-          "name": "apply_statement"
+          "name": "apply"
         },
         {
           "type": "SYMBOL",
-          "name": "autoescape_statement"
+          "name": "autoescape"
         },
         {
           "type": "SYMBOL",
-          "name": "block_statement"
+          "name": "block"
         },
         {
           "type": "SYMBOL",
-          "name": "cache_statement"
+          "name": "cache"
         },
         {
           "type": "SYMBOL",
-          "name": "deprecated_statement"
+          "name": "deprecated"
         },
         {
           "type": "SYMBOL",
-          "name": "do_statement"
+          "name": "do"
         },
         {
           "type": "SYMBOL",
-          "name": "embed_statement"
+          "name": "embed"
         },
         {
           "type": "SYMBOL",
-          "name": "extends_statement"
+          "name": "extends"
         },
         {
           "type": "SYMBOL",
-          "name": "flush_statement"
+          "name": "flush"
         },
         {
           "type": "SYMBOL",
-          "name": "for_statement"
+          "name": "for"
         },
         {
           "type": "SYMBOL",
-          "name": "from_statement"
+          "name": "from"
         },
         {
           "type": "SYMBOL",
-          "name": "if_statement"
+          "name": "if"
         },
         {
           "type": "SYMBOL",
-          "name": "import_statement"
+          "name": "import"
         },
         {
           "type": "SYMBOL",
-          "name": "include_statement"
+          "name": "include"
         },
         {
           "type": "SYMBOL",
-          "name": "macro_statement"
+          "name": "macro"
         },
         {
           "type": "SYMBOL",
-          "name": "sandbox_statement"
+          "name": "sandbox"
         },
         {
           "type": "SYMBOL",
-          "name": "set_statement"
+          "name": "set"
         },
         {
           "type": "SYMBOL",
-          "name": "set_block_statement"
+          "name": "set_block"
         },
         {
           "type": "SYMBOL",
-          "name": "use_statement"
+          "name": "use"
         },
         {
           "type": "SYMBOL",
-          "name": "verbatim_statement"
+          "name": "verbatim"
         },
         {
           "type": "SYMBOL",
-          "name": "with_statement"
+          "name": "with"
         }
       ]
     }
@@ -3882,7 +3882,8 @@
   "inline": [
     "_call_signature",
     "_formal_parameter",
-    "_lhs_expression"
+    "_lhs_expression",
+    "_statement"
   ],
   "supertypes": [
     "expression",

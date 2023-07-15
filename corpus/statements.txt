@@ -4,7 +4,7 @@ Tag
 {% unknown_tag 2 + 3%}
 ---
 (template
-  (tag_statement
+  (tag
     (tag)
     (binary_expression
       (number)
@@ -18,7 +18,7 @@ Apply
 {% endapply %}
 ---
 (template
-  (apply_statement
+  (apply
     (identifier)
     (source_elements
       (content))))
@@ -31,7 +31,7 @@ Apply multiple filters
 {% endapply %}
 ---
 (template
-  (apply_statement
+  (apply
     (filter_expression
       (identifier)
       (identifier)
@@ -49,7 +49,7 @@ Autoescape
 {% endautoescape %}
 ---
 (template
-  (autoescape_statement
+  (autoescape
     (source_elements
       (content))))
 
@@ -62,7 +62,7 @@ Autoescape string argument
 {% endautoescape %}
 ---
 (template
-  (autoescape_statement
+  (autoescape
     (string)
     (source_elements
       (content))))
@@ -76,7 +76,7 @@ Autoescape boolean argument
 {% endautoescape %}
 ---
 (template
-  (autoescape_statement
+  (autoescape
     (boolean)
     (source_elements
       (content))))
@@ -87,7 +87,7 @@ Block
 {% block title %}Index{% endblock %}
 ---
 (template
-  (block_statement
+  (block
     (identifier)
     (source_elements
       (content))))
@@ -98,7 +98,7 @@ Block with end-tag
 {% block sidebar %}{% endblock sidebar %}
 ---
 (template
-  (block_statement
+  (block
     (identifier)
     (identifier)))
 
@@ -108,7 +108,7 @@ Block shortcut
 {% block title page_title|title %}
 ---
 (template
-  (block_statement
+  (block
     (identifier)
     (filter_expression
       (identifier)
@@ -122,7 +122,7 @@ Cache
 {% endcache %}
 ---
 (template
-  (cache_statement
+  (cache
     (string)
     (source_elements
       (content))))
@@ -135,7 +135,7 @@ Cache with key and expiration
 {% endcache %}
 ---
 (template
-  (cache_statement
+  (cache
     (string)
     (call_expression
       (identifier)
@@ -150,7 +150,7 @@ Deprecated
 {% deprecated 'The "base.twig" template is deprecated, use "layout.twig" instead.' %}
 ---
 (template
-  (deprecated_statement
+  (deprecated
     (string)))
 
 ==================
@@ -159,7 +159,7 @@ Do
 {% do 1 + 2 %}
 ---
 (template
-  (do_statement
+  (do
     (binary_expression
       (number)
       (number))))
@@ -170,7 +170,7 @@ Embed
 {% embed "teasers_skeleton.twig" %}{% endembed %}
 ---
 (template
-  (embed_statement
+  (embed
     (string)))
 
 ==================
@@ -181,7 +181,7 @@ Embed with variable
 {% endembed %}
 ---
 (template
-  (embed_statement
+  (embed
     (string)
     (object
       (pair
@@ -198,7 +198,7 @@ Embed with variable only
 {% endembed %}
 ---
 (template
-  (embed_statement
+  (embed
     (string)
     (object
       (pair
@@ -215,7 +215,7 @@ Embed ignore missing
 {% endembed %}
 ---
 (template
-  (embed_statement
+  (embed
     (string)
     (source_elements
       (content))))
@@ -226,7 +226,7 @@ Extends
 {% extends "base.twig" %}
 ---
 (template
-  (extends_statement
+  (extends
     (string)))
 
 ==================
@@ -235,7 +235,7 @@ Extends with ternary operator
 {% extends standalone ? "minimum.html" : "base.html" %}
 ---
 (template
-  (extends_statement
+  (extends
     (ternary_expression
       (identifier)
       (string)
@@ -247,7 +247,7 @@ Flush
 {% flush %}
 ---
 (template
-  (flush_statement))
+  (flush))
 
 ==================
 For
@@ -257,11 +257,11 @@ For
 {% endfor %}
 ---
 (template
-  (for_statement
+  (for
     (identifier)
     (identifier)
     (source_elements
-      (output_directive
+      (output
         (member_expression
           (identifier)
           (property_identifier))))))
@@ -274,13 +274,13 @@ For with sequence of numbers
 {% endfor %}
 ---
 (template
-  (for_statement
+  (for
     (identifier)
     (binary_expression
       (number)
       (number))
     (source_elements
-      (output_directive
+      (output
         (identifier)))))
 
 ==================
@@ -293,11 +293,11 @@ For with else
 {% endfor %}
 ---
 (template
-  (for_statement
+  (for
     (identifier)
     (identifier)
     (source_elements
-      (output_directive
+      (output
         (member_expression
           (identifier)
           (property_identifier))))
@@ -312,16 +312,16 @@ For with kye, value
 {% endfor %}
 ---
 (template
-  (for_statement
+  (for
     (identifier)
     (identifier)
     (identifier)
     (source_elements
       (content)
-      (output_directive
+      (output
         (identifier))
       (content)
-      (output_directive
+      (output
         (filter_expression
           (member_expression
             (identifier)
@@ -335,7 +335,7 @@ From
 {% from "macros.twig" import hello %}
 ---
 (template
-  (from_statement
+  (from
     (string)
     (identifier)))
 
@@ -345,7 +345,7 @@ From multiple
 {% from "macros.twig" import hello, world %}
 ---
 (template
-  (from_statement
+  (from
     (string)
     (identifier)
     (identifier)))
@@ -356,7 +356,7 @@ From as operator
 {% from "macros.twig" import input as input_field %}
 ---
 (template
-  (from_statement
+  (from
     (string)
     (as_operator
       (identifier)
@@ -370,7 +370,7 @@ If
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (identifier)
       (boolean))
@@ -387,7 +387,7 @@ If else
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (member_expression
         (identifier)
@@ -408,7 +408,7 @@ If elseif
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (member_expression
         (identifier)
@@ -424,7 +424,7 @@ If elseif
         (number))
       (source_elements
         (content)
-        (output_directive
+        (output
           (member_expression
             (identifier)
             (property_identifier)))
@@ -442,7 +442,7 @@ If elseif else
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (member_expression
         (identifier)
@@ -458,7 +458,7 @@ If elseif else
         (number))
       (source_elements
         (content)
-        (output_directive
+        (output
           (member_expression
             (identifier)
             (property_identifier)))
@@ -472,7 +472,7 @@ Import
 {% import "macros.twig" as macros %}
 ---
 (template
-  (import_statement
+  (import
     (string)
     (identifier)))
 
@@ -482,7 +482,7 @@ Include
 {% include 'header.html' %}
 ---
 (template
-  (include_statement
+  (include
     (string)))
 
 ==================
@@ -491,7 +491,7 @@ Include with variable
 {% include 'template.html' with {'foo': 'bar'} %}
 ---
 (template
-  (include_statement
+  (include
     (string)
     (object
       (pair
@@ -504,7 +504,7 @@ Include with variable only
 {% include 'template.html' with {'foo': 'bar'} only %}
 ---
 (template
-  (include_statement
+  (include
     (string)
     (object
       (pair
@@ -517,7 +517,7 @@ Include ignore missing
 {% include 'sidebar.html' ignore missing %}
 ---
 (template
-  (include_statement
+  (include
     (string)))
 
 ==================
@@ -528,7 +528,7 @@ Macro
 {% endmacro %}
 ---
 (template
-  (macro_statement
+  (macro
     (identifier)
     (arguments
       (identifier)
@@ -536,7 +536,7 @@ Macro
       (number))
     (source_elements
       (content)
-      (output_directive
+      (output
         (identifier))
       (content))))
 
@@ -548,7 +548,7 @@ Macro with end name
 {% endmacro input %}
 ---
 (template
-  (macro_statement
+  (macro
     (identifier)
     (arguments)
     (source_elements
@@ -563,7 +563,7 @@ Sandbox
 {% endsandbox %}
 ---
 (template
-  (sandbox_statement
+  (sandbox
     (source_elements
       (content))))
 
@@ -573,7 +573,7 @@ Set
 {% set foo = [1, 2] %}
 ---
 (template
-  (set_statement
+  (set
     (identifier)
     (array
       (number)
@@ -585,7 +585,7 @@ Set several variables
 {% set foo, bar = 'foo', 'bar' %}
 ---
 (template
-  (set_statement
+  (set
     (identifier)
     (identifier)
     (string)
@@ -599,11 +599,11 @@ Set block
 {% endset %}
 ---
 (template
-  (set_block_statement
+  (set_block
     (identifier)
     (source_elements
       (content)
-      (output_directive
+      (output
         (identifier))
       (content))))
 ==================
@@ -612,7 +612,7 @@ Use
 {% use "blocks.html" %}
 ---
 (template
-  (use_statement
+  (use
     (string)))
 
 ==================
@@ -621,7 +621,7 @@ Use with variable
 {% use "blocks.html" with sidebar as base_sidebar, title as base_title %}
 ---
 (template
-  (use_statement
+  (use
     (string)
     (as_operator
       (identifier)
@@ -638,7 +638,7 @@ Verbatim
 {% endverbatim %}
 ---
 (template
-  (verbatim_statement
+  (verbatim
     (source_elements
       (content))))
 
@@ -650,7 +650,7 @@ With
 {% endwith %}
 ---
 (template
-  (with_statement
+  (with
     (source_elements
       (content))))
 
@@ -662,7 +662,7 @@ With variables
 {% endwith %}
 ---
 (template
-  (with_statement
+  (with
     (object
       (pair
         (string)
@@ -678,7 +678,7 @@ With variables only
 {% endwith %}
 ---
 (template
-  (with_statement
+  (with
     (object
       (pair
         (string)

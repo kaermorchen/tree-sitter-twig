@@ -2,7 +2,7 @@ module.exports = grammar({
   name: 'twig',
   extras: () => [/\s+/],
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
-  inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression],
+  inline: ($) => [$._call_signature, $._formal_parameter, $._lhs_expression, $._statement],
   precedences: ($) => [
     [
       'member',
@@ -26,17 +26,17 @@ module.exports = grammar({
     template: ($) => repeat($._source_element),
 
     _source_element: ($) =>
-      choice($._statement, $.output_directive, $.comment, $.content),
+      choice($._statement, $.output, $.comment, $.content),
 
     source_elements: ($) => prec.left(repeat1($._source_element)),
 
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
-    output_directive: ($) =>
+    output: ($) =>
       seq(choice('{{', '{{-', '{{~'), $.expression, choice('}}', '-}}', '~}}')),
 
-    _open_directive_token: () => choice('{%', '{%-', '{%~'),
-    _close_directive_token: () => choice('%}', '-%}', '~%}'),
+    _statement_start: () => choice('{%', '{%-', '{%~'),
+    _statement_stop: () => choice('%}', '-%}', '~%}'),
 
     expression: ($) =>
       choice(
@@ -258,10 +258,10 @@ module.exports = grammar({
         ),
       ),
 
-    tag_statement: ($) =>
+    tag: ($) =>
       statement($, alias($.identifier, $.tag), repeat(prec.left($.expression))),
 
-    set_statement: ($) =>
+    set: ($) =>
       statement(
         $,
         'set',
@@ -270,7 +270,7 @@ module.exports = grammar({
         commaSep1(field('value', $.expression)),
       ),
 
-    set_block_statement: ($) =>
+    set_block: ($) =>
       statement(
         $,
         'set',
@@ -279,7 +279,7 @@ module.exports = grammar({
         'endset',
       ),
 
-    apply_statement: ($) =>
+    apply: ($) =>
       statement(
         $,
         'apply',
@@ -288,7 +288,7 @@ module.exports = grammar({
         'endapply',
       ),
 
-    autoescape_statement: ($) =>
+    autoescape: ($) =>
       statement(
         $,
         'autoescape',
@@ -297,7 +297,7 @@ module.exports = grammar({
         'endautoescape',
       ),
 
-    block_statement: ($) =>
+    block: ($) =>
       statement(
         $,
         'block',
@@ -312,7 +312,7 @@ module.exports = grammar({
         ),
       ),
 
-    cache_statement: ($) =>
+    cache: ($) =>
       statement(
         $,
         'cache',
@@ -323,12 +323,12 @@ module.exports = grammar({
         'endcache',
       ),
 
-    deprecated_statement: ($) =>
+    deprecated: ($) =>
       statement($, 'deprecated', field('expr', $.expression)),
 
-    do_statement: ($) => statement($, 'do', field('expr', $.expression)),
+    do: ($) => statement($, 'do', field('expr', $.expression)),
 
-    embed_statement: ($) =>
+    embed: ($) =>
       statement(
         $,
         'embed',
@@ -340,11 +340,12 @@ module.exports = grammar({
         'endembed',
       ),
 
-    extends_statement: ($) =>
+    extends: ($) =>
       statement($, 'extends', field('expr', $.expression)),
-    flush_statement: ($) => statement($, 'flush'),
 
-    for_statement: ($) =>
+    flush: ($) => statement($, 'flush'),
+
+    for: ($) =>
       statement(
         $,
         'for',
@@ -356,7 +357,7 @@ module.exports = grammar({
         'endfor',
       ),
 
-    from_statement: ($) =>
+    from: ($) =>
       statement(
         $,
         'from',
@@ -372,7 +373,7 @@ module.exports = grammar({
         field('right', $.identifier),
       ),
 
-    if_statement: ($) =>
+    if: ($) =>
       statement(
         $,
         'if',
@@ -386,7 +387,7 @@ module.exports = grammar({
     elseif: ($) =>
       seq('elseif', field('expr', $.expression), source_elements($, 'then')),
 
-    import_statement: ($) =>
+    import: ($) =>
       statement(
         $,
         'import',
@@ -395,7 +396,7 @@ module.exports = grammar({
         field('variable', $.identifier),
       ),
 
-    include_statement: ($) =>
+    include: ($) =>
       statement(
         $,
         'include',
@@ -405,7 +406,7 @@ module.exports = grammar({
         optional(field('only', 'only')),
       ),
 
-    macro_statement: ($) =>
+    macro: ($) =>
       statement(
         $,
         'macro',
@@ -416,10 +417,10 @@ module.exports = grammar({
         optional($.identifier),
       ),
 
-    sandbox_statement: ($) =>
+    sandbox: ($) =>
       statement($, 'sandbox', source_elements($), 'endsandbox'),
 
-    use_statement: ($) =>
+    use: ($) =>
       statement(
         $,
         'use',
@@ -427,10 +428,10 @@ module.exports = grammar({
         optional(seq('with', commaSep1(field('variable', $.as_operator)))),
       ),
 
-    verbatim_statement: ($) =>
+    verbatim: ($) =>
       statement($, 'verbatim', source_elements($), 'endverbatim'),
 
-    with_statement: ($) =>
+    with: ($) =>
       statement(
         $,
         'with',
@@ -442,28 +443,28 @@ module.exports = grammar({
 
     _statement: ($) =>
       choice(
-        $.tag_statement,
-        $.apply_statement,
-        $.autoescape_statement,
-        $.block_statement,
-        $.cache_statement,
-        $.deprecated_statement,
-        $.do_statement,
-        $.embed_statement,
-        $.extends_statement,
-        $.flush_statement,
-        $.for_statement,
-        $.from_statement,
-        $.if_statement,
-        $.import_statement,
-        $.include_statement,
-        $.macro_statement,
-        $.sandbox_statement,
-        $.set_statement,
-        $.set_block_statement,
-        $.use_statement,
-        $.verbatim_statement,
-        $.with_statement,
+        $.tag,
+        $.apply,
+        $.autoescape,
+        $.block,
+        $.cache,
+        $.deprecated,
+        $.do,
+        $.embed,
+        $.extends,
+        $.flush,
+        $.for,
+        $.from,
+        $.if,
+        $.import,
+        $.include,
+        $.macro,
+        $.sandbox,
+        $.set,
+        $.set_block,
+        $.use,
+        $.verbatim,
+        $.with,
       ),
   },
 });
@@ -478,12 +479,12 @@ function commaSep(rule) {
 
 function source_elements($, fieldName = 'body') {
   return seq(
-    $._close_directive_token,
+    $._statement_stop,
     optional(field(fieldName, $.source_elements)),
-    $._open_directive_token,
+    $._statement_start,
   );
 }
 
 function statement($, ...args) {
-  return seq($._open_directive_token, ...args, $._close_directive_token);
+  return seq($._statement_start, ...args, $._statement_stop);
 }

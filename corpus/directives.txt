@@ -54,5 +54,5 @@ Output directive
 ---
 
 (template
-  (output_directive
+  (output
     (identifier)))

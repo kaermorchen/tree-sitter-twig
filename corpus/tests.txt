@@ -6,7 +6,7 @@ Divisible by
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (member_expression
         (identifier)
@@ -26,7 +26,7 @@ Same as
 {% endif %}
 ---
 (template
-  (if_statement
+  (if
     (binary_expression
       (member_expression
         (identifier)
