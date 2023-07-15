@@ -291,20 +291,30 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "STRING",
-                "value": "\\\""
-              },
-              {
-                "type": "STRING",
-                "value": "\\#"
-              },
-              {
-                "type": "STRING",
-                "value": "\\\\"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^#\"\\\\\\\\]+"
+                "type": "ALIAS",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "\\\""
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\\#"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\\\\"
+                    },
+                    {
+                      "type": "PATTERN",
+                      "value": "[^#\"\\\\\\\\]+"
+                    }
+                  ]
+                },
+                "named": true,
+                "value": "string"
               },
               {
                 "type": "SEQ",

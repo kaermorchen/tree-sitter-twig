@@ -73,13 +73,16 @@ String
 ==================
 String interpolation
 ==================
-{{ "foo #{bar}#{bar} baz" }}
+{{ "foo #{ 43 } #{ bar } baz" }}
 ---
 (template
   (output_directive
     (interpolated_string
+      (string)
+      (number)
+      (string)
       (identifier)
-      (identifier))))
+      (string))))
 
 ==================
 String interpolation deeper
@@ -89,8 +92,21 @@ String interpolation deeper
 (template
   (output_directive
     (interpolated_string
+      (string)
       (interpolated_string
-        (identifier)))))
+        (string)
+        (identifier)
+        (string))
+      (string))))
+
+==================
+String interpolation escaped character
+==================
+{{ "foo \#{} \" \n" }}
+---
+(template
+  (output_directive
+    (string)))
 
 ==================
 Array empty
