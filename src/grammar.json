@@ -29,6 +29,17 @@
         }
       ]
     },
+    "source_elements": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_source_element"
+        }
+      }
+    },
     "content": {
       "type": "PREC_RIGHT",
       "value": 0,
@@ -560,7 +571,7 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "expr",
           "content": {
             "type": "SYMBOL",
             "name": "expression"
@@ -2248,23 +2259,33 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -2297,23 +2318,33 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -2354,23 +2385,33 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -2398,7 +2439,7 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "body",
+              "name": "expr",
               "content": {
                 "type": "SYMBOL",
                 "name": "expression"
@@ -2408,23 +2449,33 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "body",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
                       "type": "SYMBOL",
-                      "name": "_source_element"
+                      "name": "_close_directive_token"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "body",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "source_elements"
+                          }
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_open_directive_token"
                     }
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
+                  ]
                 },
                 {
                   "type": "STRING",
@@ -2488,23 +2539,33 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -2619,23 +2680,33 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -2717,19 +2788,33 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
+          ]
         },
         {
           "type": "CHOICE",
@@ -2738,27 +2823,37 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
-                {
                   "type": "STRING",
                   "value": "else"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "alternate",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
                       "type": "SYMBOL",
-                      "name": "_source_element"
+                      "name": "_close_directive_token"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "body",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "source_elements"
+                          }
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_open_directive_token"
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -2766,10 +2861,6 @@
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
         },
         {
           "type": "STRING",
@@ -2887,65 +2978,54 @@
         },
         {
           "type": "FIELD",
-          "name": "test",
+          "name": "expr",
           "content": {
             "type": "SYMBOL",
             "name": "expression"
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "then",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
+          ]
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
+              "type": "FIELD",
+              "name": "elseif",
+              "content": {
+                "type": "REPEAT",
+                "content": {
                   "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
-                {
-                  "type": "STRING",
-                  "value": "elseif"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "elseif_test",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "expression"
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "elseif_body",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_source_element"
-                    }
-                  }
+                  "name": "elseif"
                 }
-              ]
+              }
             },
             {
               "type": "BLANK"
@@ -2958,28 +3038,38 @@
             {
               "type": "SEQ",
               "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_open_directive_token"
-                },
                 {
                   "type": "STRING",
                   "value": "else"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_close_directive_token"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "alternate",
-                  "content": {
-                    "type": "REPEAT",
-                    "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
                       "type": "SYMBOL",
-                      "name": "_source_element"
+                      "name": "_close_directive_token"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "else",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "source_elements"
+                          }
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_open_directive_token"
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -2989,12 +3079,54 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
-        },
-        {
           "type": "STRING",
           "value": "endif"
+        }
+      ]
+    },
+    "elseif": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "elseif"
+        },
+        {
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "then",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
+            }
+          ]
         }
       ]
     },
@@ -3125,23 +3257,33 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -3169,23 +3311,33 @@
           "value": "sandbox"
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -3268,23 +3420,33 @@
           "value": "verbatim"
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",
@@ -3332,23 +3494,33 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_close_directive_token"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_source_element"
+              "name": "_close_directive_token"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "source_elements"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_open_directive_token"
             }
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_open_directive_token"
+          ]
         },
         {
           "type": "STRING",

@@ -106,132 +106,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -289,7 +169,7 @@
     "type": "arrow_function",
     "named": true,
     "fields": {
-      "body": {
+      "expr": {
         "multiple": false,
         "required": true,
         "types": [
@@ -362,132 +242,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -668,136 +428,22 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
             "type": "expression",
             "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -823,132 +469,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -1053,136 +579,42 @@
     }
   },
   {
+    "type": "elseif",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "embed_statement",
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -1284,263 +716,13 @@
     "type": "for_statement",
     "named": true,
     "fields": {
-      "alternate": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
-            "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
-          }
-        ]
-      },
       "body": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -1620,412 +802,42 @@
     "type": "if_statement",
     "named": true,
     "fields": {
-      "alternate": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
-            "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
-          }
-        ]
-      },
-      "body": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
-            "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
-          }
-        ]
-      },
-      "elseif_body": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
-            "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
-          }
-        ]
-      },
-      "elseif_test": {
+      "else": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "expression",
+            "type": "source_elements",
             "named": true
           }
         ]
       },
-      "test": {
+      "elseif": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "elseif",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
         "multiple": false,
         "required": true,
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "source_elements",
             "named": true
           }
         ]
@@ -2134,132 +946,12 @@
         ]
       },
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -2409,132 +1101,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       }
@@ -2544,133 +1116,13 @@
     "type": "set_block_statement",
     "named": true,
     "fields": {
-      "value": {
-        "multiple": true,
+      "body": {
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },
@@ -2710,6 +1162,117 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "source_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "apply_statement",
+          "named": true
+        },
+        {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "cache_statement",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "deprecated_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "embed_statement",
+          "named": true
+        },
+        {
+          "type": "extends_statement",
+          "named": true
+        },
+        {
+          "type": "flush_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "from_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
+          "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "sandbox_statement",
+          "named": true
+        },
+        {
+          "type": "set_block_statement",
+          "named": true
+        },
+        {
+          "type": "set_statement",
+          "named": true
+        },
+        {
+          "type": "tag_statement",
+          "named": true
+        },
+        {
+          "type": "use_statement",
+          "named": true
+        },
+        {
+          "type": "verbatim_statement",
+          "named": true
+        },
+        {
+          "type": "with_statement",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2979,132 +1542,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       }
@@ -3115,132 +1558,12 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "-%}",
-            "named": false
-          },
-          {
-            "type": "apply_statement",
+            "type": "source_elements",
             "named": true
-          },
-          {
-            "type": "autoescape_statement",
-            "named": true
-          },
-          {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "cache_statement",
-            "named": true
-          },
-          {
-            "type": "comment",
-            "named": true
-          },
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "deprecated_statement",
-            "named": true
-          },
-          {
-            "type": "do_statement",
-            "named": true
-          },
-          {
-            "type": "embed_statement",
-            "named": true
-          },
-          {
-            "type": "extends_statement",
-            "named": true
-          },
-          {
-            "type": "flush_statement",
-            "named": true
-          },
-          {
-            "type": "for_statement",
-            "named": true
-          },
-          {
-            "type": "from_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "import_statement",
-            "named": true
-          },
-          {
-            "type": "include_statement",
-            "named": true
-          },
-          {
-            "type": "macro_statement",
-            "named": true
-          },
-          {
-            "type": "output_directive",
-            "named": true
-          },
-          {
-            "type": "sandbox_statement",
-            "named": true
-          },
-          {
-            "type": "set_block_statement",
-            "named": true
-          },
-          {
-            "type": "set_statement",
-            "named": true
-          },
-          {
-            "type": "tag_statement",
-            "named": true
-          },
-          {
-            "type": "use_statement",
-            "named": true
-          },
-          {
-            "type": "verbatim_statement",
-            "named": true
-          },
-          {
-            "type": "with_statement",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          },
-          {
-            "type": "{%-",
-            "named": false
-          },
-          {
-            "type": "{%~",
-            "named": false
-          },
-          {
-            "type": "~%}",
-            "named": false
           }
         ]
       },

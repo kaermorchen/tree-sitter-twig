@@ -20,7 +20,8 @@ Apply
 (template
   (apply_statement
     (identifier)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Apply multiple filters
@@ -36,7 +37,8 @@ Apply multiple filters
       (identifier)
       (arguments
         (string)))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Autoescape
@@ -48,7 +50,8 @@ Autoescape
 ---
 (template
   (autoescape_statement
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Autoescape string argument
@@ -61,7 +64,8 @@ Autoescape string argument
 (template
   (autoescape_statement
     (string)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Autoescape boolean argument
@@ -74,7 +78,8 @@ Autoescape boolean argument
 (template
   (autoescape_statement
     (boolean)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Block
@@ -84,7 +89,8 @@ Block
 (template
   (block_statement
     (identifier)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Block with end-tag
@@ -118,7 +124,8 @@ Cache
 (template
   (cache_statement
     (string)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Cache with key and expiration
@@ -134,7 +141,8 @@ Cache with key and expiration
       (identifier)
       (arguments
         (number)))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Deprecated
@@ -179,7 +187,8 @@ Embed with variable
       (pair
         (string)
         (string)))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Embed with variable only
@@ -195,7 +204,8 @@ Embed with variable only
       (pair
         (string)
         (string)))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Embed ignore missing
@@ -207,7 +217,8 @@ Embed ignore missing
 (template
   (embed_statement
     (string)
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Extends
@@ -249,10 +260,11 @@ For
   (for_statement
     (identifier)
     (identifier)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))))
+    (source_elements
+      (output_directive
+        (member_expression
+          (identifier)
+          (property_identifier))))))
 
 ==================
 For with sequence of numbers
@@ -267,8 +279,9 @@ For with sequence of numbers
     (binary_expression
       (number)
       (number))
-    (output_directive
-      (identifier))))
+    (source_elements
+      (output_directive
+        (identifier)))))
 
 ==================
 For with else
@@ -283,17 +296,19 @@ For with else
   (for_statement
     (identifier)
     (identifier)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)))
+    (source_elements
+      (output_directive
+        (member_expression
+          (identifier)
+          (property_identifier))))
+    (source_elements
+      (content))))
 
 ==================
 For with kye, value
 ==================
 {% for key, user in users %}
-    <li>{{ key }}: {{ user.username|e }}</li>
+  <li>{{ key }}: {{ user.username|e }}</li>
 {% endfor %}
 ---
 (template
@@ -301,17 +316,18 @@ For with kye, value
     (identifier)
     (identifier)
     (identifier)
-    (content)
-    (output_directive
-      (identifier))
-    (content)
-    (output_directive
-      (filter_expression
-        (member_expression
-          (identifier)
-          (property_identifier))
-        (identifier)))
-    (content)))
+    (source_elements
+      (content)
+      (output_directive
+        (identifier))
+      (content)
+      (output_directive
+        (filter_expression
+          (member_expression
+            (identifier)
+            (property_identifier))
+          (identifier)))
+      (content))))
 
 ==================
 From
@@ -358,7 +374,8 @@ If
     (binary_expression
       (identifier)
       (boolean))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 If else
@@ -376,8 +393,10 @@ If else
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (content)))
+    (source_elements
+      (content))
+    (source_elements
+      (content))))
 
 ==================
 If elseif
@@ -395,18 +414,21 @@ If elseif
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (binary_expression
-      (member_expression
-        (identifier)
-        (property_identifier))
-      (number))
-    (content)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)))
+    (source_elements
+      (content))
+    (elseif
+      (binary_expression
+        (member_expression
+          (identifier)
+          (property_identifier))
+        (number))
+      (source_elements
+        (content)
+        (output_directive
+          (member_expression
+            (identifier)
+            (property_identifier)))
+        (content)))))
 
 ==================
 If elseif else
@@ -426,19 +448,23 @@ If elseif else
         (identifier)
         (property_identifier))
       (number))
-    (content)
-    (binary_expression
-      (member_expression
-        (identifier)
-        (property_identifier))
-      (number))
-    (content)
-    (output_directive
-      (member_expression
-        (identifier)
-        (property_identifier)))
-    (content)
-    (content)))
+    (source_elements
+      (content))
+    (elseif
+      (binary_expression
+        (member_expression
+          (identifier)
+          (property_identifier))
+        (number))
+      (source_elements
+        (content)
+        (output_directive
+          (member_expression
+            (identifier)
+            (property_identifier)))
+        (content)))
+    (source_elements
+      (content))))
 
 ==================
 Import
@@ -508,10 +534,11 @@ Macro
       (identifier)
       (identifier)
       (number))
-    (content)
-    (output_directive
-      (identifier))
-    (content)))
+    (source_elements
+      (content)
+      (output_directive
+        (identifier))
+      (content))))
 
 ==================
 Macro with end name
@@ -524,7 +551,8 @@ Macro with end name
   (macro_statement
     (identifier)
     (arguments)
-    (content)
+    (source_elements
+      (content))
     (identifier)))
 
 ==================
@@ -536,7 +564,8 @@ Sandbox
 ---
 (template
   (sandbox_statement
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Set
@@ -566,14 +595,17 @@ Set several variables
 Set block
 ==================
 {% set foo %}
-  Hello
+  Hello {{ username }}!
 {% endset %}
 ---
 (template
   (set_block_statement
     (identifier)
-    (content)))
-
+    (source_elements
+      (content)
+      (output_directive
+        (identifier))
+      (content))))
 ==================
 Use
 ==================
@@ -607,7 +639,8 @@ Verbatim
 ---
 (template
   (verbatim_statement
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 With
@@ -618,7 +651,8 @@ With
 ---
 (template
   (with_statement
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 With variables
@@ -633,7 +667,8 @@ With variables
       (pair
         (string)
         (number)))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 With variables only
@@ -648,4 +683,5 @@ With variables only
       (pair
         (string)
         (number)))
-    (content)))
+    (source_elements
+      (content))))

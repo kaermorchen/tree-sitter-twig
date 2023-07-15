@@ -28,6 +28,8 @@ module.exports = grammar({
     _source_element: ($) =>
       choice($._statement_directive, $.output_directive, $.comment, $.content),
 
+    source_elements: ($) => prec.left(repeat1($._source_element)),
+
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     output_directive: ($) =>
@@ -117,7 +119,7 @@ module.exports = grammar({
       seq(
         choice(field('parameter', $.identifier), $._call_signature),
         '=>',
-        field('body', $.expression),
+        field('expr', $.expression),
       ),
 
     _call_signature: ($) => field('parameters', $.formal_parameters),
@@ -273,22 +275,13 @@ module.exports = grammar({
       ),
 
     set_block_statement: ($) =>
-      seq(
-        'set',
-        field('variable', $.identifier),
-        $._close_directive_token,
-        field('value', repeat($._source_element)),
-        $._open_directive_token,
-        'endset',
-      ),
+      seq('set', field('variable', $.identifier), source_elements($), 'endset'),
 
     apply_statement: ($) =>
       seq(
         'apply',
         field('filter', choice($.identifier, $.filter_expression)),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endapply',
       ),
 
@@ -296,9 +289,7 @@ module.exports = grammar({
       seq(
         'autoescape',
         optional(field('strategy', choice($.string, $.boolean))),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endautoescape',
       ),
 
@@ -307,14 +298,8 @@ module.exports = grammar({
         'block',
         field('name', $.identifier),
         choice(
-          field('body', $.expression),
-          seq(
-            $._close_directive_token,
-            field('body', repeat($._source_element)),
-            $._open_directive_token,
-            'endblock',
-            optional(field('name', $.identifier)),
-          ),
+          field('expr', $.expression),
+          seq(source_elements($), 'endblock', optional(field('name', $.identifier))),
         ),
       ),
 
@@ -324,9 +309,7 @@ module.exports = grammar({
         field('key', $.expression),
         ' ',
         optional(field('expiration', $.call_expression)),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endcache',
       ),
 
@@ -340,9 +323,7 @@ module.exports = grammar({
         optional(field('ignore_missing', 'ignore missing')),
         optional(seq('with', field('variables', $.expression))),
         optional(field('only', 'only')),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endembed',
       ),
 
@@ -355,17 +336,8 @@ module.exports = grammar({
         commaSep1(field('variable', $.identifier)),
         'in',
         field('expr', $.expression),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        optional(
-          seq(
-            $._open_directive_token,
-            'else',
-            $._close_directive_token,
-            field('alternate', repeat($._source_element)),
-          ),
-        ),
-        $._open_directive_token,
+        source_elements($),
+        optional(seq('else', source_elements($))),
         'endfor',
       ),
 
@@ -387,29 +359,15 @@ module.exports = grammar({
     if_statement: ($) =>
       seq(
         'if',
-        field('test', $.expression),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        optional(
-          seq(
-            $._open_directive_token,
-            'elseif',
-            field('elseif_test', $.expression),
-            $._close_directive_token,
-            field('elseif_body', repeat($._source_element)),
-          ),
-        ),
-        optional(
-          seq(
-            $._open_directive_token,
-            'else',
-            $._close_directive_token,
-            field('alternate', repeat($._source_element)),
-          ),
-        ),
-        $._open_directive_token,
+        field('expr', $.expression),
+        source_elements($, 'then'),
+        optional(field('elseif', repeat($.elseif))),
+        optional(seq('else', source_elements($, 'else'))),
         'endif',
       ),
+
+    elseif: ($) =>
+      seq('elseif', field('expr', $.expression), source_elements($, 'then')),
 
     import_statement: ($) =>
       seq(
@@ -433,21 +391,12 @@ module.exports = grammar({
         'macro',
         field('name', $.identifier),
         field('arguments', $.arguments),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endmacro',
         optional($.identifier),
       ),
 
-    sandbox_statement: ($) =>
-      seq(
-        'sandbox',
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
-        'endsandbox',
-      ),
+    sandbox_statement: ($) => seq('sandbox', source_elements($), 'endsandbox'),
 
     use_statement: ($) =>
       seq(
@@ -456,23 +405,14 @@ module.exports = grammar({
         optional(seq('with', commaSep1(field('variable', $.as_operator)))),
       ),
 
-    verbatim_statement: ($) =>
-      seq(
-        'verbatim',
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
-        'endverbatim',
-      ),
+    verbatim_statement: ($) => seq('verbatim', source_elements($), 'endverbatim'),
 
     with_statement: ($) =>
       seq(
         'with',
         optional(field('expr', $.expression)),
         optional(field('only', 'only')),
-        $._close_directive_token,
-        field('body', repeat($._source_element)),
-        $._open_directive_token,
+        source_elements($),
         'endwith',
       ),
 
@@ -510,4 +450,12 @@ function commaSep1(rule) {
 
 function commaSep(rule) {
   return optional(commaSep1(rule));
+}
+
+function source_elements($, fieldName = 'body') {
+  return seq(
+    $._close_directive_token,
+    optional(field(fieldName, $.source_elements)),
+    $._open_directive_token,
+  );
 }

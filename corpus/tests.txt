@@ -15,7 +15,8 @@ Divisible by
         (identifier)
         (arguments
           (number))))
-    (content)))
+    (source_elements
+      (content))))
 
 ==================
 Same as
@@ -34,4 +35,5 @@ Same as
         (identifier)
         (arguments
           (boolean))))
-    (content)))
+    (source_elements
+      (content))))
