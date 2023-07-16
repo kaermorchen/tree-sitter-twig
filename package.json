@@ -10,7 +10,7 @@
     "test": "tree-sitter test"
   },
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
-  "license": "",
+  "license": "Mozilla Public License 2.0",
   "dependencies": {
     "nan": "^2.17.0"
   },
