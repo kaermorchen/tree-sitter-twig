@@ -1,11 +1,33 @@
 ==================
-Tag
+Tag empty
 ==================
-{% unknown_tag 2 + 3%}
+{% unknown_tag %}
 ---
 (template
   (tag
-    (tag)
+    (identifier)))
+
+==================
+Tag with expression
+==================
+{% unknown_tag 2 + 3 %}
+---
+(template
+  (tag
+    (identifier)
+    (binary_expression
+      (number)
+      (number))))
+
+==================
+Tag with expressions
+==================
+{% unknown_tag arg1 2 + 3 %}
+---
+(template
+  (tag
+    (identifier)
+    (identifier)
     (binary_expression
       (number)
       (number))))

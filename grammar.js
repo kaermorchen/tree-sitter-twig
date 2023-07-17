@@ -267,7 +267,7 @@ module.exports = grammar({
       ),
 
     tag: ($) =>
-      statement($, alias($.identifier, $.tag), repeat(prec.left($.expression))),
+      statement($, field('name', $.identifier), repeat(prec.left($.expression))),
 
     set: ($) =>
       statement(
