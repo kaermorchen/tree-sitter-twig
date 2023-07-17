@@ -131,6 +131,17 @@ Array
       (string))))
 
 ==================
+Array with end comma
+==================
+{{ [1, 2,] }}
+---
+(template
+  (output
+    (array
+      (number)
+      (number))))
+
+==================
 Object empty
 ==================
 {{ {} }}
