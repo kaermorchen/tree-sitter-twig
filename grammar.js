@@ -33,8 +33,6 @@ module.exports = grammar({
     _source_element: ($) =>
       choice($._statement, $.output, $.comment, $.content),
 
-    source_elements: ($) => prec.left(repeat1($._source_element)),
-
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     output: ($) =>
@@ -267,7 +265,11 @@ module.exports = grammar({
       ),
 
     tag: ($) =>
-      statement($, field('name', $.identifier), repeat(prec.left($.expression))),
+      statement(
+        $,
+        field('name', $.identifier),
+        repeat(prec.left($.expression)),
+      ),
 
     set: ($) =>
       statement(
@@ -485,7 +487,15 @@ function commaSep(rule) {
 function source_elements($, fieldName = 'body') {
   return seq(
     $._statement_stop,
-    optional(field(fieldName, $.source_elements)),
+    optional(
+      field(
+        fieldName,
+        alias(
+          repeat(choice($._statement, $.output, $.comment, $.content)),
+          $.source_elements,
+        ),
+      ),
+    ),
     $._statement_start,
   );
 }

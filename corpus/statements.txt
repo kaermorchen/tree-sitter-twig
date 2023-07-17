@@ -705,3 +705,22 @@ With variables only
         (number)))
     (source_elements
       (content))))
+
+==================
+Trans
+==================
+{% if display_submitted %}
+  {% trans %}
+    Hello
+  {% endtrans %}
+{% endif %}
+---
+(template
+  (if
+    (identifier)
+    (source_elements
+      (tag
+        (identifier))
+      (content)
+      (tag
+        (identifier)))))
