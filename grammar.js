@@ -153,12 +153,12 @@ module.exports = grammar({
       choice(
         prec(
           'call',
-          seq(field('function', $.expression), field('arguments', $.arguments)),
+          seq(field('name', $.expression), field('arguments', $.arguments)),
         ),
         prec(
           'member',
           seq(
-            field('function', $.primary_expression),
+            field('name', $.primary_expression),
             field('arguments', $.arguments),
           ),
         ),

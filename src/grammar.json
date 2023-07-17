@@ -748,7 +748,7 @@
             "members": [
               {
                 "type": "FIELD",
-                "name": "function",
+                "name": "name",
                 "content": {
                   "type": "SYMBOL",
                   "name": "expression"
@@ -773,7 +773,7 @@
             "members": [
               {
                 "type": "FIELD",
-                "name": "function",
+                "name": "name",
                 "content": {
                   "type": "SYMBOL",
                   "name": "primary_expression"
