@@ -272,6 +272,17 @@ Member expression
       (property_identifier))))
 
 ==================
+Member expression index
+==================
+{{ arr.0 }}
+---
+(template
+  (output
+    (member_expression
+      (identifier)
+      (property_identifier))))
+
+==================
 Member expression deeper
 ==================
 {{ user.name.first }}
