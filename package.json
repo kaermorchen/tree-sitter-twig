@@ -41,7 +41,7 @@
   ],
   "release-it": {
     "hooks": {
-      "after:bump": "npm run build-wasm"
+      "before:release": "npm run build-wasm"
     },
     "plugins": {
       "@release-it-plugins/lerna-changelog": {
