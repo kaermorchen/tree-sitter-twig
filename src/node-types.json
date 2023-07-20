@@ -1200,6 +1200,40 @@
     }
   },
   {
+    "type": "slice",
+    "named": true,
+    "fields": {
+      "length": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "computed_property_name",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_elements",
     "named": true,
     "fields": {},
@@ -1321,7 +1355,7 @@
     "fields": {
       "index": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "expression",
@@ -1335,6 +1369,16 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "slice": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "slice",
             "named": true
           }
         ]

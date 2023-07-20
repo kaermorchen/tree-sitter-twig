@@ -71,9 +71,9 @@ module.exports = grammar({
 
     identifier: ($) =>
       choice(
+        /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
         'divisible by',
         'same as',
-        /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
       ),
 
     null: () => choice('null', 'none'),
@@ -132,8 +132,18 @@ module.exports = grammar({
         seq(
           field('object', choice($.expression, $.primary_expression)),
           '.',
-          field('property', alias(choice($.identifier, /[0-9]+/), $.property_identifier)),
+          field(
+            'property',
+            alias(choice($.identifier, /[0-9]+/), $.property_identifier),
+          ),
         ),
+      ),
+
+    slice: ($) =>
+      seq(
+        optional(field('start', $._property_name)),
+        ':',
+        optional(field('length', $.expression)),
       ),
 
     subscript_expression: ($) =>
@@ -142,7 +152,7 @@ module.exports = grammar({
         seq(
           field('object', choice($.expression, $.primary_expression)),
           '[',
-          field('index', $.expression),
+          choice(field('index', $.expression), field('slice', $.slice)),
           ']',
         ),
       ),
