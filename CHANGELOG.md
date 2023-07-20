@@ -1,4 +1,13 @@
 
+
+## v0.2.0 (2023-07-20)
+
+#### :rocket: Enhancement
+* [#5](https://github.com/kaermorchen/tree-sitter-twig/pull/5) Add supporting of slice syntactic sugar ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v0.1.1 (2023-07-18)
 
 ## v0.1.0 (2023-07-18)
