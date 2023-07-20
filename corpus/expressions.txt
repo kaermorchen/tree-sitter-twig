@@ -307,6 +307,43 @@ Subscript expression
       (string))))
 
 ==================
+Subscript expression slice
+==================
+{{ '123456'[1:2] }}
+{{ '123456'[:-2] }}
+{{ [1,2,3][2:] }}
+{{ [1,2,3][:] }}
+---
+(template
+  (output
+    (subscript_expression
+      (string)
+      (slice
+        (number)
+        (number))))
+  (output
+    (subscript_expression
+      (string)
+      (slice
+        (unary_expression
+          (number)))))
+  (output
+    (subscript_expression
+      (array
+        (number)
+        (number)
+        (number))
+      (slice
+        (number))))
+  (output
+    (subscript_expression
+      (array
+        (number)
+        (number)
+        (number))
+      (slice))))
+
+==================
 Subscript expression deeper
 ==================
 {{ user['name'][prop] }}

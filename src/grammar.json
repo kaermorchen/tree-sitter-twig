@@ -220,16 +220,16 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "PATTERN",
+          "value": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"
+        },
+        {
           "type": "STRING",
           "value": "divisible by"
         },
         {
           "type": "STRING",
           "value": "same as"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*"
         }
       ]
     },
@@ -729,6 +729,47 @@
         ]
       }
     },
+    "slice": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "start",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_property_name"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "length",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "subscript_expression": {
       "type": "PREC_RIGHT",
       "value": "member",
@@ -757,12 +798,25 @@
             "value": "["
           },
           {
-            "type": "FIELD",
-            "name": "index",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "index",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "slice",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "slice"
+                }
+              }
+            ]
           },
           {
             "type": "STRING",
