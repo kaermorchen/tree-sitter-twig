@@ -271,10 +271,8 @@ module.exports = grammar({
         seq(
           field('object', choice($.expression, $.primary_expression)),
           '|',
-          field(
-            'filter',
-            seq($.identifier, optional(field('arguments', $.arguments))),
-          ),
+          field('name', $.identifier),
+          optional(field('arguments', $.arguments)),
         ),
       ),
 

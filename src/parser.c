@@ -1533,7 +1533,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_alternative, 2},
     {field_condition, 0},
   [14] =
-    {field_filter, 2},
+    {field_name, 2},
     {field_object, 0},
   [16] =
     {field_expr, 2},
@@ -1560,7 +1560,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_slice, 2},
   [30] =
     {field_arguments, 3},
-    {field_filter, 2},
+    {field_name, 2},
     {field_object, 0},
   [33] =
     {field_variable, 1},
