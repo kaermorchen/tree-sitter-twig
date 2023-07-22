@@ -894,17 +894,21 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "named_argument"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "expression"
-                    }
-                  ]
+                  "type": "FIELD",
+                  "name": "argument",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "named_argument"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "expression"
+                      }
+                    ]
+                  }
                 },
                 {
                   "type": "REPEAT",
@@ -916,17 +920,21 @@
                         "value": ","
                       },
                       {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "named_argument"
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "expression"
-                          }
-                        ]
+                        "type": "FIELD",
+                        "name": "argument",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "named_argument"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "expression"
+                            }
+                          ]
+                        }
                       }
                     ]
                   }
