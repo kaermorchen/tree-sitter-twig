@@ -162,6 +162,10 @@
         {
           "type": "expression",
           "named": true
+        },
+        {
+          "type": "spread_element",
+          "named": true
         }
       ]
     }
@@ -1057,6 +1061,10 @@
           "named": true
         },
         {
+          "type": "spread_element",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -1343,6 +1351,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "spread_element",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1737,6 +1761,10 @@
   },
   {
     "type": "..",
+    "named": false
+  },
+  {
+    "type": "...",
     "named": false
   },
   {

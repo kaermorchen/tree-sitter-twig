@@ -142,6 +142,19 @@ Array with end comma
       (number))))
 
 ==================
+Array with spread element
+==================
+{{ [1, 2, ...moreNumbers] }}
+---
+(template
+  (output
+    (array
+      (number)
+      (number)
+      (spread_element
+        (identifier)))))
+
+==================
 Object empty
 ==================
 {{ {} }}
@@ -214,6 +227,20 @@ Object parentheses property
         (computed_property_name
           (identifier))
         (string)))))
+
+==================
+Object with spread element
+==================
+{{ { 'foo': 10, ...moreRatings } }}
+---
+(template
+  (output
+    (object
+      (pair
+        (string)
+        (number))
+      (spread_element
+        (identifier)))))
 
 ==================
 Arrow function with arguments

@@ -91,9 +91,16 @@ module.exports = grammar({
         ),
         '"',
       ),
-    array: ($) => seq('[', commaSep($.expression), ']'),
+    spread_element: ($) => seq('...', field('expr', $.identifier)),
+    array: ($) =>
+      seq('[', commaSep($.expression), optional($.spread_element), ']'),
     object: ($) =>
-      seq('{', commaSep(choice($.pair, alias($.identifier, $.string))), '}'),
+      seq(
+        '{',
+        commaSep(choice($.pair, alias($.identifier, $.string))),
+        optional($.spread_element),
+        '}',
+      ),
 
     pair: ($) =>
       seq(field('key', $._property_name), ':', field('value', $.expression)),
