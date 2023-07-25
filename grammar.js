@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: 'twig',
-  extras: () => [/\s+/],
+  extras: () => [/[\s\p{Zs}\uFEFF\u2060\u200B]/],
   supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
   inline: ($) => [
     $._call_signature,
@@ -210,10 +210,7 @@ module.exports = grammar({
           ].map(([operator, precedence]) =>
             prec.left(
               precedence,
-              seq(
-                field('operator', operator),
-                field('argument', $.expression),
-              ),
+              seq(field('operator', operator), field('argument', $.expression)),
             ),
           ),
         ),
