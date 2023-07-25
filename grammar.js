@@ -42,7 +42,8 @@ module.exports = grammar({
         alias(choice('}}', '-}}', '~}}'), 'embedded_end'),
       ),
 
-    _statement_start: ($) => alias(choice('{%', '{%-', '{%~'), 'embedded_begin'),
+    _statement_start: ($) =>
+      alias(choice('{%', '{%-', '{%~'), 'embedded_begin'),
     _statement_stop: ($) => alias(choice('%}', '-%}', '~%}'), 'embedded_end'),
 
     expression: ($) =>
@@ -86,14 +87,14 @@ module.exports = grammar({
     string: () => /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
     interpolated_string: ($) =>
       seq(
-        '"',
+        alias('"', 'string'),
         repeat(
           choice(
             alias(choice('\\"', '\\#', '\\\\', /[^#"\\\\]+/), $.string),
             seq('#{', $.expression, '}'),
           ),
         ),
-        '"',
+        alias('"', 'string'),
       ),
     spread_element: ($) => seq('...', field('expr', $.identifier)),
     array: ($) =>
@@ -127,10 +128,11 @@ module.exports = grammar({
       ),
 
     _call_signature: ($) => field('parameters', $.formal_parameters),
-    _formal_parameter: ($) => $.pattern,
 
     formal_parameters: ($) =>
       seq('(', optional(seq(commaSep1($._formal_parameter))), ')'),
+
+    _formal_parameter: ($) => $.pattern,
 
     pattern: ($) => prec.dynamic(-1, $._lhs_expression),
 
@@ -208,7 +210,10 @@ module.exports = grammar({
           ].map(([operator, precedence]) =>
             prec.left(
               precedence,
-              seq(field('operator', operator), field('argument', $.expression)),
+              seq(
+                field('operator', operator),
+                field('argument', $.expression),
+              ),
             ),
           ),
         ),
@@ -253,7 +258,7 @@ module.exports = grammar({
             precedence,
             seq(
               field('left', $.expression),
-              field('operator', operator),
+              field('operator', alias(operator, 'operator')),
               field('right', $.expression),
             ),
           ),
@@ -267,11 +272,13 @@ module.exports = grammar({
           field('condition', $.expression),
           choice(
             seq(
-              '?',
+              alias('?', 'operator'),
               field('consequence', $.expression),
-              optional(seq(':', field('alternative', $.expression))),
+              optional(
+                seq(alias(':', 'operator'), field('alternative', $.expression)),
+              ),
             ),
-            seq('?:', field('alternative', $.expression)),
+            seq(alias('?:', 'operator'), field('alternative', $.expression)),
           ),
         ),
       ),
@@ -281,7 +288,7 @@ module.exports = grammar({
         'filter',
         seq(
           field('object', choice($.expression, $.primary_expression)),
-          '|',
+          alias('|', 'operator'),
           field('name', $.identifier),
           optional(field('arguments', $.arguments)),
         ),

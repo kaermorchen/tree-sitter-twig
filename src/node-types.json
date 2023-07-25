@@ -291,127 +291,7 @@
         "required": true,
         "types": [
           {
-            "type": "!=",
-            "named": false
-          },
-          {
-            "type": "%",
-            "named": false
-          },
-          {
-            "type": "*",
-            "named": false
-          },
-          {
-            "type": "**",
-            "named": false
-          },
-          {
-            "type": "+",
-            "named": false
-          },
-          {
-            "type": "-",
-            "named": false
-          },
-          {
-            "type": "..",
-            "named": false
-          },
-          {
-            "type": "/",
-            "named": false
-          },
-          {
-            "type": "//",
-            "named": false
-          },
-          {
-            "type": "<",
-            "named": false
-          },
-          {
-            "type": "<=",
-            "named": false
-          },
-          {
-            "type": "<=>",
-            "named": false
-          },
-          {
-            "type": "==",
-            "named": false
-          },
-          {
-            "type": ">",
-            "named": false
-          },
-          {
-            "type": ">=",
-            "named": false
-          },
-          {
-            "type": "??",
-            "named": false
-          },
-          {
-            "type": "and",
-            "named": false
-          },
-          {
-            "type": "b-and",
-            "named": false
-          },
-          {
-            "type": "b-or",
-            "named": false
-          },
-          {
-            "type": "b-xor",
-            "named": false
-          },
-          {
-            "type": "ends with",
-            "named": false
-          },
-          {
-            "type": "has every",
-            "named": false
-          },
-          {
-            "type": "has some",
-            "named": false
-          },
-          {
-            "type": "in",
-            "named": false
-          },
-          {
-            "type": "is",
-            "named": false
-          },
-          {
-            "type": "is not",
-            "named": false
-          },
-          {
-            "type": "matches",
-            "named": false
-          },
-          {
-            "type": "not in",
-            "named": false
-          },
-          {
-            "type": "or",
-            "named": false
-          },
-          {
-            "type": "starts with",
-            "named": false
-          },
-          {
-            "type": "~",
+            "type": "operator",
             "named": false
           }
         ]
@@ -1700,19 +1580,7 @@
     "named": false
   },
   {
-    "type": "!=",
-    "named": false
-  },
-  {
-    "type": "\"",
-    "named": false
-  },
-  {
     "type": "#{",
-    "named": false
-  },
-  {
-    "type": "%",
     "named": false
   },
   {
@@ -1721,14 +1589,6 @@
   },
   {
     "type": ")",
-    "named": false
-  },
-  {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "**",
     "named": false
   },
   {
@@ -1748,19 +1608,7 @@
     "named": false
   },
   {
-    "type": "..",
-    "named": false
-  },
-  {
     "type": "...",
-    "named": false
-  },
-  {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "//",
     "named": false
   },
   {
@@ -1768,47 +1616,11 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
-    "type": "<=>",
-    "named": false
-  },
-  {
     "type": "=",
     "named": false
   },
   {
-    "type": "==",
-    "named": false
-  },
-  {
     "type": "=>",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
-    "named": false
-  },
-  {
-    "type": "?",
-    "named": false
-  },
-  {
-    "type": "?:",
-    "named": false
-  },
-  {
-    "type": "??",
     "named": false
   },
   {
@@ -1817,10 +1629,6 @@
   },
   {
     "type": "]",
-    "named": false
-  },
-  {
-    "type": "and",
     "named": false
   },
   {
@@ -1833,18 +1641,6 @@
   },
   {
     "type": "autoescape",
-    "named": false
-  },
-  {
-    "type": "b-and",
-    "named": false
-  },
-  {
-    "type": "b-or",
-    "named": false
-  },
-  {
-    "type": "b-xor",
     "named": false
   },
   {
@@ -1924,10 +1720,6 @@
     "named": false
   },
   {
-    "type": "ends with",
-    "named": false
-  },
-  {
     "type": "endsandbox",
     "named": false
   },
@@ -1964,14 +1756,6 @@
     "named": false
   },
   {
-    "type": "has every",
-    "named": false
-  },
-  {
-    "type": "has some",
-    "named": false
-  },
-  {
     "type": "if",
     "named": false
   },
@@ -1992,19 +1776,7 @@
     "named": false
   },
   {
-    "type": "is",
-    "named": false
-  },
-  {
-    "type": "is not",
-    "named": false
-  },
-  {
     "type": "macro",
-    "named": false
-  },
-  {
-    "type": "matches",
     "named": false
   },
   {
@@ -2013,10 +1785,6 @@
   },
   {
     "type": "not",
-    "named": false
-  },
-  {
-    "type": "not in",
     "named": false
   },
   {
@@ -2032,7 +1800,7 @@
     "named": false
   },
   {
-    "type": "or",
+    "type": "operator",
     "named": false
   },
   {
@@ -2048,7 +1816,7 @@
     "named": false
   },
   {
-    "type": "starts with",
+    "type": "string",
     "named": false
   },
   {
@@ -2072,15 +1840,7 @@
     "named": false
   },
   {
-    "type": "|",
-    "named": false
-  },
-  {
     "type": "}",
-    "named": false
-  },
-  {
-    "type": "~",
     "named": false
   }
 ]
