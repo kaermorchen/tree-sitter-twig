@@ -1716,10 +1716,6 @@
     "named": false
   },
   {
-    "type": "%}",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -1745,14 +1741,6 @@
   },
   {
     "type": "-",
-    "named": false
-  },
-  {
-    "type": "-%}",
-    "named": false
-  },
-  {
-    "type": "-}}",
     "named": false
   },
   {
@@ -1893,6 +1881,14 @@
   },
   {
     "type": "embed",
+    "named": false
+  },
+  {
+    "type": "embedded_begin",
+    "named": false
+  },
+  {
+    "type": "embedded_end",
     "named": false
   },
   {
@@ -2076,30 +2072,6 @@
     "named": false
   },
   {
-    "type": "{%",
-    "named": false
-  },
-  {
-    "type": "{%-",
-    "named": false
-  },
-  {
-    "type": "{%~",
-    "named": false
-  },
-  {
-    "type": "{{",
-    "named": false
-  },
-  {
-    "type": "{{-",
-    "named": false
-  },
-  {
-    "type": "{{~",
-    "named": false
-  },
-  {
     "type": "|",
     "named": false
   },
@@ -2108,19 +2080,7 @@
     "named": false
   },
   {
-    "type": "}}",
-    "named": false
-  },
-  {
     "type": "~",
-    "named": false
-  },
-  {
-    "type": "~%}",
-    "named": false
-  },
-  {
-    "type": "~}}",
     "named": false
   }
 ]

@@ -44,78 +44,98 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{{"
-            },
-            {
-              "type": "STRING",
-              "value": "{{-"
-            },
-            {
-              "type": "STRING",
-              "value": "{{~"
-            }
-          ]
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "{{"
+              },
+              {
+                "type": "STRING",
+                "value": "{{-"
+              },
+              {
+                "type": "STRING",
+                "value": "{{~"
+              }
+            ]
+          },
+          "named": false,
+          "value": "embedded_begin"
         },
         {
           "type": "SYMBOL",
           "name": "expression"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "}}"
-            },
-            {
-              "type": "STRING",
-              "value": "-}}"
-            },
-            {
-              "type": "STRING",
-              "value": "~}}"
-            }
-          ]
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "}}"
+              },
+              {
+                "type": "STRING",
+                "value": "-}}"
+              },
+              {
+                "type": "STRING",
+                "value": "~}}"
+              }
+            ]
+          },
+          "named": false,
+          "value": "embedded_end"
         }
       ]
     },
     "_statement_start": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{%"
-        },
-        {
-          "type": "STRING",
-          "value": "{%-"
-        },
-        {
-          "type": "STRING",
-          "value": "{%~"
-        }
-      ]
+      "type": "ALIAS",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "{%"
+          },
+          {
+            "type": "STRING",
+            "value": "{%-"
+          },
+          {
+            "type": "STRING",
+            "value": "{%~"
+          }
+        ]
+      },
+      "named": false,
+      "value": "embedded_begin"
     },
     "_statement_stop": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "%}"
-        },
-        {
-          "type": "STRING",
-          "value": "-%}"
-        },
-        {
-          "type": "STRING",
-          "value": "~%}"
-        }
-      ]
+      "type": "ALIAS",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "%}"
+          },
+          {
+            "type": "STRING",
+            "value": "-%}"
+          },
+          {
+            "type": "STRING",
+            "value": "~%}"
+          }
+        ]
+      },
+      "named": false,
+      "value": "embedded_end"
     },
     "expression": {
       "type": "CHOICE",

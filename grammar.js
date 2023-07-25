@@ -36,10 +36,14 @@ module.exports = grammar({
     content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     output: ($) =>
-      seq(choice('{{', '{{-', '{{~'), $.expression, choice('}}', '-}}', '~}}')),
+      seq(
+        alias(choice('{{', '{{-', '{{~'), 'embedded_begin'),
+        $.expression,
+        alias(choice('}}', '-}}', '~}}'), 'embedded_end'),
+      ),
 
-    _statement_start: () => choice('{%', '{%-', '{%~'),
-    _statement_stop: () => choice('%}', '-%}', '~%}'),
+    _statement_start: ($) => alias(choice('{%', '{%-', '{%~'), 'embedded_begin'),
+    _statement_stop: ($) => alias(choice('%}', '-%}', '~%}'), 'embedded_end'),
 
     expression: ($) =>
       choice(
