@@ -29,17 +29,6 @@
         }
       ]
     },
-    "content": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "PATTERN",
-          "value": "[^\\{]+|\\{"
-        }
-      }
-    },
     "output": {
       "type": "SEQ",
       "members": [
@@ -4383,7 +4372,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s+"
+      "value": "[\\s\\p{Zs}\\uFEFF\\u2060\\u200B]"
     }
   ],
   "conflicts": [
@@ -4448,6 +4437,10 @@
     ]
   ],
   "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "content"
+    },
     {
       "type": "SYMBOL",
       "name": "comment"

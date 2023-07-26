@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 enum TokenType {
+  CONTENT,
   COMMENT
 };
 
@@ -13,6 +14,31 @@ unsigned tree_sitter_twig_external_scanner_serialize(void *p, char *buffer) { re
 void tree_sitter_twig_external_scanner_deserialize(void *p, const char *b, unsigned n) {}
 
 static void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
+
+static bool scan_twig_content(TSLexer *lexer) {
+  lexer->result_symbol = CONTENT;
+
+  bool has_content = false;
+
+  while (lexer->lookahead) {
+    lexer->mark_end(lexer);
+
+    switch (lexer->lookahead) {
+      case '{':
+        advance(lexer);
+        if(lexer->lookahead == '{' ||
+           lexer->lookahead == '%' ||
+           lexer->lookahead == '#') {
+          return has_content;
+        }
+        // break;
+      default:
+        advance(lexer);
+    }
+
+    has_content = true;
+  }
+}
 
 static bool scan_twig_comment(TSLexer *lexer) {
   // Ensure the next character is `#`
@@ -50,6 +76,10 @@ bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const
       advance(lexer);
       return scan_twig_comment(lexer);
     }
+  }
+
+  if (valid_symbols[CONTENT]) {
+    return scan_twig_content(lexer);
   }
 
   return false;
