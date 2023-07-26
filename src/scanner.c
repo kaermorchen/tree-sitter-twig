@@ -31,7 +31,7 @@ static bool scan_twig_content(TSLexer *lexer) {
            lexer->lookahead == '#') {
           return has_content;
         }
-        // break;
+        break;
       default:
         advance(lexer);
     }
