@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 enum TokenType {
+  CONTENT,
   COMMENT
 };
 
@@ -14,41 +15,56 @@ void tree_sitter_twig_external_scanner_deserialize(void *p, const char *b, unsig
 
 static void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
-static bool scan_twig_comment(TSLexer *lexer) {
-  // Ensure the next character is `#`
-  if (lexer->lookahead != '#') return false;
-  advance(lexer);
-
-  // Consume characters until we read `#}`
-  while (lexer->lookahead) {
-    if(lexer->lookahead == '#') {
-      advance(lexer);
-
-      if(lexer->lookahead == '}') {
-        lexer->result_symbol = COMMENT;
-        advance(lexer);
-        lexer->mark_end(lexer);
-        return true;
-      }
-    }
-
-    advance(lexer);
-  }
-
-  return false;
-}
-
 bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
   // Eat whitespace
   while (iswspace(lexer->lookahead)) {
     lexer->advance(lexer, true);
   }
 
-  if (valid_symbols[COMMENT]) {
-    if (lexer->lookahead == '{') {
-      lexer->mark_end(lexer);
+  // CONTENT
+  bool has_content = false;
+
+  while (lexer->lookahead) {
+    if(lexer->lookahead == '{') {
       advance(lexer);
-      return scan_twig_comment(lexer);
+
+      if(lexer->lookahead == '{' ||
+        lexer->lookahead == '%' ||
+        lexer->lookahead == '#') {
+        break;
+      }
+    } else {
+      advance(lexer);
+    }
+
+    lexer->mark_end(lexer);
+    has_content = true;
+  }
+
+  if (has_content) {
+    lexer->result_symbol = CONTENT;
+    return true;
+  }
+
+  // COMMENT
+  if (lexer->lookahead == '#') {
+    advance(lexer);
+
+    while (lexer->lookahead) {
+      lexer->mark_end(lexer);
+
+      if(lexer->lookahead == '#') {
+        advance(lexer);
+
+        if(lexer->lookahead == '}') {
+          lexer->result_symbol = COMMENT;
+          advance(lexer);
+          lexer->mark_end(lexer);
+          return true;
+        }
+      }
+
+      advance(lexer);
     }
   }
 

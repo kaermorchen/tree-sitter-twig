@@ -547,11 +547,6 @@
     }
   },
   {
-    "type": "content",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "deprecated",
     "named": true,
     "fields": {
@@ -1869,6 +1864,10 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "content",
     "named": true
   },
   {
