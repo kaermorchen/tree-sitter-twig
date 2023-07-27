@@ -29,17 +29,6 @@
         }
       ]
     },
-    "content": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "PATTERN",
-          "value": "[^\\{]+|\\{"
-        }
-      }
-    },
     "output": {
       "type": "SEQ",
       "members": [
@@ -4653,6 +4642,10 @@
     ]
   ],
   "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "content"
+    },
     {
       "type": "SYMBOL",
       "name": "comment"

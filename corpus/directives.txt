@@ -2,15 +2,30 @@
 Empty template
 ==================
 ---
-
 (template)
 
 ==================
-Only content
+Content one line
 ==================
 Lorem ipsum
 ---
+(template
+  (content))
 
+==================
+Content two line
+==================
+Lorem ipsum
+
+---
+(template
+  (content))
+
+==================
+Content with curly brace
+==================
+Lorem { ipsum
+---
 (template
   (content))
 
@@ -19,7 +34,6 @@ Comment single line
 ==================
 {# сomment #}
 ---
-
 (template
   (comment))
 
@@ -32,7 +46,6 @@ Comment multi line
   {% endfor %}
 #}
 ---
-
 (template
   (comment))
 
@@ -41,18 +54,26 @@ Comment multi line
 ==================
 Lorem {# сomment #} ipsum
 ---
-
 (template
   (content)
   (comment)
   (content))
 
 ==================
+Comment content  Comment
+==================
+{# сomment #} Lorem  {# сomment #}
+---
+(template
+  (comment)
+  (content)
+  (comment))
+
+==================
 Output directive
 ==================
 {{ user }}
 ---
-
 (template
   (output
     (identifier)))

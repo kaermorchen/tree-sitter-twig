@@ -26,14 +26,12 @@ module.exports = grammar({
     [$.primary_expression, $.arrow_function],
     [$.primary_expression, $.pattern],
   ],
-  externals: ($) => [$.comment],
+  externals: ($) => [$.content, $.comment],
   rules: {
     template: ($) => repeat($._source_element),
 
     _source_element: ($) =>
       choice($._statement, $.output, $.comment, $.content),
-
-    content: () => prec.right(repeat1(/[^\{]+|\{/)),
 
     output: ($) =>
       seq(
