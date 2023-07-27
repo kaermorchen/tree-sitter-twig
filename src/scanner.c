@@ -21,8 +21,6 @@ static bool scan_twig_content(TSLexer *lexer) {
   bool has_content = false;
 
   while (lexer->lookahead) {
-    lexer->mark_end(lexer);
-
     switch (lexer->lookahead) {
       case '{':
         advance(lexer);
@@ -36,12 +34,20 @@ static bool scan_twig_content(TSLexer *lexer) {
         advance(lexer);
     }
 
+    lexer->mark_end(lexer);
     has_content = true;
   }
+
+  return has_content;
 }
 
 static bool scan_twig_comment(TSLexer *lexer) {
-  // Ensure the next character is `#`
+  lexer->result_symbol = COMMENT;
+
+  if (lexer->lookahead != '{') return false;
+  lexer->mark_end(lexer);
+  advance(lexer);
+
   if (lexer->lookahead != '#') return false;
   advance(lexer);
 
@@ -51,7 +57,6 @@ static bool scan_twig_comment(TSLexer *lexer) {
       advance(lexer);
 
       if(lexer->lookahead == '}') {
-        lexer->result_symbol = COMMENT;
         advance(lexer);
         lexer->mark_end(lexer);
         return true;
@@ -61,7 +66,7 @@ static bool scan_twig_comment(TSLexer *lexer) {
     advance(lexer);
   }
 
-  return false;
+  return true;
 }
 
 bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
@@ -70,12 +75,8 @@ bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const
     lexer->advance(lexer, true);
   }
 
-  if (valid_symbols[COMMENT]) {
-    if (lexer->lookahead == '{') {
-      lexer->mark_end(lexer);
-      advance(lexer);
-      return scan_twig_comment(lexer);
-    }
+  if (valid_symbols[COMMENT] && lexer->lookahead == '{') {
+    return scan_twig_comment(lexer);
   }
 
   if (valid_symbols[CONTENT]) {
