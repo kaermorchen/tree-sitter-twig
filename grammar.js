@@ -79,9 +79,9 @@ module.exports = grammar({
         'same as',
       ),
 
-    null: () => choice('null', 'none'),
+    null: () => choice('null', 'none', 'NULL', 'NONE'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
-    boolean: () => choice('true', 'false'),
+    boolean: () => choice('true', 'false', 'TRUE', 'FALSE'),
     string: () => /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
     interpolated_string: ($) =>
       seq(

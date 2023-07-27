@@ -1624,6 +1624,22 @@
     "named": false
   },
   {
+    "type": "FALSE",
+    "named": false
+  },
+  {
+    "type": "NONE",
+    "named": false
+  },
+  {
+    "type": "NULL",
+    "named": false
+  },
+  {
+    "type": "TRUE",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
