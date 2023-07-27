@@ -60,6 +60,16 @@ Lorem {# сomment #} ipsum
   (content))
 
 ==================
+Comment content  Comment
+==================
+{# сomment #} Lorem  {# сomment #}
+---
+(template
+  (comment)
+  (content)
+  (comment))
+
+==================
 Output directive
 ==================
 {{ user }}
