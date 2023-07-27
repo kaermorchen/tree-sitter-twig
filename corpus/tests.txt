@@ -10,7 +10,7 @@ Divisible by
     (binary_expression
       (member_expression
         (identifier)
-        (property_identifier))
+        (property))
       (call_expression
         (identifier)
         (arguments
@@ -30,7 +30,7 @@ Same as
     (binary_expression
       (member_expression
         (identifier)
-        (property_identifier))
+        (property))
       (call_expression
         (identifier)
         (arguments

@@ -251,7 +251,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_COLON] = ":",
   [anon_sym_EQ_GT] = "=>",
   [anon_sym_DOT] = ".",
-  [aux_sym_member_expression_token1] = "property_identifier",
+  [aux_sym_member_expression_token1] = "property",
   [anon_sym_EQ] = "=",
   [anon_sym_PLUS] = "+",
   [anon_sym_DASH] = "-",

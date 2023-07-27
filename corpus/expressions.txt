@@ -296,7 +296,7 @@ Member expression
   (output
     (member_expression
       (identifier)
-      (property_identifier))))
+      (property))))
 
 ==================
 Member expression index
@@ -307,7 +307,7 @@ Member expression index
   (output
     (member_expression
       (identifier)
-      (property_identifier))))
+      (property))))
 
 ==================
 Member expression deeper
@@ -319,8 +319,8 @@ Member expression deeper
     (member_expression
       (member_expression
         (identifier)
-        (property_identifier))
-      (property_identifier))))
+        (property))
+      (property))))
 
 ==================
 Subscript expression

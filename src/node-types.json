@@ -890,7 +890,7 @@
         "required": true,
         "types": [
           {
-            "type": "property_identifier",
+            "type": "property",
             "named": true
           }
         ]
@@ -1016,7 +1016,7 @@
     }
   },
   {
-    "type": "property_identifier",
+    "type": "property",
     "named": true,
     "fields": {}
   },
