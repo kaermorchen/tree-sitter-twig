@@ -292,14 +292,14 @@ module.exports = grammar({
     tag: ($) =>
       statement(
         $,
-        field('name', $.identifier),
+        field('name', alias($.identifier, 'keyword')),
         repeat(prec.left($.expression)),
       ),
 
     set: ($) =>
       statement(
         $,
-        'set',
+        alias('set', 'keyword'),
         commaSep1(field('variable', $.identifier)),
         '=',
         commaSep1(field('value', $.expression)),
@@ -308,40 +308,40 @@ module.exports = grammar({
     set_block: ($) =>
       statement(
         $,
-        'set',
+        alias('set', 'keyword'),
         field('variable', $.identifier),
         source_elements($),
-        'endset',
+        alias('endset', 'keyword'),
       ),
 
     apply: ($) =>
       statement(
         $,
-        'apply',
+        alias('apply', 'keyword'),
         field('filter', choice($.identifier, $.filter_expression)),
         source_elements($),
-        'endapply',
+        alias('endapply', 'keyword'),
       ),
 
     autoescape: ($) =>
       statement(
         $,
-        'autoescape',
+        alias('autoescape', 'keyword'),
         optional(field('strategy', choice($.string, $.boolean))),
         source_elements($),
-        'endautoescape',
+        alias('endautoescape', 'keyword'),
       ),
 
     block: ($) =>
       statement(
         $,
-        'block',
+        alias('block', 'keyword'),
         field('name', $.identifier),
         choice(
           field('expr', $.expression),
           seq(
             source_elements($),
-            'endblock',
+            alias('endblock', 'keyword'),
             optional(field('name', $.identifier)),
           ),
         ),
@@ -350,127 +350,150 @@ module.exports = grammar({
     cache: ($) =>
       statement(
         $,
-        'cache',
+        alias('cache', 'keyword'),
         field('key', $.expression),
         ' ',
         optional(field('expiration', $.call_expression)),
         source_elements($),
-        'endcache',
+        alias('endcache', 'keyword'),
       ),
 
-    deprecated: ($) => statement($, 'deprecated', field('expr', $.expression)),
+    deprecated: ($) =>
+      statement($, alias('deprecated', 'keyword'), field('expr', $.expression)),
 
-    do: ($) => statement($, 'do', field('expr', $.expression)),
+    do: ($) =>
+      statement($, alias('do', 'keyword'), field('expr', $.expression)),
 
     embed: ($) =>
       statement(
         $,
-        'embed',
+        alias('embed', 'keyword'),
         field('name', $.expression),
-        optional(field('ignore_missing', 'ignore missing')),
+        optional(field('ignore_missing', alias('ignore missing', 'keyword'))),
         optional(seq('with', field('variables', $.expression))),
-        optional(field('only', 'only')),
+        optional(field('only', alias('only', 'keyword'))),
         source_elements($),
-        'endembed',
+        alias('endembed', 'keyword'),
       ),
 
-    extends: ($) => statement($, 'extends', field('expr', $.expression)),
+    extends: ($) =>
+      statement($, alias('extends', 'keyword'), field('expr', $.expression)),
 
-    flush: ($) => statement($, 'flush'),
+    flush: ($) => statement($, alias('flush', 'keyword')),
 
     for: ($) =>
       statement(
         $,
-        'for',
+        alias('for', 'keyword'),
         commaSep1(field('variable', $.identifier)),
-        'in',
+        alias('in', 'keyword'),
         field('expr', $.expression),
         source_elements($),
         optional(seq('else', source_elements($))),
-        'endfor',
+        alias('endfor', 'keyword'),
       ),
 
     from: ($) =>
       statement(
         $,
-        'from',
+        alias('from', 'keyword'),
         field('expr', $.expression),
-        'import',
+        alias('import', 'keyword'),
         commaSep1(field('variable', choice($.identifier, $.as_operator))),
       ),
 
     as_operator: ($) =>
       seq(
         field('left', $.identifier),
-        field('operator', 'as'),
+        field('operator', alias('as', 'keyword')),
         field('right', $.identifier),
       ),
 
     if: ($) =>
       statement(
         $,
-        'if',
+        alias('if', 'keyword'),
         field('expr', $.expression),
         source_elements($, 'then'),
         optional(field('elseif', repeat($.elseif))),
         optional(seq('else', source_elements($, 'else'))),
-        'endif',
+        alias('endif', 'keyword'),
       ),
 
     elseif: ($) =>
-      seq('elseif', field('expr', $.expression), source_elements($, 'then')),
+      seq(
+        alias('elseif', 'keyword'),
+        field('expr', $.expression),
+        source_elements($, 'then'),
+      ),
 
     import: ($) =>
       statement(
         $,
-        'import',
+        alias('import', 'keyword'),
         field('expr', $.expression),
-        'as',
+        alias('as', 'keyword'),
         field('variable', $.identifier),
       ),
 
     include: ($) =>
       statement(
         $,
-        'include',
+        alias('include', 'keyword'),
         field('expr', $.expression),
-        optional(field('ignore_missing', 'ignore missing')),
+        optional(field('ignore_missing', alias('ignore missing', 'keyword'))),
         optional(seq('with', field('variables', $.expression))),
-        optional(field('only', 'only')),
+        optional(field('only', alias('only', 'keyword'))),
       ),
 
     macro: ($) =>
       statement(
         $,
-        'macro',
+        alias('macro', 'keyword'),
         field('name', $.identifier),
         field('arguments', $.arguments),
         source_elements($),
-        'endmacro',
+        alias('endmacro', 'keyword'),
         optional($.identifier),
       ),
 
-    sandbox: ($) => statement($, 'sandbox', source_elements($), 'endsandbox'),
+    sandbox: ($) =>
+      statement(
+        $,
+        alias('sandbox', 'keyword'),
+        source_elements($),
+        alias('endsandbox', 'keyword'),
+      ),
 
     use: ($) =>
       statement(
         $,
-        'use',
+        alias('use', 'keyword'),
         field('expr', $.expression),
-        optional(seq('with', commaSep1(field('variable', $.as_operator)))),
+        optional(
+          seq(
+            alias('with', 'keyword'),
+            commaSep1(field('variable', $.as_operator)),
+          ),
+        ),
       ),
 
     verbatim: ($) =>
-      statement($, 'verbatim', source_elements($), 'endverbatim'),
+      statement(
+        $,
+        alias('verbatim', 'keyword'),
+        source_elements($),
+        alias('endverbatim', 'keyword'),
+      ),
 
     with: ($) =>
       statement(
         $,
-        'with',
+        alias('with', 'keyword'),
         optional(field('expr', $.expression)),
-        optional(field('only', 'only')),
+        optional(field('only', alias('only', 'keyword'))),
         source_elements($),
-        'endwith',
+        alias('endwith', 'keyword'),
       ),
 
     _statement: ($) =>

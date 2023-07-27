@@ -4,8 +4,7 @@ Tag empty
 {% unknown_tag %}
 ---
 (template
-  (tag
-    (identifier)))
+  (tag))
 
 ==================
 Tag with expression
@@ -14,7 +13,6 @@ Tag with expression
 ---
 (template
   (tag
-    (identifier)
     (binary_expression
       (number)
       (number))))
@@ -26,7 +24,6 @@ Tag with expressions
 ---
 (template
   (tag
-    (identifier)
     (identifier)
     (binary_expression
       (number)
@@ -719,8 +716,6 @@ Trans
   (if
     (identifier)
     (source_elements
-      (tag
-        (identifier))
+      (tag)
       (content)
-      (tag
-        (identifier)))))
+      (tag))))

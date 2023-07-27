@@ -225,7 +225,7 @@
         "required": true,
         "types": [
           {
-            "type": "as",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -503,7 +503,7 @@
         "required": false,
         "types": [
           {
-            "type": "ignore missing",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -523,7 +523,7 @@
         "required": false,
         "types": [
           {
-            "type": "only",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -774,7 +774,7 @@
         "required": false,
         "types": [
           {
-            "type": "ignore missing",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -784,7 +784,7 @@
         "required": false,
         "types": [
           {
-            "type": "only",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -819,6 +819,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "keyword",
+    "named": false,
+    "fields": {}
   },
   {
     "type": "macro",
@@ -1294,8 +1299,8 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
+            "type": "keyword",
+            "named": false
           }
         ]
       }
@@ -1563,7 +1568,7 @@
         "required": false,
         "types": [
           {
-            "type": "only",
+            "type": "keyword",
             "named": false
           }
         ]
@@ -1627,26 +1632,6 @@
     "named": false
   },
   {
-    "type": "apply",
-    "named": false
-  },
-  {
-    "type": "as",
-    "named": false
-  },
-  {
-    "type": "autoescape",
-    "named": false
-  },
-  {
-    "type": "block",
-    "named": false
-  },
-  {
-    "type": "cache",
-    "named": false
-  },
-  {
     "type": "comment",
     "named": true
   },
@@ -1655,27 +1640,11 @@
     "named": true
   },
   {
-    "type": "deprecated",
-    "named": false
-  },
-  {
     "type": "divisible by",
     "named": false
   },
   {
-    "type": "do",
-    "named": false
-  },
-  {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "elseif",
-    "named": false
-  },
-  {
-    "type": "embed",
     "named": false
   },
   {
@@ -1687,95 +1656,11 @@
     "named": false
   },
   {
-    "type": "endapply",
-    "named": false
-  },
-  {
-    "type": "endautoescape",
-    "named": false
-  },
-  {
-    "type": "endblock",
-    "named": false
-  },
-  {
-    "type": "endcache",
-    "named": false
-  },
-  {
-    "type": "endembed",
-    "named": false
-  },
-  {
-    "type": "endfor",
-    "named": false
-  },
-  {
-    "type": "endif",
-    "named": false
-  },
-  {
-    "type": "endmacro",
-    "named": false
-  },
-  {
-    "type": "endsandbox",
-    "named": false
-  },
-  {
-    "type": "endset",
-    "named": false
-  },
-  {
-    "type": "endverbatim",
-    "named": false
-  },
-  {
-    "type": "endwith",
-    "named": false
-  },
-  {
-    "type": "extends",
-    "named": false
-  },
-  {
     "type": "false",
     "named": false
   },
   {
-    "type": "flush",
-    "named": false
-  },
-  {
-    "type": "for",
-    "named": false
-  },
-  {
-    "type": "from",
-    "named": false
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "ignore missing",
-    "named": false
-  },
-  {
-    "type": "import",
-    "named": false
-  },
-  {
-    "type": "in",
-    "named": false
-  },
-  {
-    "type": "include",
-    "named": false
-  },
-  {
-    "type": "macro",
+    "type": "keyword",
     "named": false
   },
   {
@@ -1795,10 +1680,6 @@
     "named": true
   },
   {
-    "type": "only",
-    "named": false
-  },
-  {
     "type": "operator",
     "named": false
   },
@@ -1807,27 +1688,11 @@
     "named": false
   },
   {
-    "type": "sandbox",
-    "named": false
-  },
-  {
-    "type": "set",
-    "named": false
-  },
-  {
     "type": "string",
     "named": false
   },
   {
     "type": "true",
-    "named": false
-  },
-  {
-    "type": "use",
-    "named": false
-  },
-  {
-    "type": "verbatim",
     "named": false
   },
   {
