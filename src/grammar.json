@@ -474,13 +474,8 @@
                       "name": "pair"
                     },
                     {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "identifier"
-                      },
-                      "named": true,
-                      "value": "string"
+                      "type": "SYMBOL",
+                      "name": "identifier"
                     }
                   ]
                 },
@@ -501,13 +496,8 @@
                             "name": "pair"
                           },
                           {
-                            "type": "ALIAS",
-                            "content": {
-                              "type": "SYMBOL",
-                              "name": "identifier"
-                            },
-                            "named": true,
-                            "value": "string"
+                            "type": "SYMBOL",
+                            "name": "identifier"
                           }
                         ]
                       }
@@ -588,13 +578,8 @@
           "name": "number"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",

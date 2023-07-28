@@ -184,10 +184,10 @@ Object property keys as names
   (output
     (object
       (pair
-        (string)
+        (identifier)
         (string))
       (pair
-        (string)
+        (identifier)
         (string)))))
 
 ==================
@@ -213,7 +213,7 @@ Object property as the variable name
 (template
   (output
     (object
-      (string))))
+      (identifier))))
 
 ==================
 Object parentheses property

@@ -100,7 +100,7 @@ module.exports = grammar({
     object: ($) =>
       seq(
         '{',
-        commaSep(choice($.pair, alias($.identifier, $.string))),
+        commaSep(choice($.pair, $.identifier)),
         optional($.spread_element),
         '}',
       ),
@@ -109,12 +109,7 @@ module.exports = grammar({
       seq(field('key', $._property_name), ':', field('value', $.expression)),
 
     _property_name: ($) =>
-      choice(
-        $.string,
-        $.number,
-        alias($.identifier, $.string),
-        $.computed_property_name,
-      ),
+      choice($.string, $.number, $.identifier, $.computed_property_name),
 
     computed_property_name: ($) => seq('(', $.expression, ')'),
 

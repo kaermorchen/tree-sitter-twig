@@ -937,15 +937,15 @@
       "required": false,
       "types": [
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "pair",
           "named": true
         },
         {
           "type": "spread_element",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         }
       ]
@@ -976,6 +976,10 @@
         "types": [
           {
             "type": "computed_property_name",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1108,6 +1112,10 @@
         "types": [
           {
             "type": "computed_property_name",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
