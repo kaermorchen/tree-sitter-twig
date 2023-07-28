@@ -250,9 +250,8 @@ Arrow function with arguments
 (template
   (output
     (arrow_function
-      (formal_parameters
-        (identifier)
-        (identifier))
+      (parameter)
+      (parameter)
       (number))))
 
 ==================
@@ -263,7 +262,6 @@ Arrow function without arguments
 (template
   (output
     (arrow_function
-      (formal_parameters)
       (number))))
 
 ==================
@@ -274,7 +272,7 @@ Arrow function single argument
 (template
   (output
     (arrow_function
-      (identifier)
+      (parameter)
       (number))))
 
 ==================

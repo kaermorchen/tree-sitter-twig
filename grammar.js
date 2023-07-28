@@ -1,13 +1,8 @@
 module.exports = grammar({
   name: 'twig',
   extras: () => [/[\s\p{Zs}\uFEFF\u2060\u200B]/],
-  supertypes: ($) => [$.expression, $.primary_expression, $.pattern],
-  inline: ($) => [
-    $._call_signature,
-    $._formal_parameter,
-    $._lhs_expression,
-    $._statement,
-  ],
+  supertypes: ($) => [$.expression, $.primary_expression],
+  inline: ($) => [$._statement],
   precedences: ($) => [
     [
       'member',
@@ -24,7 +19,6 @@ module.exports = grammar({
     [$.primary_expression, $._property_name],
     [$.primary_expression, $._property_name, $.arrow_function],
     [$.primary_expression, $.arrow_function],
-    [$.primary_expression, $.pattern],
   ],
   externals: ($) => [$.content, $.comment],
   rules: {
@@ -119,22 +113,17 @@ module.exports = grammar({
 
     arrow_function: ($) =>
       seq(
-        choice(field('parameter', $.identifier), $._call_signature),
+        choice(
+          field('parameter', alias($.identifier, $.parameter)),
+          seq(
+            '(',
+            commaSep(field('parameter', alias($.identifier, $.parameter))),
+            ')',
+          ),
+        ),
         '=>',
         field('expr', $.expression),
       ),
-
-    _call_signature: ($) => field('parameters', $.formal_parameters),
-
-    formal_parameters: ($) =>
-      seq('(', optional(seq(commaSep1($._formal_parameter))), ')'),
-
-    _formal_parameter: ($) => $.pattern,
-
-    pattern: ($) => prec.dynamic(-1, $._lhs_expression),
-
-    _lhs_expression: ($) =>
-      choice($.member_expression, $.subscript_expression, $.identifier),
 
     member_expression: ($) =>
       prec(
