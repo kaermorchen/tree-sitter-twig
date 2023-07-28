@@ -89,7 +89,11 @@ module.exports = grammar({
         repeat(
           choice(
             alias(choice('\\"', '\\#', '\\\\', /[^#"\\\\]+/), $.string),
-            seq('#{', $.expression, '}'),
+            seq(
+              alias('#{', 'embedded_begin'),
+              $.expression,
+              alias('}', 'embedded_begin'),
+            ),
           ),
         ),
         alias('"', 'string'),

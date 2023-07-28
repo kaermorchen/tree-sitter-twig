@@ -339,16 +339,26 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "STRING",
-                    "value": "#{"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "STRING",
+                      "value": "#{"
+                    },
+                    "named": false,
+                    "value": "embedded_begin"
                   },
                   {
                     "type": "SYMBOL",
                     "name": "expression"
                   },
                   {
-                    "type": "STRING",
-                    "value": "}"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "STRING",
+                      "value": "}"
+                    },
+                    "named": false,
+                    "value": "embedded_begin"
                   }
                 ]
               }
