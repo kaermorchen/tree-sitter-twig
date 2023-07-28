@@ -5,7 +5,7 @@ Identifier
 ---
 (template
   (output
-    (identifier)))
+    (variable)))
 
 ==================
 Null
@@ -81,7 +81,7 @@ String interpolation
       (string)
       (number)
       (string)
-      (identifier)
+      (variable)
       (string))))
 
 ==================
@@ -95,7 +95,7 @@ String interpolation deeper
       (string)
       (interpolated_string
         (string)
-        (identifier)
+        (variable)
         (string))
       (string))))
 
@@ -152,7 +152,7 @@ Array with spread element
       (number)
       (number)
       (spread_element
-        (identifier)))))
+        (variable)))))
 
 ==================
 Object empty
@@ -184,10 +184,10 @@ Object property keys as names
   (output
     (object
       (pair
-        (identifier)
+        (variable)
         (string))
       (pair
-        (identifier)
+        (variable)
         (string)))))
 
 ==================
@@ -213,7 +213,7 @@ Object property as the variable name
 (template
   (output
     (object
-      (identifier))))
+      (variable))))
 
 ==================
 Object parentheses property
@@ -225,7 +225,7 @@ Object parentheses property
     (object
       (pair
         (computed_property_name
-          (identifier))
+          (variable))
         (string)))))
 
 ==================
@@ -240,7 +240,7 @@ Object with spread element
         (string)
         (number))
       (spread_element
-        (identifier)))))
+        (variable)))))
 
 ==================
 Arrow function with arguments
@@ -293,7 +293,7 @@ Member expression
 (template
   (output
     (member_expression
-      (identifier)
+      (variable)
       (property))))
 
 ==================
@@ -304,7 +304,7 @@ Member expression index
 (template
   (output
     (member_expression
-      (identifier)
+      (variable)
       (property))))
 
 ==================
@@ -316,7 +316,7 @@ Member expression deeper
   (output
     (member_expression
       (member_expression
-        (identifier)
+        (variable)
         (property))
       (property))))
 
@@ -328,7 +328,7 @@ Subscript expression
 (template
   (output
     (subscript_expression
-      (identifier)
+      (variable)
       (string))))
 
 ==================
@@ -377,9 +377,9 @@ Subscript expression deeper
   (output
     (subscript_expression
       (subscript_expression
-        (identifier)
+        (variable)
         (string))
-      (identifier))))
+      (variable))))
 
 ==================
 Call expression without arguments
@@ -389,7 +389,7 @@ Call expression without arguments
 (template
   (output
     (call_expression
-      (identifier)
+      (variable)
       (arguments))))
 
 ==================
@@ -401,7 +401,7 @@ Call call expression
   (output
     (call_expression
       (call_expression
-        (identifier)
+        (variable)
         (arguments))
       (arguments))))
 
@@ -413,7 +413,7 @@ Call expression with arguments
 (template
   (output
     (call_expression
-      (identifier)
+      (variable)
       (arguments
         (number)
         (number)))))
@@ -426,7 +426,7 @@ Call expression with one argument
 (template
   (output
     (call_expression
-      (identifier)
+      (variable)
       (arguments
         (string)))))
 
@@ -438,7 +438,7 @@ Call expression with one named argument
 (template
   (output
     (call_expression
-      (identifier)
+      (variable)
       (arguments
         (named_argument
           (string)
@@ -452,7 +452,7 @@ Call expression with named arguments
 (template
   (output
     (call_expression
-      (identifier)
+      (variable)
       (arguments
         (named_argument
           (string)
@@ -473,7 +473,7 @@ Call expression with arguments and named arguments
   (output
     (filter_expression
       (string)
-      (identifier)
+      (function)
       (arguments
         (string)
         (named_argument
@@ -498,8 +498,8 @@ Binary expression
 (template
   (output
     (binary_expression
-      (identifier)
-      (identifier))))
+      (variable)
+      (variable))))
 
 ==================
 Binary and unary expressions
@@ -512,7 +512,7 @@ Binary and unary expressions
       (unary_expression
         (number))
       (binary_expression
-        (identifier)
+        (variable)
         (string)))))
 
 ==================
@@ -523,7 +523,7 @@ Ternary operator
 (template
   (output
     (ternary_expression
-      (identifier)
+      (variable)
       (string)
       (string))))
 
@@ -535,7 +535,7 @@ Ternary operator short
 (template
   (output
     (ternary_expression
-      (identifier)
+      (variable)
       (string))))
 
 ==================
@@ -546,8 +546,8 @@ Filter without arguments
 (template
   (output
     (filter_expression
-      (identifier)
-      (identifier))))
+      (variable)
+      (function))))
 
 ==================
 Filter with arguments
@@ -557,8 +557,8 @@ Filter with arguments
 (template
   (output
     (filter_expression
-      (identifier)
-      (identifier)
+      (variable)
+      (function)
       (arguments
         (string)))))
 
@@ -571,6 +571,6 @@ Filter multiple
   (output
     (filter_expression
       (filter_expression
-        (identifier)
-        (identifier))
-      (identifier))))
+        (variable)
+        (function))
+      (function))))

@@ -76,4 +76,4 @@ Output directive
 ---
 (template
   (output
-    (identifier)))
+    (variable)))

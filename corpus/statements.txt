@@ -24,7 +24,7 @@ Tag with expressions
 ---
 (template
   (tag
-    (identifier)
+    (variable)
     (binary_expression
       (number)
       (number))))
@@ -52,8 +52,8 @@ Apply multiple filters
 (template
   (apply
     (filter_expression
-      (identifier)
-      (identifier)
+      (variable)
+      (function)
       (arguments
         (string)))
     (source_elements
@@ -130,8 +130,8 @@ Block shortcut
   (block
     (identifier)
     (filter_expression
-      (identifier)
-      (identifier))))
+      (variable)
+      (function))))
 
 ==================
 Cache
@@ -157,7 +157,7 @@ Cache with key and expiration
   (cache
     (string)
     (call_expression
-      (identifier)
+      (variable)
       (arguments
         (number)))
     (source_elements
@@ -256,7 +256,7 @@ Extends with ternary operator
 (template
   (extends
     (ternary_expression
-      (identifier)
+      (variable)
       (string)
       (string))))
 
@@ -277,12 +277,12 @@ For
 ---
 (template
   (for
-    (identifier)
-    (identifier)
+    (variable)
+    (variable)
     (source_elements
       (output
         (member_expression
-          (identifier)
+          (variable)
           (property))))))
 
 ==================
@@ -294,13 +294,13 @@ For with sequence of numbers
 ---
 (template
   (for
-    (identifier)
+    (variable)
     (binary_expression
       (number)
       (number))
     (source_elements
       (output
-        (identifier)))))
+        (variable)))))
 
 ==================
 For with else
@@ -313,12 +313,12 @@ For with else
 ---
 (template
   (for
-    (identifier)
-    (identifier)
+    (variable)
+    (variable)
     (source_elements
       (output
         (member_expression
-          (identifier)
+          (variable)
           (property))))
     (source_elements
       (content))))
@@ -332,20 +332,20 @@ For with kye, value
 ---
 (template
   (for
-    (identifier)
-    (identifier)
-    (identifier)
+    (variable)
+    (variable)
+    (variable)
     (source_elements
       (content)
       (output
-        (identifier))
+        (variable))
       (content)
       (output
         (filter_expression
           (member_expression
-            (identifier)
+            (variable)
             (property))
-          (identifier)))
+          (function)))
       (content))))
 
 ==================
@@ -356,7 +356,7 @@ From
 (template
   (from
     (string)
-    (identifier)))
+    (variable)))
 
 ==================
 From multiple
@@ -366,8 +366,8 @@ From multiple
 (template
   (from
     (string)
-    (identifier)
-    (identifier)))
+    (variable)
+    (variable)))
 
 ==================
 From as operator
@@ -378,8 +378,8 @@ From as operator
   (from
     (string)
     (as_operator
-      (identifier)
-      (identifier))))
+      (variable)
+      (variable))))
 
 ==================
 If
@@ -391,7 +391,7 @@ If
 (template
   (if
     (binary_expression
-      (identifier)
+      (variable)
       (boolean))
     (source_elements
       (content))))
@@ -409,7 +409,7 @@ If else
   (if
     (binary_expression
       (member_expression
-        (identifier)
+        (variable)
         (property))
       (number))
     (source_elements
@@ -430,7 +430,7 @@ If elseif
   (if
     (binary_expression
       (member_expression
-        (identifier)
+        (variable)
         (property))
       (number))
     (source_elements
@@ -438,14 +438,14 @@ If elseif
     (elseif
       (binary_expression
         (member_expression
-          (identifier)
+          (variable)
           (property))
         (number))
       (source_elements
         (content)
         (output
           (member_expression
-            (identifier)
+            (variable)
             (property)))
         (content)))))
 
@@ -464,7 +464,7 @@ If elseif else
   (if
     (binary_expression
       (member_expression
-        (identifier)
+        (variable)
         (property))
       (number))
     (source_elements
@@ -472,14 +472,14 @@ If elseif else
     (elseif
       (binary_expression
         (member_expression
-          (identifier)
+          (variable)
           (property))
         (number))
       (source_elements
         (content)
         (output
           (member_expression
-            (identifier)
+            (variable)
             (property)))
         (content)))
     (source_elements
@@ -493,7 +493,7 @@ Import
 (template
   (import
     (string)
-    (identifier)))
+    (variable)))
 
 ==================
 Include
@@ -550,11 +550,11 @@ Macro
   (macro
     (identifier)
     (arguments
-      (identifier))
+      (variable))
     (source_elements
       (content)
       (output
-        (identifier))
+        (variable))
       (content))))
 
 ==================
@@ -591,7 +591,7 @@ Set
 ---
 (template
   (set
-    (identifier)
+    (variable)
     (array
       (number)
       (number))))
@@ -603,8 +603,8 @@ Set several variables
 ---
 (template
   (set
-    (identifier)
-    (identifier)
+    (variable)
+    (variable)
     (string)
     (string)))
 
@@ -617,11 +617,11 @@ Set block
 ---
 (template
   (set_block
-    (identifier)
+    (variable)
     (source_elements
       (content)
       (output
-        (identifier))
+        (variable))
       (content))))
 ==================
 Use
@@ -641,11 +641,11 @@ Use with variable
   (use
     (string)
     (as_operator
-      (identifier)
-      (identifier))
+      (variable)
+      (variable))
     (as_operator
-      (identifier)
-      (identifier))))
+      (variable)
+      (variable))))
 
 ==================
 Verbatim
@@ -682,7 +682,7 @@ With variables
   (with
     (object
       (pair
-        (identifier)
+        (variable)
         (number)))
     (source_elements
       (content))))
@@ -698,7 +698,7 @@ With variables only
   (with
     (object
       (pair
-        (identifier)
+        (variable)
         (number)))
     (source_elements
       (content))))
@@ -714,7 +714,7 @@ Trans
 ---
 (template
   (if
-    (identifier)
+    (variable)
     (source_elements
       (tag)
       (content)

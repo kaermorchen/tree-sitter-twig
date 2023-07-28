@@ -52,7 +52,7 @@ module.exports = grammar({
         $.member_expression,
         $.filter_expression,
         $.parenthesized_expression,
-        $.identifier,
+        alias($.identifier, $.variable),
         $.null,
         $.number,
         $.boolean,
@@ -92,13 +92,14 @@ module.exports = grammar({
         ),
         alias('"', 'string'),
       ),
-    spread_element: ($) => seq('...', field('expr', $.identifier)),
+    spread_element: ($) =>
+      seq('...', field('expr', alias($.identifier, $.variable))),
     array: ($) =>
       seq('[', commaSep($.expression), optional($.spread_element), ']'),
     object: ($) =>
       seq(
         '{',
-        commaSep(choice($.pair, $.identifier)),
+        commaSep(choice($.pair, alias($.identifier, $.variable))),
         optional($.spread_element),
         '}',
       ),
@@ -107,7 +108,12 @@ module.exports = grammar({
       seq(field('key', $._property_name), ':', field('value', $.expression)),
 
     _property_name: ($) =>
-      choice($.string, $.number, $.identifier, $.computed_property_name),
+      choice(
+        $.string,
+        $.number,
+        alias($.identifier, $.variable),
+        $.computed_property_name,
+      ),
 
     computed_property_name: ($) => seq('(', $.expression, ')'),
 
@@ -269,7 +275,7 @@ module.exports = grammar({
         seq(
           field('object', choice($.expression, $.primary_expression)),
           alias('|', 'operator'),
-          field('name', $.identifier),
+          field('name', alias($.identifier, $.function)),
           optional(field('arguments', $.arguments)),
         ),
       ),
@@ -285,7 +291,7 @@ module.exports = grammar({
       statement(
         $,
         alias('set', 'keyword'),
-        commaSep1(field('variable', $.identifier)),
+        commaSep1(field('variable', alias($.identifier, $.variable))),
         '=',
         commaSep1(field('value', $.expression)),
       ),
@@ -294,7 +300,7 @@ module.exports = grammar({
       statement(
         $,
         alias('set', 'keyword'),
-        field('variable', $.identifier),
+        field('variable', alias($.identifier, $.variable)),
         source_elements($),
         alias('endset', 'keyword'),
       ),
@@ -370,7 +376,7 @@ module.exports = grammar({
       statement(
         $,
         alias('for', 'keyword'),
-        commaSep1(field('variable', $.identifier)),
+        commaSep1(field('variable', alias($.identifier, $.variable))),
         alias('in', 'keyword'),
         field('expr', $.expression),
         source_elements($),
@@ -384,14 +390,19 @@ module.exports = grammar({
         alias('from', 'keyword'),
         field('expr', $.expression),
         alias('import', 'keyword'),
-        commaSep1(field('variable', choice($.identifier, $.as_operator))),
+        commaSep1(
+          field(
+            'variable',
+            choice(alias($.identifier, $.variable), $.as_operator),
+          ),
+        ),
       ),
 
     as_operator: ($) =>
       seq(
-        field('left', $.identifier),
+        field('left', alias($.identifier, $.variable)),
         field('operator', alias('as', 'keyword')),
-        field('right', $.identifier),
+        field('right', alias($.identifier, $.variable)),
       ),
 
     if: ($) =>
@@ -418,7 +429,7 @@ module.exports = grammar({
         alias('import', 'keyword'),
         field('expr', $.expression),
         alias('as', 'keyword'),
-        field('variable', $.identifier),
+        field('variable', alias($.identifier, $.variable)),
       ),
 
     include: ($) =>
