@@ -106,7 +106,7 @@
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "function",
             "named": true
           }
         ]
@@ -377,6 +377,10 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          },
+          {
+            "type": "function",
             "named": true
           }
         ]

@@ -12,7 +12,7 @@ Divisible by
         (variable)
         (property))
       (call_expression
-        (variable)
+        (function)
         (arguments
           (number))))
     (source_elements
@@ -32,7 +32,7 @@ Same as
         (variable)
         (property))
       (call_expression
-        (variable)
+        (function)
         (arguments
           (boolean))))
     (source_elements

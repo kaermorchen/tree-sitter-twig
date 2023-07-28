@@ -38,7 +38,7 @@ Apply
 ---
 (template
   (apply
-    (identifier)
+    (function)
     (source_elements
       (content))))
 
@@ -157,7 +157,7 @@ Cache with key and expiration
   (cache
     (string)
     (call_expression
-      (variable)
+      (function)
       (arguments
         (number)))
     (source_elements

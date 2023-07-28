@@ -389,7 +389,7 @@ Call expression without arguments
 (template
   (output
     (call_expression
-      (variable)
+      (function)
       (arguments))))
 
 ==================
@@ -401,7 +401,7 @@ Call call expression
   (output
     (call_expression
       (call_expression
-        (variable)
+        (function)
         (arguments))
       (arguments))))
 
@@ -413,7 +413,7 @@ Call expression with arguments
 (template
   (output
     (call_expression
-      (variable)
+      (function)
       (arguments
         (number)
         (number)))))
@@ -426,7 +426,7 @@ Call expression with one argument
 (template
   (output
     (call_expression
-      (variable)
+      (function)
       (arguments
         (string)))))
 
@@ -438,7 +438,7 @@ Call expression with one named argument
 (template
   (output
     (call_expression
-      (variable)
+      (function)
       (arguments
         (named_argument
           (string)
@@ -452,7 +452,7 @@ Call expression with named arguments
 (template
   (output
     (call_expression
-      (variable)
+      (function)
       (arguments
         (named_argument
           (string)

@@ -19,6 +19,7 @@ module.exports = grammar({
     [$.primary_expression, $._property_name],
     [$.primary_expression, $._property_name, $.arrow_function],
     [$.primary_expression, $.arrow_function],
+    [$.primary_expression, $.call_expression],
   ],
   externals: ($) => [$.content, $.comment],
   rules: {
@@ -162,13 +163,23 @@ module.exports = grammar({
     call_expression: ($) =>
       choice(
         prec(
-          'call',
-          seq(field('name', $.expression), field('arguments', $.arguments)),
-        ),
-        prec(
           'member',
           seq(
-            field('name', $.primary_expression),
+            field(
+              'name',
+              choice(alias($.identifier, $.function), $.primary_expression),
+            ),
+            field('arguments', $.arguments),
+          ),
+        ),
+        // TODO: Do we need `call`?
+        prec(
+          'call',
+          seq(
+            field(
+              'name',
+              choice(alias($.identifier, $.function), $.expression),
+            ),
             field('arguments', $.arguments),
           ),
         ),
@@ -309,7 +320,10 @@ module.exports = grammar({
       statement(
         $,
         alias('apply', 'keyword'),
-        field('filter', choice($.identifier, $.filter_expression)),
+        field(
+          'filter',
+          choice(alias($.identifier, $.function), $.filter_expression),
+        ),
         source_elements($),
         alias('endapply', 'keyword'),
       ),

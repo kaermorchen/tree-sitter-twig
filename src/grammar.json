@@ -903,7 +903,7 @@
       "members": [
         {
           "type": "PREC",
-          "value": "call",
+          "value": "member",
           "content": {
             "type": "SEQ",
             "members": [
@@ -911,8 +911,22 @@
                 "type": "FIELD",
                 "name": "name",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "identifier"
+                      },
+                      "named": true,
+                      "value": "function"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "primary_expression"
+                    }
+                  ]
                 }
               },
               {
@@ -928,7 +942,7 @@
         },
         {
           "type": "PREC",
-          "value": "member",
+          "value": "call",
           "content": {
             "type": "SEQ",
             "members": [
@@ -936,8 +950,22 @@
                 "type": "FIELD",
                 "name": "name",
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "primary_expression"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "identifier"
+                      },
+                      "named": true,
+                      "value": "function"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    }
+                  ]
                 }
               },
               {
@@ -2778,8 +2806,13 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                "named": true,
+                "value": "function"
               },
               {
                 "type": "SYMBOL",
@@ -4886,6 +4919,10 @@
     [
       "primary_expression",
       "arrow_function"
+    ],
+    [
+      "primary_expression",
+      "call_expression"
     ]
   ],
   "precedences": [
