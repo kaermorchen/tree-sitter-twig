@@ -393,6 +393,19 @@ Call expression without arguments
       (arguments))))
 
 ==================
+Call call expression
+==================
+{{ range()() }}
+---
+(template
+  (output
+    (call_expression
+      (call_expression
+        (identifier)
+        (arguments))
+      (arguments))))
+
+==================
 Call expression with arguments
 ==================
 {{ range(0, 3) }}
