@@ -9,10 +9,10 @@ Divisible by
   (if
     (binary_expression
       (member_expression
-        (identifier)
-        (property_identifier))
+        (variable)
+        (property))
       (call_expression
-        (identifier)
+        (function)
         (arguments
           (number))))
     (source_elements
@@ -29,10 +29,10 @@ Same as
   (if
     (binary_expression
       (member_expression
-        (identifier)
-        (property_identifier))
+        (variable)
+        (property))
       (call_expression
-        (identifier)
+        (function)
         (arguments
           (boolean))))
     (source_elements
