@@ -1640,10 +1640,6 @@
     "named": false
   },
   {
-    "type": "else",
-    "named": false
-  },
-  {
     "type": "embedded_begin",
     "named": false
   },
