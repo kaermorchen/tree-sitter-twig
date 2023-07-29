@@ -3661,8 +3661,13 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "else"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "else"
+                  },
+                  "named": false,
+                  "value": "keyword"
                 },
                 {
                   "type": "SEQ",
@@ -4000,8 +4005,13 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "else"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "else"
+                  },
+                  "named": false,
+                  "value": "keyword"
                 },
                 {
                   "type": "SEQ",

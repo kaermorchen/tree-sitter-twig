@@ -394,7 +394,7 @@ module.exports = grammar({
         alias('in', 'keyword'),
         field('expr', $.expression),
         source_elements($),
-        optional(seq('else', source_elements($))),
+        optional(seq(alias('else', 'keyword'), source_elements($))),
         alias('endfor', 'keyword'),
       ),
 
@@ -426,7 +426,7 @@ module.exports = grammar({
         field('expr', $.expression),
         source_elements($, 'then'),
         optional(field('elseif', repeat($.elseif))),
-        optional(seq('else', source_elements($, 'else'))),
+        optional(seq(alias('else', 'keyword'), source_elements($, 'else'))),
         alias('endif', 'keyword'),
       ),
 
