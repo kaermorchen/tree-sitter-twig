@@ -1,6 +1,17 @@
 
 
 
+
+## v0.4.0 (2023-07-29)
+
+#### :rocket: Enhancement
+* [#10](https://github.com/kaermorchen/tree-sitter-twig/pull/10) Semantic highlight ([@kaermorchen](https://github.com/kaermorchen))
+* [#9](https://github.com/kaermorchen/tree-sitter-twig/pull/9) Scanning `content` by scanner ([@kaermorchen](https://github.com/kaermorchen))
+* [#8](https://github.com/kaermorchen/tree-sitter-twig/pull/8) Added spread element ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v0.3.0 (2023-07-22)
 
 #### :rocket: Enhancement
