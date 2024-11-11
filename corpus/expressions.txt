@@ -445,6 +445,20 @@ Call expression with one named argument
           (string))))))
 
 ==================
+Call expression with dots named argument
+==================
+{{ join(splitter: ',') }}
+---
+(template
+  (output
+    (call_expression
+      (function)
+      (arguments
+        (named_argument
+          (string)
+          (string))))))
+
+==================
 Call expression with named arguments
 ==================
 {{ range(low=1, high=10, step=2) }}
