@@ -2,6 +2,15 @@
 
 
 
+
+## v0.5.0 (2024-12-05)
+
+#### :bug: Bug Fix
+* [#11](https://github.com/kaermorchen/tree-sitter-twig/pull/11) Added keyword type for `else` token ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v0.4.0 (2023-07-29)
 
 #### :rocket: Enhancement
