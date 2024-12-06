@@ -1652,6 +1652,10 @@
     "named": false
   },
   {
+    "type": "inline_comment",
+    "named": true
+  },
+  {
     "type": "keyword",
     "named": false
   },

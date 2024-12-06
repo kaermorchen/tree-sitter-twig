@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: 'twig',
-  extras: () => [/[\s\p{Zs}\uFEFF\u2060\u200B]/],
+  extras: ($) => [/[\s\p{Zs}\uFEFF\u2060\u200B]/, $.inline_comment],
   supertypes: ($) => [$.expression, $.primary_expression],
   inline: ($) => [$._statement],
   precedences: ($) => [
@@ -74,6 +74,7 @@ module.exports = grammar({
         'same as',
       ),
 
+    inline_comment: () => /#.*\n/,
     null: () => choice('null', 'none', 'NULL', 'NONE'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
     boolean: () => choice('true', 'false', 'TRUE', 'FALSE'),
