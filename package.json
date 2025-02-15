@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@release-it-plugins/lerna-changelog": "^6.0.0",
-    "release-it": "^16.1.2",
+    "release-it": "^18.1.2",
     "tree-sitter-cli": "0.20.7"
   },
   "files": [
