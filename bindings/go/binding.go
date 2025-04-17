@@ -6,9 +6,7 @@ package twig
 //
 // #define TREE_SITTER_LANGUAGE_VERSION 14
 //
-// // Include the C parser directly
 // #include "../../src/parser.c"
-// // Include scanner if it exists
 // #include "../../src/scanner.c"
 import "C"
 import "unsafe"
