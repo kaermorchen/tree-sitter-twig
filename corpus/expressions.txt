@@ -109,6 +109,22 @@ String interpolation escaped character
     (string)))
 
 ==================
+String interpolation few lines
+==================
+{{ "#{41}" }}
+{{ "#{42} #{43}" }}
+---
+(template
+  (output
+    (interpolated_string
+      (number)))
+  (output
+    (interpolated_string
+      (number)
+      (string)
+      (number))))
+
+==================
 Array empty
 ==================
 {{ [] }}

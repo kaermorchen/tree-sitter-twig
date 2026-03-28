@@ -74,7 +74,7 @@ module.exports = grammar({
         'same as',
       ),
 
-    inline_comment: () => /#.*\n/,
+    inline_comment: () => /#[^\n{]*\n/,
     null: () => choice('null', 'none', 'NULL', 'NONE'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
     boolean: () => choice('true', 'false', 'TRUE', 'FALSE'),
@@ -88,7 +88,7 @@ module.exports = grammar({
             seq(
               alias('#{', 'embedded_begin'),
               $.expression,
-              alias('}', 'embedded_begin'),
+              alias('}', 'embedded_end'),
             ),
           ),
         ),

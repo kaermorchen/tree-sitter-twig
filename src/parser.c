@@ -2061,7 +2061,7 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
     [1] = alias_sym_parameter,
   },
   [19] = {
-    [2] = anon_sym_LBRACE_LBRACE,
+    [2] = anon_sym_RBRACE_RBRACE,
   },
   [26] = {
     [2] = alias_sym_function,
@@ -3735,7 +3735,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 2:
       if (lookahead == '\n') ADVANCE(575);
-      if (lookahead != 0) ADVANCE(2);
+      if (lookahead != 0 &&
+          lookahead != '{') ADVANCE(2);
       END_STATE();
     case 3:
       if (lookahead == ' ') ADVANCE(116);
@@ -8099,8 +8100,6 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 603:
       ACCEPT_TOKEN(anon_sym_POUND_LBRACE);
-      if (lookahead == '\n') ADVANCE(575);
-      if (lookahead != 0) ADVANCE(2);
       END_STATE();
     case 604:
       ACCEPT_TOKEN(anon_sym_RBRACE);
