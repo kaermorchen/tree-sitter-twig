@@ -173,6 +173,33 @@ Deprecated
     (string)))
 
 ==================
+Deprecated with package
+==================
+{% deprecated 'The "base.html.twig" template is deprecated, use "layout.html.twig" instead.' package='twig/twig' %}
+---
+(template
+  (deprecated
+    (string)
+    (named_argument
+      (string)
+      (string))))
+
+==================
+Deprecated with package and version
+==================
+{% deprecated 'The "base.html.twig" template is deprecated, use "layout.html.twig" instead.' package='twig/twig' version='3.11' %}
+---
+(template
+  (deprecated
+    (string)
+    (named_argument
+      (string)
+      (string))
+    (named_argument
+      (string)
+      (string))))
+
+==================
 Do
 ==================
 {% do 1 + 2 %}

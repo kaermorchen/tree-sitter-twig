@@ -3278,6 +3278,17 @@
           }
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "FIELD",
+            "name": "option",
+            "content": {
+              "type": "SYMBOL",
+              "name": "named_argument"
+            }
+          }
+        },
+        {
           "type": "SYMBOL",
           "name": "_statement_stop"
         }

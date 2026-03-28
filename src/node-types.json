@@ -415,6 +415,16 @@
             "named": true
           }
         ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "named_argument",
+            "named": true
+          }
+        ]
       }
     }
   },

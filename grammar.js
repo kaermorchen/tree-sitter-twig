@@ -365,7 +365,12 @@ module.exports = grammar({
       ),
 
     deprecated: ($) =>
-      statement($, alias('deprecated', 'keyword'), field('expr', $.expression)),
+      statement(
+        $,
+        alias('deprecated', 'keyword'),
+        field('expr', $.expression),
+        repeat(field('option', $.named_argument)),
+      ),
 
     do: ($) =>
       statement($, alias('do', 'keyword'), field('expr', $.expression)),
