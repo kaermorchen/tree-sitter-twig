@@ -507,6 +507,22 @@ module.exports = grammar({
         alias('endwith', 'keyword'),
       ),
 
+    types_key: ($) => seq($.identifier, optional('?')),
+
+    types_pair: ($) =>
+      seq(field('key', $.types_key), ':', field('value', $.expression)),
+
+    types_list: ($) => commaSep1($.types_pair),
+
+    types_object: ($) => seq('{', $.types_list, '}'),
+
+    types: ($) =>
+      statement(
+        $,
+        alias('types', 'keyword'),
+        optional(choice($.types_object, $.types_list)),
+      ),
+
     _statement: ($) =>
       choice(
         $.tag,
@@ -531,6 +547,7 @@ module.exports = grammar({
         $.use,
         $.verbatim,
         $.with,
+        $.types,
       ),
   },
 });

@@ -719,3 +719,78 @@ Trans
       (tag)
       (content)
       (tag))))
+
+==================
+Types with single pair
+==================
+{% types is_correct: 'boolean' %}
+---
+(template
+  (types
+    (types_list
+      (types_pair
+        (types_key
+          (identifier))
+        (string)))))
+
+==================
+Types with multiple pairs
+==================
+{% types
+    is_correct: 'boolean',
+    score: 'number',
+%}
+---
+(template
+  (types
+    (types_list
+      (types_pair
+        (types_key
+          (identifier))
+        (string))
+      (types_pair
+        (types_key
+          (identifier))
+        (string)))))
+
+==================
+Types with object syntax
+==================
+{% types {
+    is_correct: 'boolean',
+    score: 'number',
+} %}
+---
+(template
+  (types
+    (types_object
+      (types_list
+        (types_pair
+          (types_key
+            (identifier))
+          (string))
+        (types_pair
+          (types_key
+            (identifier))
+          (string))))))
+
+==================
+Types with optional key
+==================
+{% types {
+    is_correct: 'boolean',
+    score?: 'number',
+} %}
+---
+(template
+  (types
+    (types_object
+      (types_list
+        (types_pair
+          (types_key
+            (identifier))
+          (string))
+        (types_pair
+          (types_key
+            (identifier))
+          (string))))))
