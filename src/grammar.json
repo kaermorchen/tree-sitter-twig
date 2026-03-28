@@ -249,7 +249,7 @@
     },
     "inline_comment": {
       "type": "PATTERN",
-      "value": "#.*\\n"
+      "value": "#[^\\n{]*\\n"
     },
     "null": {
       "type": "CHOICE",
@@ -367,7 +367,7 @@
                       "value": "}"
                     },
                     "named": false,
-                    "value": "embedded_begin"
+                    "value": "embedded_end"
                   }
                 ]
               }
