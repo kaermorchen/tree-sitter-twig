@@ -4,10 +4,13 @@
   "version": "0.7.0",
   "description": "Twig grammar for tree-sitter",
   "main": "bindings/node",
+  "engines": {
+    "node": "18.20.8"
+  },
   "scripts": {
     "build": "tree-sitter generate",
     "build-wasm": "tree-sitter build-wasm",
-    "test": "tree-sitter test",
+    "test": "tree-sitter generate && tree-sitter test",
     "release": "release-it"
   },
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
