@@ -363,6 +363,21 @@ Member expression dynamic property access 2
           (variable))))))
 
 ==================
+Member expression dynamic property access 3
+==================
+{{ enum('App\\CardSuite').(case_name) }}
+---
+(template
+  (output
+    (member_expression
+      (call_expression
+        (function)
+        (arguments
+          (string)))
+      (property
+        (variable)))))
+
+==================
 Member expression with null-safe operator
 ==================
 {{ user?.name }}
