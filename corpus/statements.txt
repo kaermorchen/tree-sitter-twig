@@ -863,3 +863,78 @@ Types with optional key
           (types_key
             (identifier))
           (string))))))
+
+==================
+Destructuring
+==================
+{{ ({name} = user).email }}
+---
+(template
+  (output
+    (member_expression
+      (parenthesized_expression
+        (assignment_expression
+          (object
+            (variable))
+          (variable)))
+      (property))))
+
+==================
+Sequence destructuring
+==================
+{% do [first, last] = ['Fabien', 'Potencier'] %}
+---
+(template
+  (do
+    (assignment_expression
+      (array
+        (variable)
+        (variable))
+      (array
+        (string)
+        (string)))))
+
+==================
+Sequence destructuring with skiped value
+==================
+{% do [, last] = ['Fabien', 'Potencier'] %}
+---
+(template
+  (do
+    (assignment_expression
+      (array
+        (omitted)
+        (variable))
+      (array
+        (string)
+        (string)))))
+
+==================
+Object destructuring
+==================
+{% do {name, email} = user %}
+---
+(template
+  (do
+    (assignment_expression
+      (object
+        (variable)
+        (variable))
+      (variable))))
+
+==================
+Object destructuring with rename variables
+==================
+{% do {name: userName, email: userEmail} = user %}
+---
+(template
+  (do
+    (assignment_expression
+      (object
+        (pair
+          (variable)
+          (variable))
+        (pair
+          (variable)
+          (variable)))
+      (variable))))

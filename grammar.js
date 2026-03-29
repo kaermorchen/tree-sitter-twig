@@ -12,8 +12,8 @@ module.exports = grammar({
       'ternary',
       $.expression,
       $.arrow_function,
-      'assignment',
       'named_argument',
+      'assignment',
     ],
     [$.primary_expression, $.filter_expression],
   ],
@@ -23,7 +23,9 @@ module.exports = grammar({
     [$.primary_expression, $.arrow_function],
     [$.primary_expression, $.call_expression],
     [$.primary_expression, $.named_argument],
-    [$.assignment_expression, $.named_argument],
+    // [$.assignment_expression, $.named_argument],
+    // [$.assignment_expression, $.spread_element],
+    // [$.assignment_expression, $.array],
   ],
   externals: ($) => [$.content, $.comment],
   rules: {
@@ -83,6 +85,7 @@ module.exports = grammar({
     null: () => choice('null', 'none', 'NULL', 'NONE'),
     number: () => /[0-9]+(?:\.[0-9]+)?([Ee][\+\-][0-9]+)?/,
     boolean: () => choice('true', 'false', 'TRUE', 'FALSE'),
+    omitted: ($) => alias(',', 'omitted'),
     string: () => /"([^#"\\]*(?:\\.[^#"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'/,
     interpolated_string: ($) =>
       seq(
@@ -101,11 +104,11 @@ module.exports = grammar({
       ),
     spread_element: ($) => seq('...', field('expr', $.expression)),
     array: ($) =>
-      seq('[', commaSep($.expression), optional($.spread_element), ']'),
+      seq('[', commaSep($, $.expression), optional($.spread_element), ']'),
     object: ($) =>
       seq(
         '{',
-        commaSep(choice($.pair, alias($.identifier, $.variable))),
+        commaSep($, choice($.pair, alias($.identifier, $.variable))),
         optional($.spread_element),
         '}',
       ),
@@ -129,7 +132,7 @@ module.exports = grammar({
           field('parameter', alias($.identifier, $.parameter)),
           seq(
             '(',
-            commaSep(field('parameter', alias($.identifier, $.parameter))),
+            commaSep($, field('parameter', alias($.identifier, $.parameter))),
             ')',
           ),
         ),
@@ -200,6 +203,7 @@ module.exports = grammar({
       seq(
         '(',
         commaSep(
+          $,
           field(
             'argument',
             choice($.named_argument, $.expression, $.spread_element),
@@ -303,7 +307,10 @@ module.exports = grammar({
       prec.right(
         'assignment',
         seq(
-          field('left', $.primary_expression),
+          field(
+            'left',
+            choice(alias($.identifier, $.variable), $.array, $.object),
+          ),
           field('operator', '='),
           field('right', $.expression),
         ),
@@ -331,9 +338,9 @@ module.exports = grammar({
       statement(
         $,
         alias('set', 'keyword'),
-        commaSep1(field('variable', alias($.identifier, $.variable))),
+        commaSep1($, field('variable', alias($.identifier, $.variable))),
         '=',
-        commaSep1(field('value', $.expression)),
+        commaSep1($, field('value', $.expression)),
       ),
 
     set_block: ($) =>
@@ -424,7 +431,7 @@ module.exports = grammar({
       statement(
         $,
         alias('for', 'keyword'),
-        commaSep1(field('variable', alias($.identifier, $.variable))),
+        commaSep1($, field('variable', alias($.identifier, $.variable))),
         alias('in', 'keyword'),
         field('expr', $.expression),
         source_elements($),
@@ -439,6 +446,7 @@ module.exports = grammar({
         field('expr', $.expression),
         alias('import', 'keyword'),
         commaSep1(
+          $,
           field(
             'variable',
             choice(alias($.identifier, $.variable), $.as_operator),
@@ -517,7 +525,7 @@ module.exports = grammar({
         optional(
           seq(
             alias('with', 'keyword'),
-            commaSep1(field('variable', $.as_operator)),
+            commaSep1($, field('variable', $.as_operator)),
           ),
         ),
       ),
@@ -545,7 +553,7 @@ module.exports = grammar({
     types_pair: ($) =>
       seq(field('key', $.types_key), ':', field('value', $.expression)),
 
-    types_list: ($) => commaSep1($.types_pair),
+    types_list: ($) => commaSep1($, $.types_pair),
 
     types_object: ($) => seq('{', $.types_list, '}'),
 
@@ -585,12 +593,12 @@ module.exports = grammar({
   },
 });
 
-function commaSep1(rule) {
-  return seq(rule, repeat(seq(',', rule)), optional(','));
+function commaSep1($, rule) {
+  return seq(optional($.omitted), rule, repeat(seq(',', rule)), optional(','));
 }
 
-function commaSep(rule) {
-  return optional(commaSep1(rule));
+function commaSep($, rule) {
+  return optional(commaSep1($, rule));
 }
 
 function source_elements($, fieldName = 'body') {
