@@ -138,7 +138,7 @@ module.exports = grammar({
         'member',
         seq(
           field('object', choice($.expression, $.primary_expression)),
-          '.',
+          field('operator', choice('.', '?.')),
           choice(
             field(
               'property',

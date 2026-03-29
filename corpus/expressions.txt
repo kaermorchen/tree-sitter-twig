@@ -363,6 +363,67 @@ Member expression dynamic property access 2
           (variable))))))
 
 ==================
+Member expression with null-safe operator
+==================
+{{ user?.name }}
+---
+(template
+  (output
+    (member_expression
+      (variable)
+      (property))))
+
+==================
+Member expression index  with null-safe operator
+==================
+{{ arr?.0 }}
+---
+(template
+  (output
+    (member_expression
+      (variable)
+      (property))))
+
+==================
+Member expression deeper  with null-safe operator
+==================
+{{ user?.name?.first }}
+---
+(template
+  (output
+    (member_expression
+      (member_expression
+        (variable)
+        (property))
+      (property))))
+
+==================
+Member expression dynamic property access  with null-safe operator
+==================
+{{ user?.('first-name') }}
+---
+(template
+  (output
+    (member_expression
+      (variable)
+      (property
+        (string)))))
+
+==================
+Member expression dynamic property access  with null-safe operator 2
+==================
+{{ user?.('get' ~ name) }}
+---
+(template
+  (output
+    (member_expression
+      (variable)
+      (property
+        (binary_expression
+          (string)
+          (variable))))))
+
+==================
 Subscript expression
 ==================
 {{ user['name'] }}
