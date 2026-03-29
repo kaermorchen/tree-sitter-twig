@@ -139,6 +139,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -151,6 +161,10 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "omitted",
           "named": true
         },
         {
@@ -184,6 +198,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -231,7 +255,15 @@
         "required": true,
         "types": [
           {
-            "type": "primary_expression",
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "variable",
             "named": true
           }
         ]
@@ -661,6 +693,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -691,6 +733,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -971,6 +1023,10 @@
       "required": false,
       "types": [
         {
+          "type": "omitted",
+          "named": true
+        },
+        {
           "type": "pair",
           "named": true
         },
@@ -984,6 +1040,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "omitted",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "output",
@@ -1103,6 +1164,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1561,6 +1632,10 @@
       "required": true,
       "types": [
         {
+          "type": "omitted",
+          "named": true
+        },
+        {
           "type": "types_pair",
           "named": true
         }
@@ -1666,6 +1741,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "omitted",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1848,6 +1933,10 @@
   {
     "type": "number",
     "named": true
+  },
+  {
+    "type": "omitted",
+    "named": false
   },
   {
     "type": "operator",

@@ -184,6 +184,17 @@ Array with spread element
         (variable)))))
 
 ==================
+Array with omitted element
+==================
+{{ [, value] }}
+---
+(template
+  (output
+    (array
+      (omitted)
+      (variable))))
+
+==================
 Spread operator expand the arguments of a function call
 ==================
 {{ 'Hello %s %s!'|format(...['Fabien', 'Potencier']) }}
@@ -587,8 +598,8 @@ Call expression with one named argument
     (call_expression
       (function)
       (arguments
-        (assignment_expression
-          (variable)
+        (named_argument
+          (string)
           (string))))))
 
 ==================
