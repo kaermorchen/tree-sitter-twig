@@ -4,6 +4,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "assignment_expression",
+        "named": true
+      },
+      {
         "type": "binary_expression",
         "named": true
       },
@@ -212,6 +216,42 @@
         "types": [
           {
             "type": "variable",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "assignment_expression",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "primary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
