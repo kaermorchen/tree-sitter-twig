@@ -171,6 +171,22 @@ Array with spread element
         (variable)))))
 
 ==================
+Spread operator expand the arguments of a function call
+==================
+{{ 'Hello %s %s!'|format(...['Fabien', 'Potencier']) }}
+---
+(template
+  (output
+    (filter_expression
+      (string)
+      (function)
+      (arguments
+        (spread_element
+          (array
+            (string)
+            (string)))))))
+
+==================
 Object empty
 ==================
 {{ {} }}

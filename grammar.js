@@ -94,8 +94,7 @@ module.exports = grammar({
         ),
         alias('"', 'string'),
       ),
-    spread_element: ($) =>
-      seq('...', field('expr', alias($.identifier, $.variable))),
+    spread_element: ($) => seq('...', field('expr', $.expression)),
     array: ($) =>
       seq('[', commaSep($.expression), optional($.spread_element), ']'),
     object: ($) =>
@@ -195,7 +194,12 @@ module.exports = grammar({
     arguments: ($) =>
       seq(
         '(',
-        commaSep(field('argument', choice($.named_argument, $.expression))),
+        commaSep(
+          field(
+            'argument',
+            choice($.named_argument, $.expression, $.spread_element),
+          ),
+        ),
         ')',
       ),
 
