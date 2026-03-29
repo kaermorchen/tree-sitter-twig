@@ -12,6 +12,8 @@ module.exports = grammar({
       'ternary',
       $.expression,
       $.arrow_function,
+      'assignment',
+      'named_argument',
     ],
     [$.primary_expression, $.filter_expression],
   ],
@@ -20,6 +22,8 @@ module.exports = grammar({
     [$.primary_expression, $._property_name, $.arrow_function],
     [$.primary_expression, $.arrow_function],
     [$.primary_expression, $.call_expression],
+    [$.primary_expression, $.named_argument],
+    [$.assignment_expression, $.named_argument],
   ],
   externals: ($) => [$.content, $.comment],
   rules: {
@@ -45,6 +49,7 @@ module.exports = grammar({
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
+        $.assignment_expression,
       ),
 
     primary_expression: ($) =>
@@ -204,10 +209,13 @@ module.exports = grammar({
       ),
 
     named_argument: ($) =>
-      seq(
-        field('key', alias($.identifier, $.string)),
-        choice('=', ':'),
-        field('value', $.expression),
+      prec.left(
+        'named_argument',
+        seq(
+          field('key', alias($.identifier, $.string)),
+          choice('=', ':'),
+          field('value', $.expression),
+        ),
       ),
 
     unary_expression: ($) =>
@@ -288,6 +296,16 @@ module.exports = grammar({
             ),
             seq(alias('?:', 'operator'), field('alternative', $.expression)),
           ),
+        ),
+      ),
+
+    assignment_expression: ($) =>
+      prec.right(
+        'assignment',
+        seq(
+          field('left', $.primary_expression),
+          field('operator', '='),
+          field('right', $.expression),
         ),
       ),
 

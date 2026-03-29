@@ -200,7 +200,7 @@ Deprecated with package and version
       (string))))
 
 ==================
-Do
+Do with expression
 ==================
 {% do 1 + 2 %}
 ---
@@ -209,6 +209,48 @@ Do
     (binary_expression
       (number)
       (number))))
+
+==================
+Do with assignment operator
+==================
+{% do b = 1 + 3 %}
+---
+(template
+  (do
+    (assignment_expression
+      (variable)
+      (binary_expression
+        (number)
+        (number)))))
+
+==================
+Do with chained assignment operator
+==================
+{% do a = b = 'foo' %}
+---
+(template
+  (do
+    (assignment_expression
+      (variable)
+      (assignment_expression
+        (variable)
+        (string)))))
+
+==================
+Do with assignment inside other expressions
+==================
+{% do a = (b = 4) + 5 %}
+---
+(template
+  (do
+    (assignment_expression
+      (variable)
+      (binary_expression
+        (parenthesized_expression
+          (assignment_expression
+            (variable)
+            (number)))
+        (number)))))
 
 ==================
 Embed

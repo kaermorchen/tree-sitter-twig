@@ -8,6 +8,19 @@ Identifier
     (variable)))
 
 ==================
+Assignment expression
+==================
+{{ b = 1 + 3 }}
+---
+(template
+  (output
+    (assignment_expression
+      (variable)
+      (binary_expression
+        (number)
+        (number)))))
+
+==================
 Null
 ==================
 {{ null }}
@@ -574,8 +587,8 @@ Call expression with one named argument
     (call_expression
       (function)
       (arguments
-        (named_argument
-          (string)
+        (assignment_expression
+          (variable)
           (string))))))
 
 ==================
