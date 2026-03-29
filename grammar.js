@@ -139,7 +139,13 @@ module.exports = grammar({
         seq(
           field('object', choice($.expression, $.primary_expression)),
           '.',
-          field('property', alias(choice($.identifier, /[0-9]+/), $.property)),
+          choice(
+            field(
+              'property',
+              alias(choice($.identifier, /[0-9]+/), $.property),
+            ),
+            seq('(', field('property', alias($.expression, $.property)), ')'),
+          ),
         ),
       ),
 
