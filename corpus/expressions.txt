@@ -671,6 +671,17 @@ Ternary operator short
       (string))))
 
 ==================
+Null-coalescing operator
+==================
+{{ result ?? 'no' }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (string))))
+
+==================
 Filter without arguments
 ==================
 {{ name|title }}
