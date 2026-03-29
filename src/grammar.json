@@ -396,13 +396,8 @@
           "type": "FIELD",
           "name": "expr",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            "named": true,
-            "value": "variable"
+            "type": "SYMBOL",
+            "name": "expression"
           }
         }
       ]
@@ -1055,6 +1050,10 @@
                       {
                         "type": "SYMBOL",
                         "name": "expression"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "spread_element"
                       }
                     ]
                   }
@@ -1081,6 +1080,10 @@
                             {
                               "type": "SYMBOL",
                               "name": "expression"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "spread_element"
                             }
                           ]
                         }

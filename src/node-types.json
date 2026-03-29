@@ -128,6 +128,10 @@
           {
             "type": "named_argument",
             "named": true
+          },
+          {
+            "type": "spread_element",
+            "named": true
           }
         ]
       }
@@ -1249,7 +1253,7 @@
         "required": true,
         "types": [
           {
-            "type": "variable",
+            "type": "expression",
             "named": true
           }
         ]
