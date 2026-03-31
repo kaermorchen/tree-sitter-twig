@@ -131,6 +131,23 @@ Inline comments 2
         (string)))))
 
 ==================
+Inline comments 3
+==================
+# content like comment
+{{
+  # this is an inline comment
+  42
+}}
+# content like comment
+---
+(template
+  (content)
+    (output
+      (inline_comment)
+      (number))
+    (content))
+
+==================
 Output directive
 ==================
 {{ user }}
