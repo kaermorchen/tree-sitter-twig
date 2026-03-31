@@ -157,6 +157,24 @@ Output directive
     (variable)))
 
 ==================
+Output directive with whitespace trimming
+==================
+{{- user -}}
+---
+(template
+  (output
+    (variable)))
+
+==================
+Output directive with line whitespace trimming
+==================
+{{~ user ~}}
+---
+(template
+  (output
+    (variable)))
+
+==================
 Output directive with content
 ==================
 Lorem ipsum {{ user }} Lorem ipsum
@@ -180,11 +198,30 @@ Lorem ipsum
     (variable))
   (content))
 
-
 ==================
 Statements
 ==================
 {% set value = 42 %}
+---
+(template
+  (set
+    (variable)
+    (number)))
+
+==================
+Statements with whitespace trimming
+==================
+{%- set value = 42 -%}
+---
+(template
+  (set
+    (variable)
+    (number)))
+
+==================
+Statements with line whitespace trimming
+==================
+{%~ set value = 42 ~%}
 ---
 (template
   (set
