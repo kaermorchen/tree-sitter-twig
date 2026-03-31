@@ -16,22 +16,24 @@ static void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 static void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
 bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
-  // 1. Обработка COMMENT (обычно имеет приоритет)
+  // 1. Handle COMMENT (higher priority)
   if (valid_symbols[COMMENT]) {
-    // Пропускаем пробелы перед комментарием, если это допустимо
     while (iswspace(lexer->lookahead)) skip(lexer);
 
     if (lexer->lookahead == '{') {
       advance(lexer);
+
       if (lexer->lookahead == '#') {
         advance(lexer);
 
         while (lexer->lookahead) {
           if (lexer->lookahead == '#') {
             advance(lexer);
+
             if (lexer->lookahead == '}') {
               advance(lexer);
               lexer->result_symbol = COMMENT;
+
               return true;
             }
           } else {
@@ -39,20 +41,22 @@ bool tree_sitter_twig_external_scanner_scan(void *payload, TSLexer *lexer, const
           }
         }
       }
-      return false; // Если это не {#, парсер может ожидать CONTENT
+
+      return false;
     }
   }
 
-  // 2. Обработка CONTENT
+  // 2. Handle CONTENT
   if (valid_symbols[CONTENT]) {
     bool has_content = false;
 
     while (lexer->lookahead) {
       if (lexer->lookahead == '{') {
-        lexer->mark_end(lexer); // Фиксируем контент ПЕРЕД открывающей скобкой
+        // Mark end BEFORE the opening brace
+        lexer->mark_end(lexer);
         advance(lexer);
 
-        // Если встретили начало спец. конструкции — отдаем накопленный контент
+        // If we see a Twig delimiter start, stop CONTENT here
         if (lexer->lookahead == '{' || lexer->lookahead == '%' || lexer->lookahead == '#') {
           return has_content;
         }
