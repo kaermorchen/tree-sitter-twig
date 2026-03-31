@@ -15,8 +15,8 @@ Lorem ipsum
 ==================
 Content two line
 ==================
-Lorem ipsum
-
+Lorem ipsum 1
+Lorem ipsum 2
 ---
 (template
   (content))
@@ -25,6 +25,22 @@ Lorem ipsum
 Content with curly brace
 ==================
 Lorem { ipsum
+---
+(template
+  (content))
+
+==================
+Content with closed curly brace
+==================
+Lorem } ipsum
+---
+(template
+  (content))
+
+==================
+Content with 2 curly brace
+==================
+Lorem { ipsum }
 ---
 (template
   (content))
@@ -122,3 +138,64 @@ Output directive
 (template
   (output
     (variable)))
+
+==================
+Output directive with content
+==================
+Lorem ipsum {{ user }} Lorem ipsum
+---
+(template
+  (content)
+  (output
+    (variable))
+  (content))
+
+==================
+Output directive with  multiline content
+==================
+Lorem ipsum
+{{ user }}
+Lorem ipsum
+---
+(template
+  (content)
+  (output
+    (variable))
+  (content))
+
+
+==================
+Statements
+==================
+{% set value = 42 %}
+---
+(template
+  (set
+    (variable)
+    (number)))
+
+==================
+Statements with content
+==================
+Lorem ipsum {% set value = 42 %} dolor sit amet
+---
+(template
+  (content)
+  (set
+    (variable)
+    (number))
+  (content))
+
+==================
+Statements with multiline content
+==================
+Lorem ipsum
+{% set value = 42 %}
+dolor sit amet
+---
+(template
+  (content)
+  (set
+    (variable)
+    (number))
+  (content))
