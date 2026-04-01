@@ -372,6 +372,19 @@ For with sequence of numbers
         (variable)))))
 
 ==================
+Filter tag
+==================
+{% filter upper %}
+  text
+{% endfilter %}
+---
+(template
+  (tag
+    (variable))
+  (content)
+  (tag))
+
+==================
 For with else
 ==================
 {% for user in users %}

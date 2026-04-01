@@ -688,6 +688,28 @@ Binary and unary expressions
         (string)))))
 
 ==================
+Binary: is
+==================
+{{ name is odd }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: is not
+==================
+{{ name is not odd }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
 Ternary operator
 ==================
 {{ foo ? 'yes' : 'no' }}
@@ -757,3 +779,457 @@ Filter multiple
         (variable)
         (function))
       (function))))
+
+==================
+Binary: or
+==================
+{{ a or b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: and
+==================
+{{ a and b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: b-or
+==================
+{{ a b-or b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: b-xor
+==================
+{{ a b-xor b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: b-and
+==================
+{{ a b-and b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: ==
+==================
+{{ a == b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: !=
+==================
+{{ a != b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: <=>
+==================
+{{ a <=> b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: <
+==================
+{{ a < b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: >
+==================
+{{ a > b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: >=
+==================
+{{ a >= b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: <=
+==================
+{{ a <= b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: not in
+==================
+{{ a not in b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: in
+==================
+{{ a in b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: matches
+==================
+{{ a matches '/pattern/' }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (string))))
+
+==================
+Binary: starts with
+==================
+{{ a starts with 'foo' }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (string))))
+
+==================
+Binary: ends with
+==================
+{{ a ends with 'bar' }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (string))))
+
+==================
+Binary: has some
+==================
+{{ a has some b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: has every
+==================
+{{ a has every b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: ..
+==================
+{{ 1..5 }}
+---
+(template
+  (output
+    (binary_expression
+      (number)
+      (number))))
+
+==================
+Binary: - (subtraction)
+==================
+{{ a - b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: ~
+==================
+{{ a ~ b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: * (multiplication)
+==================
+{{ a * b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: /
+==================
+{{ a / b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: //
+==================
+{{ a // b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: %
+==================
+{{ a % b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: **
+==================
+{{ a ** b }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Unary: + (plus)
+==================
+{{ +42 }}
+---
+(template
+  (output
+    (unary_expression
+      (number))))
+
+==================
+Unary: not
+==================
+{{ not a }}
+---
+(template
+  (output
+    (unary_expression
+      (variable))))
+
+==================
+Binary: is defined
+==================
+{{ a is defined }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: is empty
+==================
+{{ a is empty }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: is iterable
+==================
+{{ a is iterable }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: is constant
+==================
+{{ a is constant }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (variable))))
+
+==================
+Binary: is null
+==================
+{{ a is null }}
+---
+(template
+  (output
+    (binary_expression
+      (variable)
+      (null))))
+
+==================
+Filter: abs
+==================
+{{ -5|abs }}
+---
+(template
+  (output
+    (unary_expression
+      argument: (filter_expression
+        object: (number)
+        name: (function)))))
+
+==================
+Filter: capitalize
+==================
+{{ 'hello'|capitalize }}
+---
+(template
+  (output
+    (filter_expression
+      object: (string)
+      name: (function))))
+
+==================
+Function: attribute
+==================
+{{ attribute(object, 'property') }}
+---
+(template
+  (output
+    (call_expression
+      name: (function)
+      arguments: (arguments
+        argument: (variable)
+        argument: (string)))))
+
+==================
+Function: block
+==================
+{{ block('title') }}
+---
+(template
+  (output
+    (call_expression
+      name: (function)
+      arguments: (arguments
+        argument: (string)))))
+
+==================
+Function: constant
+==================
+{{ constant('PHP_VERSION') }}
+---
+(template
+  (output
+    (call_expression
+      name: (function)
+      arguments: (arguments
+        argument: (string)))))
+
+==================
+Filter: trim
+==================
+{{ '  hello  '|trim }}
+---
+(template
+  (output
+    (filter_expression
+      object: (string)
+      name: (function))))
+
+==================
+Filter: length
+==================
+{{ 'hello'|length }}
+---
+(template
+  (output
+    (filter_expression
+      object: (string)
+      name: (function))))

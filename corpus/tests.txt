@@ -37,3 +37,108 @@ Same as
           (boolean))))
     (source_elements
       (content))))
+
+==================
+Test: is even
+==================
+{% if variable is even %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is odd
+==================
+{% if variable is odd %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is defined
+==================
+{% if variable is defined %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is empty
+==================
+{% if variable is empty %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is iterable
+==================
+{% if variable is iterable %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is constant
+==================
+{% if variable is constant %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (variable))
+    (source_elements
+      (content))))
+
+==================
+Test: is null
+==================
+{% if variable is null %}
+  ...
+{% endif %}
+---
+(template
+  (if
+    (binary_expression
+      (variable)
+      (null))
+    (source_elements
+      (content))))
