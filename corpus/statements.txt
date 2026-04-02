@@ -951,3 +951,55 @@ Object destructuring with rename variables
           (variable)
           (variable)))
       (variable))))
+
+==================
+Filter tag with chain
+==================
+{% filter lower|escape('html') %}<strong>Text</strong>{% endfilter %}
+---
+(template
+  (tag
+    (filter_expression
+      (variable)
+      (function)
+      (arguments
+        (string))))
+  (content)
+  (tag))
+
+==================
+Filter tag with default filter
+==================
+{% filter default('default') %}variable{% endfilter %}
+---
+(template
+  (tag
+    (call_expression
+      (function)
+      (arguments
+        (string))))
+  (content)
+  (tag))
+
+==================
+Filter tag with two filters
+==================
+{% filter upper|lower %}Mixed CASE{% endfilter %}
+---
+(template
+  (tag
+    (filter_expression
+      (variable)
+      (function)))
+  (content)
+  (tag))
+
+==================
+Spaceless tag
+==================
+{% spaceless %}<div> <span>text</span> </div>{% endspaceless %}
+---
+(template
+  (tag)
+  (content)
+  (tag))
