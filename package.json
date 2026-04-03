@@ -7,24 +7,16 @@
   "version": "0.8.0",
   "description": "Twig grammar for tree-sitter",
   "main": "bindings/node",
-  "engines": {
-    "node": "18.20.8"
-  },
   "scripts": {
     "build": "tree-sitter generate",
     "build-wasm": "tree-sitter build-wasm",
-    "test": "tree-sitter generate && tree-sitter test",
-    "release": "release-it"
+    "test": "tree-sitter generate && tree-sitter test"
   },
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
   "license": "Mozilla Public License 2.0",
-  "dependencies": {
-    "nan": "^2.17.0"
-  },
   "devDependencies": {
-    "@release-it-plugins/lerna-changelog": "^8.0.1",
-    "release-it": "^19.0.2",
-    "tree-sitter-cli": "0.20.7"
+    "nan": "^2.26.2",
+    "tree-sitter-cli": "0.26.8"
   },
   "files": [
     "README.md",
@@ -44,23 +36,5 @@
       "injections": "queries/injections.scm",
       "injection-regex": "twig"
     }
-  ],
-  "release-it": {
-    "hooks": {
-      "before:release": "npm run build-wasm"
-    },
-    "plugins": {
-      "@release-it-plugins/lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": false
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    }
-  }
+  ]
 }
