@@ -4,7 +4,7 @@
     "type": "git",
     "url": "git+https://github.com/kaermorchen/tree-sitter-twig.git"
   },
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Twig grammar for tree-sitter",
   "scripts": {
     "build": "tree-sitter generate",
