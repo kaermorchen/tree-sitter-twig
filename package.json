@@ -6,7 +6,6 @@
   },
   "version": "0.8.1",
   "description": "Twig grammar for tree-sitter",
-  "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate",
     "build-wasm": "tree-sitter build-wasm",
